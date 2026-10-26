@@ -69,6 +69,7 @@ import "./MobileOptimizeV45.css";
 
 
 type AppId =
+  | "memory-explorer"
   | "simulator"
   | "cafe"
   | "parlour"
@@ -95,6 +96,14 @@ type DesktopApp = {
 };
 
 const APPS: DesktopApp[] = [
+  
+  {
+    id: "memory-explorer",
+    icon: "🗂️",
+    name: "Memory Explorer",
+    filename: "MemoryExplorer.exe",
+  },
+
   {
     id: "simulator",
     icon: "📡",
@@ -518,6 +527,10 @@ function openRetroTool(tool: RetroTool) {
   }
 
   function openApp(id: AppId) {
+     if (id === "memory-explorer") {
+    window.location.href = "/memories";
+    return;
+  }
     setOpened(id);
     setMinimized(false);
     setMaximized(false);
@@ -1193,6 +1206,15 @@ function openRetroTool(tool: RetroTool) {
 >
   ⚠️ Disclaimer
 </button>
+
+<button
+  onClick={() => {
+    window.location.href = "/memories";
+  }}
+>
+  🗂️ Memory Explorer
+</button>
+
 
 
               

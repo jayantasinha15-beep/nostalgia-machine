@@ -1,0 +1,480 @@
+
+/* =======================================
+   NOSTALGIA OS V4.9 — MEMORY EXPLORER
+   ======================================= */
+
+.memory-explorer-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 17px;
+  padding: 9px 12px;
+  background: #d8d8d8;
+  border: 2px inset #f5f5f5;
+  color: #222;
+  font: bold 12px Tahoma, Arial, sans-serif;
+}
+
+.memory-explorer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.memory-explorer-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+  background: #f4f4f0;
+  color: #222;
+  text-decoration: none;
+  border: 3px solid;
+  border-color: #fff #777 #777 #fff;
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.memory-explorer-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 5px 5px 0 #0004;
+}
+
+.memory-explorer-card:focus-visible {
+  outline: 3px solid #000080;
+  outline-offset: 3px;
+}
+
+.memory-card-art {
+  display: grid;
+  place-items: center;
+  min-height: 148px;
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      #6b80d5,
+      #19275d 70%
+    );
+  border-bottom: 3px solid #a5a5a5;
+}
+
+.memory-card-art span {
+  font-size: clamp(52px, 8vw, 75px);
+  filter: drop-shadow(3px 5px 2px #0006);
+}
+
+.memory-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 18px;
+}
+
+.memory-card-category,
+.memory-article-category {
+  margin: 0 0 8px;
+  font: bold 11px "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #194e9a;
+}
+
+.memory-card-body h2 {
+  margin: 0 0 10px;
+  color: #10105c;
+  font-size: 19px;
+  line-height: 1.35;
+}
+
+.memory-card-body > p:not(.memory-card-category) {
+  flex: 1;
+  margin: 0 0 17px;
+  font-size: 13px;
+  line-height: 1.75;
+  color: #444;
+}
+
+.memory-open-button {
+  align-self: flex-start;
+  display: inline-block;
+  padding: 8px 13px;
+  border: 2px solid;
+  border-color: #fff #777 #777 #fff;
+  background: #d1d1d1;
+  color: #111;
+  font: bold 12px Tahoma, Arial, sans-serif;
+}
+
+.memory-explorer-card:hover .memory-open-button {
+  background: #000080;
+  color: white;
+}
+
+.memory-explorer-bottom {
+  margin: 26px 0 15px;
+  padding: 23px;
+  background: #e6eafe;
+  border-left: 5px solid #000080;
+}
+
+.memory-explorer-bottom h2 {
+  margin: 0 0 10px;
+  color: #10105c;
+  font-size: 19px;
+}
+
+.memory-explorer-bottom p {
+  margin: 0 0 18px;
+  color: #333;
+  font-size: 13px;
+}
+
+/* Article layout */
+
+.memory-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #555;
+}
+
+.memory-breadcrumb a {
+  color: #000080;
+  text-decoration: underline;
+}
+
+.memory-article-header {
+  margin-bottom: 28px;
+  padding: 24px;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    #e6eafe,
+    #f5f5ff
+  );
+  border: 1px solid #c8cde5;
+}
+
+.memory-article-emoji {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 72px;
+}
+
+.memory-article-header h1 {
+  margin: 10px auto 14px;
+  max-width: 690px;
+  font-size: clamp(24px, 4vw, 35px);
+  line-height: 1.25;
+  color: #10105c;
+}
+
+.memory-article-intro {
+  max-width: 690px;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 1.85;
+  color: #333;
+}
+
+.memory-article-index {
+  margin-bottom: 30px;
+  padding: 19px 22px;
+  background: #f2f2ee;
+  border: 2px solid;
+  border-color: #fff #999 #999 #fff;
+}
+
+.memory-article-index strong {
+  color: #10105c;
+}
+
+.memory-article-index ol {
+  margin: 12px 0 0;
+  padding-left: 22px;
+}
+
+.memory-article-index li {
+  margin-bottom: 7px;
+  font-size: 13px;
+}
+
+.memory-article-index a {
+  color: #000080;
+  text-decoration: none;
+}
+
+.memory-article-index a:hover {
+  text-decoration: underline;
+}
+
+.memory-article-section {
+  margin-bottom: 30px;
+  scroll-margin-top: 20px;
+}
+
+.memory-article-section h2 {
+  margin: 0 0 13px;
+  padding-bottom: 9px;
+  color: #10105c;
+  font-size: 21px;
+  line-height: 1.4;
+  border-bottom: 2px solid #d4d9ed;
+}
+
+.memory-article-section p {
+  margin: 0 0 14px;
+  color: #333;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.memory-article-end {
+  margin: 30px 0;
+  padding: 20px;
+  background: #fff5d8;
+  border: 1px solid #d9b767;
+}
+
+.memory-article-end strong {
+  color: #754600;
+}
+
+.memory-article-end p {
+  margin: 10px 0 16px;
+  font-size: 13px;
+  color: #3c3c3c;
+}
+
+.memory-article-navigation {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 17px;
+  border-top: 2px solid #c0c0c0;
+}
+
+@media (max-width: 700px) {
+  .memory-explorer-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .memory-card-art {
+    min-height: 115px;
+  }
+
+  .memory-card-body {
+    padding: 15px;
+  }
+
+  .memory-explorer-bottom {
+    padding: 15px;
+  }
+
+  .memory-article-header {
+    padding: 18px 12px;
+  }
+
+  .memory-article-emoji {
+    font-size: 55px;
+  }
+
+  .memory-article-intro {
+    font-size: 13px;
+  }
+
+  .memory-article-section h2 {
+    font-size: 18px;
+  }
+
+  .memory-article-section p {
+    font-size: 14px;
+  }
+
+  .memory-article-index {
+    padding: 15px;
+  }
+
+  .memory-article-navigation {
+    flex-direction: column;
+  }
+
+  .memory-article-navigation > a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-explorer-card {
+    transition: none;
+  }
+}
+
+/* ==========================================
+   V5.0 — MEMORY SEARCH & CATEGORY FILTER
+   ========================================== */
+
+.memory-v50-search-panel {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #dedede;
+  border: 3px solid;
+  border-color: #fff #777 #777 #fff;
+}
+
+.memory-v50-search-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: -15px -15px 16px;
+  padding: 8px 12px;
+  background: linear-gradient(
+    90deg,
+    #000080,
+    #3979bf
+  );
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.memory-v50-search-heading span:last-child {
+  font: bold 10px "Courier New", monospace;
+}
+
+.memory-v50-search-label {
+  display: block;
+  margin-bottom: 7px;
+  color: #222;
+  font: bold 12px Tahoma, Arial, sans-serif;
+}
+
+.memory-v50-search-row {
+  display: flex;
+  align-items: stretch;
+  gap: 9px;
+}
+
+.memory-v50-search-row input {
+  flex: 1;
+  min-width: 0;
+  min-height: 42px;
+  padding: 9px 12px;
+  color: #111;
+  background: white;
+  border: 2px inset #ddd;
+  border-radius: 0;
+  outline-offset: 2px;
+  font: 14px Tahoma, Arial, sans-serif;
+}
+
+.memory-v50-search-row input:focus-visible {
+  outline: 2px solid #000080;
+}
+
+.memory-v50-reset,
+.memory-v50-category {
+  min-height: 37px;
+  padding: 8px 13px;
+  background: #c0c0c0;
+  color: #111;
+  border: 2px solid;
+  border-color: #fff #777 #777 #fff;
+  border-radius: 0;
+  cursor: pointer;
+  font: bold 12px Tahoma, Arial, sans-serif;
+}
+
+.memory-v50-reset:hover,
+.memory-v50-category:hover {
+  background: #e8e8e8;
+}
+
+.memory-v50-reset:focus-visible,
+.memory-v50-category:focus-visible {
+  outline: 3px solid #000080;
+  outline-offset: 2px;
+}
+
+.memory-v50-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.memory-v50-category.active {
+  color: white;
+  background: #000080;
+  border-color: #9292d0 #080849 #080849 #9292d0;
+}
+
+.memory-v50-category.active:hover {
+  background: #191994;
+}
+
+.memory-v50-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 40px 15px;
+  background: #f4f4f0;
+  border: 2px dashed #aaa;
+  text-align: center;
+}
+
+.memory-v50-empty > span {
+  font-size: 45px;
+}
+
+.memory-v50-empty h2 {
+  margin: 0;
+  color: #10105c;
+  font-size: 20px;
+}
+
+.memory-v50-empty p {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: #444;
+}
+
+@media (max-width: 700px) {
+  .memory-v50-search-panel {
+    padding: 11px;
+  }
+
+  .memory-v50-search-heading {
+    margin: -11px -11px 12px;
+  }
+
+  .memory-v50-search-row {
+    flex-direction: column;
+  }
+
+  .memory-v50-search-row input,
+  .memory-v50-reset {
+    width: 100%;
+  }
+
+  .memory-v50-category {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+
+  .memory-v50-empty {
+    padding: 28px 12px;
+  }
+}

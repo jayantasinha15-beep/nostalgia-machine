@@ -52,6 +52,9 @@ export default function RetroInfoShell({
             
             <Link href="/privacy-policy">🔒 Privacy Policy</Link>
             <Link href="/disclaimer">⚠️ Disclaimer</Link>
+            
+            <Link href="/memories">🗂️ Memories</Link>
+
 
           </nav>
 

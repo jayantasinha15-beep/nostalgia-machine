@@ -1,5 +1,6 @@
 
 import type { MetadataRoute } from "next";
+import { memoryArticles } from "@/lib/memory-articles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
@@ -10,31 +11,52 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const baseUrl = siteUrl.replace(/\/+$/, "");
 
-  return [
+  const staticPages = [
     {
-      url: `${baseUrl}/`,
-      changeFrequency: "weekly",
+      path: "/",
       priority: 1,
+      changeFrequency: "weekly" as const,
     },
     {
-      url: `${baseUrl}/about`,
-      changeFrequency: "monthly",
+      path: "/memories",
+      priority: 0.9,
+      changeFrequency: "weekly" as const,
+    },
+    {
+      path: "/about",
       priority: 0.6,
+      changeFrequency: "monthly" as const,
     },
     {
-      url: `${baseUrl}/contact`,
-      changeFrequency: "yearly",
+      path: "/contact",
       priority: 0.4,
+      changeFrequency: "yearly" as const,
     },
     {
-      url: `${baseUrl}/privacy-policy`,
-      changeFrequency: "yearly",
+      path: "/privacy-policy",
       priority: 0.3,
+      changeFrequency: "yearly" as const,
     },
     {
-      url: `${baseUrl}/disclaimer`,
-      changeFrequency: "yearly",
+      path: "/disclaimer",
       priority: 0.3,
+      changeFrequency: "yearly" as const,
     },
   ];
+
+  const pages: MetadataRoute.Sitemap =
+    staticPages.map((page) => ({
+      url: `${baseUrl}${page.path}`,
+      priority: page.priority,
+      changeFrequency: page.changeFrequency,
+    }));
+
+  const articles: MetadataRoute.Sitemap =
+    memoryArticles.map((article) => ({
+      url: `${baseUrl}/memories/${article.slug}`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    }));
+
+  return [...pages, ...articles];
 }
