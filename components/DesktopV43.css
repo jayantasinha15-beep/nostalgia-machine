@@ -1,0 +1,356 @@
+
+/* ==========================================
+   NOSTALGIA OS V4.3
+   DRAGGABLE ICONS + CALCULATOR + CALENDAR
+   ========================================== */
+
+/* DRAGGABLE DESKTOP ICONS */
+
+.v40-desktop .desktop {
+  position: relative;
+}
+
+.v43-icon-layer {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 465px;
+  pointer-events: none;
+}
+
+.v43-desktop-icon {
+  position: absolute;
+  width: 90px;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent !important;
+  color: white !important;
+  box-shadow: none !important;
+  text-shadow: 1px 1px 2px #111;
+  font-family: Tahoma, Arial, sans-serif;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.v43-desktop-icon:hover {
+  z-index: 2;
+}
+
+.v43-desktop-icon.v43-icon-dragging {
+  cursor: grabbing;
+  z-index: 10;
+  opacity: 0.8;
+}
+
+.v43-icon-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 39px;
+  font-size: 29px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.v43-icon-label {
+  display: inline-block;
+  max-width: 90px;
+  padding: 3px 4px;
+  background: transparent !important;
+  color: #fff;
+  text-align: center;
+  line-height: 13px;
+  font-size: 11px;
+  font-weight: normal;
+  border: 0;
+  overflow-wrap: break-word;
+  pointer-events: none;
+}
+
+.v43-desktop-icon.v43-icon-selected .v43-icon-label {
+  background: #000080 !important;
+  outline: 1px dotted white;
+}
+
+.v43-desktop-icon:not(.v43-icon-selected):hover .v43-icon-label {
+  background: #ffffff2a !important;
+}
+
+/* RETRO TOOLS OVERLAY */
+
+.v43-tool-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 650;
+  background: #0008;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  font: 12px Tahoma, Arial, sans-serif;
+}
+
+.v43-tool-window {
+  width: min(350px, 100%);
+  max-height: 94dvh;
+  overflow-y: auto;
+  border: 3px solid;
+  border-color: #fff #555 #555 #fff;
+  background: #c0c0c0;
+  color: #111;
+  box-shadow: 8px 9px 0 #0005;
+}
+
+.v43-calendar-window {
+  width: min(470px, 100%);
+}
+
+.v43-tool-titlebar {
+  background: linear-gradient(90deg, #000080, #3476bd);
+  color: white;
+  min-height: 29px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 6px 4px 9px;
+}
+
+.v43-tool-titlebar button {
+  width: 23px;
+  height: 21px;
+  font-weight: bold;
+  background: #c0c0c0;
+  color: #111;
+  cursor: pointer;
+  border: 2px solid;
+  border-color: #fff #666 #666 #fff;
+}
+
+/* CALCULATOR */
+
+.v43-calculator {
+  padding: 10px;
+}
+
+.v43-calc-menu {
+  padding: 4px 0 11px;
+  font-size: 11px;
+}
+
+.v43-calc-screen {
+  height: 80px;
+  padding: 10px;
+  border: 2px inset #aaa;
+  background: #f7fcf5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.v43-calc-screen small {
+  font-size: 10px;
+  color: #666;
+}
+
+.v43-calc-screen strong {
+  font: 27px "Courier New", monospace;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.v43-calc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 11px;
+}
+
+.v43-calc-key {
+  height: 42px;
+  border: 2px solid;
+  border-color: #fff #666 #666 #fff;
+  background: #d6d6d6;
+  color: #142147;
+  font: bold 15px Tahoma, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.v43-calc-key:active {
+  border-color: #666 #fff #fff #666;
+  background: #b5b5b5;
+}
+
+.v43-calc-key.operator {
+  color: #9b2330;
+}
+
+.v43-calc-key.equals {
+  background: #000080;
+  color: white;
+}
+
+.v43-calc-footer {
+  padding: 12px 3px 2px;
+  font-size: 10px;
+  color: #555;
+  text-align: center;
+}
+
+/* CALENDAR */
+
+.v43-calendar {
+  padding: 14px;
+}
+
+.v43-calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 13px;
+}
+
+.v43-calendar-header strong {
+  font-size: 17px;
+  color: #000080;
+}
+
+.v43-calendar-header button,
+.v43-memory-heading button {
+  padding: 7px 12px;
+  border: 2px solid;
+  border-color: #fff #777 #777 #fff;
+  background: #d2d2d2;
+  cursor: pointer;
+}
+
+.v43-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  padding: 10px;
+  border: 2px inset #999;
+  background: #e7e7e7;
+}
+
+.v43-weekday {
+  font-size: 10px;
+  font-weight: bold;
+  color: #444;
+  padding: 8px 0;
+  text-align: center;
+}
+
+.v43-empty-day {
+  min-height: 39px;
+}
+
+.v43-day {
+  position: relative;
+  min-height: 39px;
+  border: 1px solid #ccc;
+  background: white;
+  color: #222;
+  cursor: pointer;
+  font: bold 12px Tahoma, Arial, sans-serif;
+}
+
+.v43-day:hover {
+  background: #cbdfff;
+}
+
+.v43-day.today {
+  border: 2px solid #cc3636;
+}
+
+.v43-day.selected {
+  background: #000080;
+  color: white;
+}
+
+.v43-day i {
+  position: absolute;
+  bottom: 3px;
+  left: calc(50% - 3px);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f1a20b;
+}
+
+.v43-calendar-notes {
+  margin-top: 14px;
+  border-top: 1px solid #888;
+  padding-top: 12px;
+}
+
+.v43-memory-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.v43-calendar-notes label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.v43-calendar-notes textarea {
+  width: 100%;
+  height: 105px;
+  resize: vertical;
+  background: white;
+  border: 2px inset #999;
+  padding: 10px;
+  font: 13px/1.5 Tahoma, Arial, sans-serif;
+}
+
+.v43-calendar-notes > small {
+  display: block;
+  color: #555;
+  margin-top: 7px;
+}
+
+@media (max-width: 600px) {
+  .v43-desktop-icon {
+    width: 90px;
+  }
+
+  .v43-tool-overlay {
+    padding: 6px;
+  }
+
+  .v43-calendar {
+    padding: 8px;
+  }
+
+  .v43-calendar-grid {
+    padding: 5px;
+    gap: 2px;
+  }
+
+  .v43-day,
+  .v43-empty-day {
+    min-height: 34px;
+  }
+}

@@ -1,26 +1,1003 @@
-@import "tailwindcss";
+
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --desktop: #008080;
+  --win-blue: #000080;
+  --win-grey: #c0c0c0;
+  --win-light: #ffffff;
+  --win-dark: #808080;
+  --win-black: #000000;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  padding: 0;
+  margin: 0;
+  min-height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Tahoma, Arial, sans-serif;
+  color: black;
+}
+
+button, input, select {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px dotted #111;
+  outline-offset: 2px;
+}
+
+/* DESKTOP */
+
+.vault {
+  height: 100dvh;
+  min-height: 550px;
+  position: relative;
+  background: var(--desktop);
+  overflow: hidden;
+}
+
+.vault-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 0 10px;
+  background: #090909;
+  border-bottom: 3px solid #e5b02b;
+  color: #50f39a;
+}
+
+.vault-brand {
+  white-space: nowrap;
+  font-family: "Press Start 2P", monospace;
+  color: #65e3ed;
+  font-size: 12px;
+  text-shadow: 2px 2px #12455c;
+}
+
+.marquee-text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: "Courier New", monospace;
+  font-weight: 900;
+  letter-spacing: 1px;
+  font-size: 15px;
+  color: #4bdf84;
+}
+
+.marquee-text span {
+  display: inline-block;
+  animation: marquee 24s linear infinite;
+}
+
+.vault-top-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.vault-top-controls button {
+  background: #050505;
+  border: 1px solid #37ff97;
+  padding: 5px 10px;
+  color: #41f49d;
+  font: 900 11px "Courier New", monospace;
+}
+
+.vault-top-controls button:last-child {
+  color: #ffe236;
+  border-color: #bd860a;
+  background: #583100;
+}
+
+.desktop {
+  position: absolute;
+  top: 40px;
+  bottom: 35px;
+  left: 0;
+  right: 0;
+  background: #008080;
+}
+
+.desktop-icons {
+  position: absolute;
+  top: 25px;
+  left: 15px;
+  width: 200px;
+  display: grid;
+  grid-template-columns: repeat(2, 88px);
+  grid-auto-rows: 116px;
+  column-gap: 15px;
+  z-index: 2;
+}
+
+.desktop-icon {
+  background: transparent;
+  border: 1px solid transparent;
+  width: 84px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  color: white;
+  cursor: pointer;
+}
+
+.desktop-icon:hover .desktop-icon-name,
+.desktop-selected .desktop-icon-name {
+  background: #08156f;
+  outline: 1px dotted #fff;
+}
+
+.desktop-icon-symbol {
+  font-size: 29px;
+  height: 41px;
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(2px 3px 0 #0005);
+}
+
+.desktop-icon-name {
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 5px 4px;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.12;
+  background: #102e68;
+  border-radius: 3px;
+  box-shadow: 2px 3px 5px #0005;
+}
+
+/* THE WINDOW */
+
+.retro-window {
+  position: absolute;
+  z-index: 20;
+  width: min(672px, calc(100vw - 24px));
+  max-height: min(78vh, 720px);
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--win-grey);
+  background: var(--win-grey);
+  box-shadow:
+    inset 2px 2px white,
+    inset -2px -2px #454545,
+    9px 10px 0 #0004,
+    15px 17px 22px #0004;
+  overflow: hidden;
+}
+
+.window-titlebar {
+  flex: 0 0 auto;
+  height: 29px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 4px 3px 8px;
+  background: linear-gradient(90deg, #000080, #071b9e);
+  color: white;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.window-titlebar:active {
+  cursor: grabbing;
+}
+
+.window-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  font-size: 13px;
+}
+
+.window-title strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.window-buttons {
+  display: flex;
+  gap: 3px;
+}
+
+.window-buttons button {
+  height: 20px;
+  width: 20px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: white #555 #555 white;
+  color: #080808;
+  font: 900 16px Arial, sans-serif;
+}
+
+.window-buttons button:last-child {
+  background: #d4c2bf;
+  color: #b00000;
+}
+
+.window-buttons button:active {
+  border-color: #555 white white #555;
+}
+
+.window-menu {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 3px;
+  height: 23px;
+  align-items: center;
+  padding: 0 5px;
+  background: #c0c0c0;
+  border-bottom: 1px solid #8a8a8a;
+}
+
+.window-menu button {
+  padding: 2px 7px;
+  background: transparent;
+  border: 0;
+  color: #000;
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+.window-menu button:hover {
+  background: #000080;
+  color: white;
+}
+
+.window-content {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #f4f5f8;
+  border: 2px solid;
+  border-color: #808080 white white #808080;
+}
+
+.window-status {
+  height: 24px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 9px;
+  background: #c0c0c0;
+  color: #353535;
+  font-size: 11px;
+  border-top: 1px solid white;
+}
+
+/* INNER APP PAGES */
+
+.win-page {
+  padding: 15px 13px 25px;
+  min-height: 350px;
+  font-size: 13px;
+}
+
+.toons-logo {
+  margin: 1px auto 13px;
+  text-align: center;
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(12px, 2.1vw, 18px);
+  font-weight: 900;
+  color: #f94920;
+  text-shadow: 2px 2px #161068, 4px 4px #be14c0;
+  transform: rotate(-2deg);
+}
+
+.toons-logo span {
+  color: #31da42;
+  text-shadow: 2px 2px #111;
+}
+
+.window-subtitle {
+  margin: 9px 0 15px;
+  color: #41506d;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.old-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 10px 0 16px;
+}
+
+.old-tabs button,
+.retro-dialog button:not(.dialog-x),
+.retro-play {
+  background: #d4d4d4;
+  border: 2px solid;
+  border-color: white #555 #555 white;
+  padding: 7px 10px;
+  color: #000;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.old-tabs button.pressed,
+.old-tabs button:active {
+  border-color: #555 white white #555;
+  background: #b7b7b7;
+}
+
+/* CARTOON CARDS */
+
+.cartoon-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.cartoon-card {
+  min-height: 91px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px;
+  border: 2px solid #bcbcbc;
+  border-left: 5px solid #f7b932;
+  background: #fff;
+  box-shadow: 3px 3px 0 #0002;
+}
+
+.cartoon-emoji {
+  width: 50px;
+  min-width: 50px;
+  height: 51px;
+  background: #f1f2f5;
+  border: 1px solid #c7cbd5;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  border-radius: 3px;
+}
+
+.cartoon-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.cartoon-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  justify-content: space-between;
+}
+
+.cartoon-heading strong {
+  font-size: 12px;
+  line-height: 1.3;
+  color: #00133b;
+}
+
+.cartoon-heading span {
+  flex-shrink: 0;
+  max-width: 90px;
+  background: #dbe8fc;
+  color: #1339ac;
+  font-size: 9px;
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+
+.cartoon-info p {
+  margin: 5px 0 0;
+  font-size: 11px;
+  line-height: 1.35;
+  color: #657189;
+}
+
+/* TECHNOLOGY & MUSIC */
+
+.retro-heading {
+  font-family: "Press Start 2P", monospace;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #000080;
+}
+
+.year-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 15px 0;
+  background: #e1e1e1;
+  padding: 11px;
+  border: 1px solid #999;
+}
+
+.year-picker label {
+  font-weight: bold;
+}
+
+.year-picker select,
+.year-picker input {
+  background: white;
+  border: 2px solid;
+  border-color: #555 #fff #fff #555;
+  padding: 5px;
+}
+
+.retro-items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin: 15px 0;
+}
+
+.retro-item {
+  text-align: left;
+  display: grid;
+  grid-template-columns: 35px 1fr;
+  align-items: center;
+  column-gap: 9px;
+  row-gap: 4px;
+  padding: 11px;
+  background: white;
+  border: 2px solid #a6a6a6;
+  min-width: 0;
+}
+
+.retro-item:hover {
+  border-color: #000080;
+  background: #e7edff;
+}
+
+.retro-item > span {
+  grid-row: span 2;
+  font-size: 25px;
+}
+
+.retro-item strong {
+  font-size: 12px;
+}
+
+.retro-item small {
+  color: #777;
+  font-size: 10px;
+}
+
+.retro-dialog {
+  position: relative;
+  margin: 15px 0;
+  padding: 16px;
+  background: #fff9dd;
+  border: 2px solid;
+  border-color: white #666 #666 white;
+}
+
+.retro-dialog h3 {
+  margin: 0 25px 10px 0;
+}
+
+.retro-dialog p {
+  line-height: 1.6;
+}
+
+.dialog-x {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  background: #d1d1d1;
+  border: 1px solid #777;
+  font-size: 18px;
+}
+
+/* WALKMAN */
+
+.walkman {
+  width: min(350px, 100%);
+  margin: 15px auto 25px;
+  border: 10px solid #333843;
+  border-radius: 18px;
+  padding: 17px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(145deg, #737d94, #30384b);
+  box-shadow: 7px 8px 0 #0003;
+}
+
+.cassette-label {
+  background: #f7db8a;
+  color: #303030;
+  padding: 8px;
+  font: 900 12px monospace;
+}
+
+.cassette-reels {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 110px;
+  background: #202630;
+  border: 5px solid #9aa4bb;
+  margin: 10px 0 15px;
+}
+
+.cassette-reels span {
+  color: #d7dbe2;
+  font-size: 58px;
+  animation: reel-spin 4s linear infinite;
+}
+
+.cassette-controls {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.cassette-controls button {
+  padding: 7px;
+  background: #d2d7dd;
+  color: black;
+  border: 2px solid #888;
+  font: 700 11px monospace;
+}
+
+.walkman small {
+  font-size: 10px;
+  color: #ccd2e0;
+}
+
+/* TAMAGOTCHI */
+
+.pet-page {
+  text-align: center;
+}
+
+.pet-page > p {
+  color: #555;
+}
+
+.pet-device {
+  margin: 15px auto;
+  max-width: 310px;
+  padding: 25px 20px;
+  background: linear-gradient(135deg, #ff90ca, #ec50a6);
+  border: 9px solid #ab267a;
+  border-radius: 48% 48% 42% 42% / 33% 33% 45% 45%;
+  box-shadow: 8px 10px 0 #0002;
+}
+
+.pet-screen {
+  padding: 14px 8px;
+  background: #b5c78e;
+  border: 8px solid #564d50;
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: inset 0 0 25px #4255315e;
+}
+
+.pet-status {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.pet-character {
+  font-size: 68px;
+  animation: pet-bounce 1.3s steps(2) infinite;
+}
+
+.pet-screen strong {
+  font: bold 18px monospace;
+}
+
+.pet-screen small {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.pet-device-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.pet-device-buttons button {
+  padding: 9px 11px;
+  border: 2px solid #ab267a;
+  border-radius: 30px;
+  background: #fff0c3;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.pet-meters {
+  max-width: 340px;
+  margin: 22px auto;
+  display: grid;
+  gap: 7px;
+  text-align: left;
+}
+
+.pet-meters label {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.pet-meters progress {
+  width: 100%;
+  height: 17px;
+  accent-color: #25955d;
+}
+
+/* BRICK GAME */
+
+.brick-page {
+  text-align: center;
+}
+
+.brick-machine {
+  margin: 18px auto;
+  padding: 18px;
+  max-width: 335px;
+  border: 10px solid #4a4a4a;
+  border-radius: 24px;
+  background: #e4d4a3;
+  box-shadow: 7px 8px 0 #0003;
+}
+
+.brick-stats {
+  display: flex;
+  justify-content: space-between;
+  font: bold 15px monospace;
+  margin-bottom: 13px;
+}
+
+.brick-display {
+  background: #a7b98c;
+  border: 7px solid #686e65;
+  padding: 9px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  aspect-ratio: 1;
+}
+
+.block {
+  border: 1px solid #64725f;
+  background: #a8b894;
+  padding: 0;
+}
+
+.active-block {
+  background: #1d3020;
+  box-shadow: inset 0 0 0 4px #45543b;
+}
+
+.brick-machine > p {
+  font-size: 12px;
+  font-weight: bold;
+  min-height: 18px;
+}
+
+.retro-play {
+  margin-top: 8px;
+}
+
+/* RECYCLE BIN */
+
+.empty-folder {
+  margin: 40px auto;
+  text-align: center;
+}
+
+.empty-folder span {
+  font-size: 80px;
+}
+
+.empty-folder p {
+  font-weight: bold;
+}
+
+.empty-folder small {
+  color: #666;
+}
+
+/* DESKTOP RIGHT */
+
+.desktop-right {
+  position: absolute;
+  right: 24px;
+  bottom: 32px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 18px;
+  z-index: 1;
+}
+
+.under-construction {
+  width: 100%;
+  padding: 10px 8px;
+  text-align: center;
+  border: 3px dashed #f93232;
+  background: #ffe953;
+  color: #dc3334;
+}
+
+.under-construction strong {
+  display: block;
+  font-family: "Press Start 2P", monospace;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.under-construction small {
+  display: block;
+  color: #60451e;
+  font-size: 9px;
+  margin-top: 8px;
+}
+
+.visitor-counter {
+  display: flex;
+  align-items: center;
+  background: #ddd;
+  padding: 7px 8px;
+  gap: 9px;
+  border: 3px solid;
+  border-color: white #666 #666 white;
+}
+
+.visitor-counter strong {
+  font-family: Georgia, serif;
+  font-size: 12px;
+}
+
+.visitor-counter span {
+  padding: 4px 8px;
+  background: black;
+  color: #00ff74;
+  letter-spacing: 2px;
+  font: bold 20px monospace;
+  text-shadow: 0 0 7px #00ff55;
+}
+
+/* TASKBAR */
+
+.taskbar {
+  position: absolute;
+  z-index: 60;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 6px;
+  background: var(--win-grey);
+  border-top: 2px solid white;
+}
+
+.start-button {
+  height: 27px;
+  padding: 1px 9px;
+  border: 2px solid;
+  border-color: white #555 #555 white;
+  background: #c0c0c0;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.start-button span {
+  font-size: 17px;
+}
+
+.task-button {
+  height: 27px;
+  min-width: 125px;
+  max-width: 245px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border: 2px solid;
+  border-color: #fff #555 #555 #fff;
+  background: #d1d1d1;
+  text-align: left;
+  font-size: 12px;
+  padding: 2px 10px;
+}
+
+.task-active {
+  border-color: #555 #fff #fff #555;
+  background: #b5b5b5;
+}
+
+.taskbar-clock {
+  margin-left: auto;
+  padding: 6px;
+  border: 2px solid;
+  border-color: #777 #fff #fff #777;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+/* CRT */
+
+.crt-on::after {
+  content: "";
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    #00000026 0px,
+    #00000026 1px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+.crt-on {
+  filter: contrast(1.12) saturate(1.2);
+}
+
+/* ANIMATIONS */
+
+@keyframes marquee {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-110%); }
+}
+
+@keyframes reel-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pet-bounce {
+  50% { transform: translateY(-8px); }
+}
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+  .vault-topbar {
+    gap: 8px;
+    padding: 0 6px;
+  }
+
+  .vault-brand {
+    font-size: 9px;
+  }
+
+  .marquee-text {
+    display: none;
+  }
+
+  .vault-top-controls {
+    margin-left: auto;
+    gap: 4px;
+  }
+
+  .vault-top-controls button {
+    font-size: 9px;
+    padding: 5px;
+  }
+
+  .desktop-icons {
+    top: 15px;
+    left: 8px;
+    width: 100%;
+    grid-template-columns: repeat(3, 88px);
+    grid-auto-rows: 104px;
+  }
+
+  .retro-window {
+    left: 8px !important;
+    top: 115px !important;
+    width: calc(100vw - 16px);
+    max-height: calc(100dvh - 167px);
+  }
+
+  .cartoon-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cartoon-card {
+    min-height: 75px;
+  }
+
+  .retro-items {
+    grid-template-columns: 1fr;
+  }
+
+  .desktop-right {
+    right: 10px;
+    bottom: 15px;
+    width: min(275px, 75%);
+  }
+
+  .under-construction strong {
+    font-size: 8px;
+  }
+
+  .visitor-counter span {
+    font-size: 15px;
+  }
+
+  .taskbar-clock {
+    display: none;
+  }
+
+  .window-title {
+    font-size: 11px;
+  }
+
+  .win-page {
+    padding: 12px 9px;
+  }
+}
+
+@media (max-width: 390px) {
+  .desktop-icons {
+    grid-template-columns: repeat(3, 76px);
+    column-gap: 8px;
+  }
+
+  .desktop-icon {
+    width: 76px;
+  }
+
+  .toons-logo {
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-text span,
+  .cassette-reels span,
+  .pet-character {
+    animation: none;
+  }
 }

@@ -1,0 +1,941 @@
+
+/* =====================================================
+   NOSTALGIA-90S.VAULT
+   V4.6 FINAL — MOBILE DESIGN & PERFORMANCE
+   Clean responsive stylesheet
+   ===================================================== */
+
+/* -----------------------------------------------------
+   1. GLOBAL DESKTOP SAFETY
+   ----------------------------------------------------- */
+
+.v40-desktop,
+.v40-desktop *,
+.v40-desktop *::before,
+.v40-desktop *::after {
+  box-sizing: border-box;
+}
+
+.v40-desktop {
+  width: 100%;
+  max-width: 100vw;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.v40-desktop .desktop {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.v40-desktop .retro-window {
+  max-width: calc(100vw - 12px);
+}
+
+.v40-desktop .window-content {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.v40-desktop .window-content img {
+  max-width: 100%;
+}
+
+/* -----------------------------------------------------
+   2. ACCESSIBILITY
+   ----------------------------------------------------- */
+
+.v40-desktop button,
+.v41-window button,
+.v42-window button,
+.v43-tool-window button,
+.v44-window button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.v40-desktop button:focus-visible,
+.v41-window button:focus-visible,
+.v42-window button:focus-visible,
+.v43-tool-window button:focus-visible,
+.v44-window button:focus-visible {
+  outline: 2px solid #ffe36d;
+  outline-offset: 2px;
+}
+
+/* -----------------------------------------------------
+   3. RETRO APP LOADING
+   ----------------------------------------------------- */
+
+.v45-loading {
+  width: 100%;
+  min-height: 220px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 25px;
+
+  background: #c0c0c0;
+  color: #000080;
+
+  font:
+    bold 14px "Courier New",
+    monospace;
+
+  text-align: center;
+}
+
+/* -----------------------------------------------------
+   4. TABLET RESPONSIVE
+   ----------------------------------------------------- */
+
+@media screen and (max-width: 900px) {
+  .v40-desktop .vault-topbar {
+    gap: 6px;
+    padding-inline: 8px;
+  }
+
+  .v40-desktop .marquee-text {
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .v40-desktop .desktop-right {
+    max-width: 165px;
+  }
+
+  .v40-desktop
+  .retro-window:not(.v40-maximized) {
+    display: flex;
+    flex-direction: column;
+
+    max-height: calc(100dvh - 105px);
+    overflow: hidden;
+  }
+
+  .v40-desktop
+  .retro-window:not(.v40-maximized)
+  .window-content {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  .v40-start-menu {
+    max-height: calc(100dvh - 65px);
+    overflow-y: auto;
+  }
+}
+
+/* =====================================================
+   5. MOBILE DESKTOP — 700PX OR BELOW
+   ===================================================== */
+
+@media screen and (max-width: 700px) {
+
+  /* ---------------------------------------------------
+     MOBILE OS
+     --------------------------------------------------- */
+
+  .v40-desktop {
+    width: 100%;
+    height: 100dvh;
+    max-width: 100vw;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    font-family:
+      Tahoma,
+      Arial,
+      sans-serif;
+  }
+
+  /* ---------------------------------------------------
+     TOP HEADER
+     --------------------------------------------------- */
+
+  .v40-desktop .vault-topbar {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    flex-shrink: 0;
+
+    width: 100%;
+    min-height: 43px;
+    height: auto;
+    max-height: 90px;
+
+    padding: 5px 7px;
+    gap: 4px 8px;
+  }
+
+  .v40-desktop .vault-brand {
+    font-size: 11px;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+
+  .v40-desktop .marquee-text {
+    display: none !important;
+  }
+
+  .v40-desktop .vault-top-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    margin-left: auto;
+  }
+
+  .v40-desktop
+  .vault-top-controls button {
+    min-height: 28px;
+    padding: 4px 6px;
+    font-size: 10px;
+  }
+
+  /* ===================================================
+     MOBILE DESKTOP GRID
+     All 20 desktop icons share one grid
+     =================================================== */
+
+  .v40-desktop .desktop {
+    position: relative !important;
+
+    display: grid !important;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr)) !important;
+
+    grid-auto-rows: 83px !important;
+
+    column-gap: 6px !important;
+    row-gap: 10px !important;
+
+    justify-items: center;
+    align-items: start;
+    align-content: start;
+
+    width: 100%;
+
+    flex: 1 1 auto;
+    min-height: 0 !important;
+
+    padding: 12px 8px 65px !important;
+
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+
+    overscroll-behavior: contain;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: thin;
+    scrollbar-color:
+      rgba(255, 255, 255, 0.35)
+      transparent;
+  }
+
+  /*
+     Remove fake spacer from older V4.5 rules.
+     Grid content itself provides scroll height.
+  */
+
+  .v40-desktop .desktop::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /*
+     These components render icon wrappers:
+
+     DraggableIconsV43
+     DesktopAccessories
+     ClassicAccessories
+
+     display: contents makes their individual
+     icons participate in ONE desktop grid.
+  */
+
+  .v40-desktop .v43-icon-layer,
+  .v40-desktop .v41-accessories,
+  .v40-desktop .v42-desktop-shortcuts {
+    display: contents !important;
+  }
+
+  /* ---------------------------------------------------
+     MAIN 14 DRAGGABLE ICONS
+     --------------------------------------------------- */
+
+  .v40-desktop .v43-desktop-icon {
+    position: relative !important;
+
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+
+    width: 100% !important;
+    max-width: 112px !important;
+
+    height: 83px !important;
+    min-height: 0 !important;
+
+    padding: 2px 1px !important;
+    margin: 0 !important;
+
+    display: flex !important;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    justify-self: center;
+    align-self: start;
+
+    gap: 3px;
+
+    background: transparent !important;
+
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+
+    color: #fff !important;
+
+    pointer-events: auto;
+    touch-action: none;
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    cursor: pointer;
+
+    z-index: 2;
+  }
+
+  .v40-desktop .v43-icon-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 42px;
+    height: 37px;
+
+    font-size: 27px;
+    line-height: 1;
+
+    flex-shrink: 0;
+
+    pointer-events: none;
+  }
+
+  .v40-desktop .v43-icon-label {
+    max-width: 100%;
+
+    padding: 2px 3px;
+
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: normal;
+
+    text-align: center;
+
+    color: #fff !important;
+    background: transparent !important;
+
+    text-shadow: 1px 1px 2px #111;
+
+    overflow-wrap: anywhere;
+
+    pointer-events: none;
+  }
+
+  /* Only selected icon gets blue background */
+
+  .v40-desktop
+  .v43-desktop-icon.v43-icon-selected
+  .v43-icon-label {
+    background: #000080 !important;
+    color: #fff !important;
+
+    outline: 1px dotted #fff;
+  }
+
+  .v40-desktop
+  .v43-desktop-icon:not(.v43-icon-selected):hover
+  .v43-icon-label {
+    background:
+      rgba(255, 255, 255, 0.15) !important;
+  }
+
+  .v40-desktop
+  .v43-desktop-icon.v43-icon-dragging {
+    opacity: 0.6;
+    outline: 1px dashed #fff;
+    z-index: 5;
+  }
+
+  /* ===================================================
+     EXTRA 6 ICONS
+     My Computer / Recycle Bin / Notepad /
+     Paint / File Explorer / Control Panel
+     =================================================== */
+
+  .v40-desktop .v41-accessory-icon,
+  .v40-desktop .v42-shortcut,
+  .v40-desktop .v44-desktop-shortcut {
+    position: relative !important;
+
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+
+    width: 100% !important;
+    max-width: 112px !important;
+
+    height: 83px !important;
+    min-height: 0 !important;
+
+    padding: 2px 1px !important;
+    margin: 0 !important;
+
+    display: flex !important;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    justify-self: center;
+    align-self: start;
+
+    gap: 3px;
+
+    background: transparent !important;
+
+    border: none !important;
+    box-shadow: none !important;
+
+    color: #fff !important;
+
+    cursor: pointer;
+
+    z-index: 2;
+  }
+
+  /*
+     Place the accessory icons after the
+     first 14 draggable icons, regardless
+     of the JSX component order.
+  */
+
+  .v40-desktop
+  .v41-accessory-icon:nth-child(1) {
+    order: 14 !important;
+  }
+
+  .v40-desktop
+  .v41-accessory-icon:nth-child(2) {
+    order: 15 !important;
+  }
+
+  .v40-desktop
+  .v42-shortcut:nth-child(1) {
+    order: 16 !important;
+  }
+
+  .v40-desktop
+  .v42-shortcut:nth-child(2) {
+    order: 17 !important;
+  }
+
+  .v40-desktop
+  .v42-shortcut:nth-child(3) {
+    order: 18 !important;
+  }
+
+  .v40-desktop .v44-desktop-shortcut {
+    order: 19 !important;
+  }
+
+  /* My Computer / Recycle Bin SVG */
+
+  .v40-desktop
+  .v41-accessory-icon svg {
+    display: block;
+
+    width: 37px;
+    height: 37px;
+
+    flex-shrink: 0;
+  }
+
+  /* Notepad / Paint / Explorer / Control Panel */
+
+  .v40-desktop .v42-shortcut > span,
+  .v40-desktop
+  .v44-desktop-shortcut > span {
+    font-size: 29px;
+    line-height: 37px;
+
+    flex-shrink: 0;
+  }
+
+  /* Extra icon labels */
+
+  .v40-desktop
+  .v41-accessory-icon > span,
+  .v40-desktop
+  .v42-shortcut small,
+  .v40-desktop
+  .v44-desktop-shortcut small {
+    display: block;
+
+    max-width: 100%;
+
+    padding: 2px 3px;
+
+    font-size: 10px !important;
+    line-height: 12px !important;
+
+    font-weight: normal;
+
+    text-align: center;
+
+    color: #fff !important;
+    background: transparent !important;
+
+    text-shadow: 1px 1px 2px #111;
+
+    overflow-wrap: anywhere;
+  }
+
+  .v40-desktop
+  .v41-accessory-icon.selected > span,
+  .v40-desktop
+  .v41-accessory-icon:focus-visible > span,
+  .v40-desktop
+  .v42-shortcut:focus-visible small,
+  .v40-desktop
+  .v44-desktop-shortcut:focus-visible small {
+    background: #000080 !important;
+  }
+
+  /*
+     Hide decorative site banner and
+     visitor counter on mobile.
+  */
+
+  .v40-desktop .desktop-right {
+    display: none !important;
+  }
+
+  /* ===================================================
+     OPEN APP WINDOWS
+     =================================================== */
+
+  .v40-desktop
+  .retro-window:not(.v40-maximized),
+  .v40-desktop
+  .retro-window.v40-maximized {
+    position: fixed !important;
+
+    left: 4px !important;
+    right: 4px !important;
+
+    top: 48px !important;
+    bottom: 42px !important;
+
+    width: auto !important;
+    max-width: none !important;
+
+    height: auto !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    z-index: 125;
+  }
+
+  .v40-desktop
+  .retro-window .window-titlebar,
+  .v40-desktop
+  .retro-window .window-menu,
+  .v40-desktop
+  .retro-window .window-status {
+    flex: 0 0 auto;
+  }
+
+  .v40-desktop
+  .retro-window .window-title {
+    min-width: 0;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .v40-desktop
+  .retro-window .window-title strong {
+    font-size: 11px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .v40-desktop
+  .retro-window .window-buttons {
+    display: flex;
+    flex-shrink: 0;
+    gap: 2px;
+  }
+
+  .v40-desktop
+  .retro-window .window-buttons button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 29px;
+    min-width: 29px;
+
+    height: 28px;
+    min-height: 28px;
+  }
+
+  .v40-desktop
+  .retro-window .window-content {
+    flex: 1 1 auto;
+
+    min-height: 0;
+    max-height: none !important;
+
+    overflow-x: auto;
+    overflow-y: auto;
+
+    overscroll-behavior: contain;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ===================================================
+     WINDOWS 98 TASKBAR
+     =================================================== */
+
+  .v40-desktop
+  .taskbar.v40-taskbar {
+    position: relative !important;
+
+    display: flex;
+    align-items: center;
+
+    flex-shrink: 0 !important;
+
+    width: 100%;
+    min-height: 39px;
+
+    margin-top: auto;
+
+    padding: 3px 4px;
+    gap: 3px;
+
+    overflow: hidden;
+
+    z-index: 180;
+  }
+
+  .v40-taskbar .start-button {
+    flex: 0 0 auto;
+
+    min-height: 30px;
+
+    padding: 3px 7px;
+
+    font-size: 11px;
+  }
+
+  .v40-taskbar .task-button {
+    flex: 0 1 auto;
+
+    min-width: 0;
+    max-width: 100px;
+
+    padding: 4px;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    font-size: 10px;
+  }
+
+  .v40-taskbar
+  .v40-taskbar-spacer {
+    flex: 1 1 auto;
+    min-width: 2px;
+  }
+
+  /* Hide Reboot shortcut on narrow screens */
+
+  .v40-taskbar
+  .v31-reboot-button {
+    display: none !important;
+  }
+
+  .v40-taskbar
+  .v40-quick-settings {
+    min-width: 29px;
+    min-height: 29px;
+
+    padding: 3px;
+  }
+
+  .v40-taskbar
+  .v40-clock {
+    flex-shrink: 0;
+
+    padding: 4px;
+
+    font-size: 9px;
+  }
+
+  /* ===================================================
+     START MENU
+     =================================================== */
+
+  .v40-start-menu {
+    position: fixed;
+
+    left: 3px;
+    bottom: 39px;
+
+    width: min(
+      310px,
+      calc(100vw - 6px)
+    ) !important;
+
+    max-height: calc(100dvh - 65px);
+
+    overflow-y: auto;
+
+    z-index: 190;
+  }
+
+  .v40-menu-items {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .v40-menu-items > button {
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    width: 100% !important;
+    min-height: 40px;
+
+    text-align: left !important;
+
+    white-space: normal;
+  }
+
+  /* ===================================================
+     DISPLAY PROPERTIES / RUN DIALOG
+     =================================================== */
+
+  .v40-dialog-backdrop {
+    padding: 5px;
+  }
+
+  .v40-settings-window,
+  .v40-run-window {
+    width: min(460px, 100%);
+    max-height: 94dvh;
+
+    overflow-y: auto;
+  }
+
+  /* ===================================================
+     NOTEPAD / PAINT / CALCULATOR / CALENDAR
+     =================================================== */
+
+  .v41-backdrop,
+  .v42-overlay,
+  .v43-tool-overlay,
+  .v44-overlay {
+    padding: 5px;
+  }
+
+  .v41-window,
+  .v42-window,
+  .v43-tool-window,
+  .v44-window {
+    max-width: 100%;
+    max-height: 94dvh;
+  }
+
+  .v42-paint-toolbar button,
+  .v42-notepad-menu button,
+  .v43-calc-key,
+  .v43-day {
+    min-height: 38px;
+  }
+
+  .v42-canvas-scroll {
+    min-width: 0;
+    overflow: auto;
+  }
+
+  .v42-canvas-scroll canvas {
+    max-width: 100%;
+    touch-action: none;
+  }
+
+  .v42-notepad textarea,
+  .v43-calendar-notes textarea {
+    max-width: 100%;
+  }
+}
+
+/* =====================================================
+   6. EXTRA SMALL PHONES — 380PX OR BELOW
+   ===================================================== */
+
+@media screen and (max-width: 380px) {
+
+  .v40-desktop .vault-brand {
+    font-size: 10px;
+  }
+
+  .v40-desktop
+  .vault-top-controls button {
+    font-size: 9px;
+    padding: 3px;
+  }
+
+  .v40-desktop .desktop {
+    grid-auto-rows: 79px !important;
+
+    column-gap: 3px !important;
+    row-gap: 8px !important;
+
+    padding:
+      10px 5px 55px !important;
+  }
+
+  .v40-desktop .v43-desktop-icon,
+  .v40-desktop .v41-accessory-icon,
+  .v40-desktop .v42-shortcut,
+  .v40-desktop .v44-desktop-shortcut {
+    height: 79px !important;
+  }
+
+  .v40-desktop .v43-icon-image,
+  .v40-desktop .v42-shortcut > span,
+  .v40-desktop
+  .v44-desktop-shortcut > span {
+    font-size: 26px;
+  }
+
+  .v40-desktop .v43-icon-label,
+  .v40-desktop
+  .v41-accessory-icon > span,
+  .v40-desktop .v42-shortcut small,
+  .v40-desktop
+  .v44-desktop-shortcut small {
+    font-size: 9px !important;
+    line-height: 11px !important;
+  }
+
+  .v40-taskbar .task-button {
+    max-width: 75px;
+  }
+
+  .v40-taskbar .v40-clock {
+    font-size: 8px;
+  }
+
+  .v40-desktop .window-menu {
+    font-size: 10px;
+  }
+}
+
+/* =====================================================
+   7. SMALL HEIGHT DEVICES / LANDSCAPE
+   ===================================================== */
+
+@media screen and (max-height: 480px) {
+  .v40-desktop .vault-topbar {
+    min-height: 36px;
+  }
+
+  .v40-start-menu {
+    max-height: calc(100dvh - 55px);
+  }
+
+  .v40-desktop
+  .retro-window:not(.v40-maximized),
+  .v40-desktop
+  .retro-window.v40-maximized {
+    top: 40px !important;
+    bottom: 40px !important;
+  }
+}
+
+/* =====================================================
+   8. REDUCED MOTION
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .v40-desktop *,
+  .v40-desktop *::before,
+  .v40-desktop *::after,
+  .v44-screensaver *,
+  .v44-screensaver *::before,
+  .v44-screensaver *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Desktop vertical scrolling when screen is short */
+@media screen and (min-width: 701px) {
+  .v40-desktop .desktop {
+    overflow-y: auto !important;
+    padding-bottom: 90px !important;
+  }
+
+  .v40-desktop .v44-desktop-shortcut {
+    margin-bottom: 20px;
+  }
+}

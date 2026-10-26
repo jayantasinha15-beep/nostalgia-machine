@@ -1,0 +1,649 @@
+
+/* ============================================
+   NOSTALGIA OS V4.4 — CONTROL PANEL
+   ============================================ */
+
+.v44-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 800;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  font: 12px Tahoma, Arial, sans-serif;
+  color: #111;
+}
+
+.v44-window {
+  width: min(670px, 100%);
+  max-height: 92dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #c0c0c0;
+  border: 3px solid;
+  border-color: #fff #555 #555 #fff;
+  box-shadow: 8px 9px 0 #0006;
+}
+
+.v44-titlebar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 7px;
+  color: white;
+  background: linear-gradient(90deg, #000080, #2876ba);
+}
+
+.v44-titlebar button {
+  width: 24px;
+  height: 23px;
+  color: #111;
+  font-weight: bold;
+  border: 2px solid;
+  border-color: white #555 #555 white;
+  background: #c0c0c0;
+  cursor: pointer;
+}
+
+.v44-menu-line {
+  display: flex;
+  gap: 20px;
+  padding: 9px 12px;
+  border-bottom: 1px solid #888;
+}
+
+.v44-panel-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+}
+
+.v44-panel-heading > span {
+  font-size: 35px;
+}
+
+.v44-panel-heading h2 {
+  font-size: 18px;
+  margin: 0 0 5px;
+}
+
+.v44-panel-heading p,
+.v44-panel-content p {
+  margin: 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+.v44-tabs {
+  display: flex;
+  flex-shrink: 0;
+  gap: 3px;
+  padding: 0 10px;
+  overflow-x: auto;
+}
+
+.v44-tabs button {
+  padding: 10px 13px;
+  background: #d4d4d4;
+  border: 2px solid;
+  border-color: #fff #777 #777 #fff;
+  white-space: nowrap;
+  font: 11px Tahoma, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.v44-tabs button.active {
+  background: #f2f2f2;
+  border-bottom-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.v44-panel-content {
+  flex: 1;
+  min-height: 210px;
+  overflow-y: auto;
+  padding: 18px;
+  background: #f2f2f2;
+  border: 2px inset #bbb;
+}
+
+.v44-panel-content h3 {
+  font-size: 15px;
+  margin: 0 0 8px;
+}
+
+.v44-theme-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 17px;
+}
+
+.v44-theme-list > button {
+  text-align: left;
+  padding: 9px;
+  background: #ddd;
+  color: #111;
+  border: 2px solid;
+  border-color: white #777 #777 white;
+  cursor: pointer;
+}
+
+.v44-theme-list > button.selected {
+  background: #d0def8;
+  outline: 2px solid #000080;
+  outline-offset: 1px;
+}
+
+.v44-theme-list strong,
+.v44-theme-list small {
+  display: block;
+  margin-top: 8px;
+  overflow-wrap: anywhere;
+}
+
+.v44-theme-list small {
+  font-size: 10px;
+  color: #555;
+  line-height: 1.45;
+}
+
+.v44-theme-preview {
+  height: 100px;
+  padding: 7px;
+  border: 2px solid #666;
+}
+
+.v44-preview-win98 {
+  background: #008080;
+}
+
+.v44-preview-win95 {
+  background: #577777;
+}
+
+.v44-preview-gaming {
+  background: #17102f;
+}
+
+.v44-preview-bar {
+  padding: 5px;
+  color: white;
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+  background: #000080;
+}
+
+.v44-preview-win95 .v44-preview-bar {
+  background: #444;
+}
+
+.v44-preview-gaming .v44-preview-bar {
+  background: #6426aa;
+}
+
+.v44-preview-body {
+  height: 55px;
+  padding: 16px 7px;
+  background: #ddd;
+}
+
+.v44-preview-gaming .v44-preview-body {
+  background: #28213c;
+  color: white;
+}
+
+/* DISPLAY */
+
+.v44-wallpaper-preview {
+  height: 160px;
+  width: min(285px, 100%);
+  margin: 18px auto;
+  border: 9px solid #333;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+}
+
+.v44-wallpaper-preview span {
+  font-size: 28px;
+}
+
+.v44-wallpaper-preview small {
+  background: #000080;
+  padding: 3px;
+  color: white;
+}
+
+.v44-wallpaper-preview.wallpaper-teal {
+  background: #008080;
+}
+
+.v44-wallpaper-preview.wallpaper-bliss {
+  background: linear-gradient(
+    #398fe5 0%,
+    #b7e0ff 55%,
+    #78c351 56%,
+    #187933 100%
+  );
+}
+
+.v44-wallpaper-preview.wallpaper-midnight {
+  background: linear-gradient(135deg, #08142e, #4057a3);
+}
+
+.v44-wallpaper-preview.wallpaper-purple {
+  background: linear-gradient(135deg, #2b164a, #8543a4);
+}
+
+.v44-wallpapers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  margin: 12px 0;
+}
+
+.v44-wallpapers button,
+.v44-action,
+.v44-actions button {
+  padding: 9px 12px;
+  background: #d4d4d4;
+  border: 2px solid;
+  border-color: white #777 #777 white;
+  color: #111;
+  font: 11px Tahoma, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.v44-wallpapers button.selected {
+  background: #cad8f5;
+  border-color: #777 white white #777;
+  font-weight: bold;
+}
+
+.v44-check {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 0;
+  cursor: pointer;
+}
+
+.v44-check input {
+  accent-color: #000080;
+}
+
+.v44-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0 18px;
+}
+
+.v44-field select {
+  max-width: 220px;
+  background: white;
+  color: #111;
+  padding: 8px;
+  border: 2px inset #999;
+}
+
+/* SCREENSAVER PREVIEW */
+
+.v44-screensaver-sample {
+  margin: 16px 0;
+  min-height: 130px;
+  background: #060513;
+  border: 8px solid #333;
+  color: #9af5ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  text-shadow: 0 0 12px #11f0ff;
+}
+
+.v44-screensaver-sample strong {
+  font: bold 23px "Courier New", monospace;
+}
+
+.v44-screensaver-sample span {
+  font: bold 14px "Courier New", monospace;
+}
+
+.v44-screensaver-sample small {
+  color: #ddd;
+  font-size: 10px;
+  text-shadow: none;
+}
+
+.v44-info {
+  margin-top: 14px;
+  padding: 14px;
+  background: #e4e4e4;
+  border: 2px inset #bbb;
+  line-height: 1.6;
+}
+
+.v44-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  flex-shrink: 0;
+}
+
+.v44-actions > span {
+  flex: 1;
+}
+
+/* FULL SCREEN ANIMATED SCREENSAVER */
+
+.v44-screensaver {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 28% 30%,
+      #271652 0%,
+      #09051d 45%,
+      #000 100%
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  cursor: none;
+  font-family: "Courier New", monospace;
+}
+
+.v44-saver-stars {
+  position: absolute;
+  inset: -50%;
+  opacity: 0.7;
+  background-image:
+    radial-gradient(circle, #fff 1px, transparent 2px),
+    radial-gradient(circle, #8cefff 1px, transparent 2px);
+  background-size: 95px 95px, 153px 153px;
+  animation: v44-stars 22s linear infinite;
+  pointer-events: none;
+}
+
+.v44-saver-logo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  animation: v44-logo 7s ease-in-out infinite alternate;
+}
+
+.v44-saver-logo span {
+  color: #f0b3ff;
+  font-size: clamp(19px, 5vw, 36px);
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-shadow: 0 0 15px #ba54f9;
+}
+
+.v44-saver-logo strong {
+  color: #77ffff;
+  font-size: clamp(38px, 9vw, 80px);
+  text-shadow:
+    0 0 15px #00dfff,
+    0 0 45px #00baff;
+}
+
+.v44-saver-logo small {
+  color: #f9e086;
+  font-size: clamp(10px, 2vw, 15px);
+  letter-spacing: 2px;
+}
+
+.v44-saver-clock {
+  position: absolute;
+  top: 7%;
+  right: 7%;
+  font: 25px "Courier New", monospace;
+  color: #b9ffb4;
+  text-shadow: 0 0 12px #5cf15a;
+}
+
+.v44-saver-tip {
+  position: absolute;
+  bottom: 7%;
+  padding: 0 15px;
+  text-align: center;
+  font-size: 12px;
+  color: #d5d5d5;
+  letter-spacing: 1px;
+}
+
+@keyframes v44-logo {
+  from {
+    transform: translate(-20px, -14px) scale(0.95);
+  }
+  to {
+    transform: translate(20px, 14px) scale(1.06);
+  }
+}
+
+@keyframes v44-stars {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(115px, 95px);
+  }
+}
+
+/* DESKTOP THEMES: SCOPE TO EXISTING WINDOWS */
+
+body[data-v44-theme="win95"] .v40-desktop .window-titlebar,
+body[data-v44-theme="win95"] .v40-desktop .v40-dialog-titlebar,
+body[data-v44-theme="win95"] .v41-window-title,
+body[data-v44-theme="win95"] .v42-titlebar,
+body[data-v44-theme="win95"] .v43-tool-titlebar,
+body[data-v44-theme="win95"] .v44-titlebar {
+  background: linear-gradient(90deg, #454545, #858585) !important;
+}
+
+body[data-v44-theme="win95"] .v40-desktop .taskbar,
+body[data-v44-theme="win95"] .v40-start-menu,
+body[data-v44-theme="win95"] .v44-window {
+  background: #b0b0b0 !important;
+}
+
+body[data-v44-theme="gaming"] .v40-desktop .window-titlebar,
+body[data-v44-theme="gaming"] .v40-desktop .v40-dialog-titlebar,
+body[data-v44-theme="gaming"] .v41-window-title,
+body[data-v44-theme="gaming"] .v42-titlebar,
+body[data-v44-theme="gaming"] .v43-tool-titlebar,
+body[data-v44-theme="gaming"] .v44-titlebar {
+  background: linear-gradient(90deg, #3b106f, #8d3dc0) !important;
+}
+
+body[data-v44-theme="gaming"] .v40-desktop .taskbar,
+body[data-v44-theme="gaming"] .v40-start-menu {
+  background: #342c49 !important;
+  color: #fff;
+}
+
+body[data-v44-theme="gaming"] .v40-start-menu
+.v40-menu-items > button {
+  color: #fff !important;
+}
+
+body[data-v44-theme="gaming"] .v40-start-menu
+.v40-menu-items > button:hover {
+  background: #7138ba !important;
+}
+
+body[data-v44-theme="gaming"] .v40-start-menu
+.v40-menu-heading {
+  background: #57209b !important;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+  .v44-overlay {
+    padding: 5px;
+  }
+
+  .v44-window {
+    max-height: 96dvh;
+  }
+
+  .v44-panel-heading {
+    padding: 10px;
+  }
+
+  .v44-panel-content {
+    padding: 12px;
+  }
+
+  .v44-tabs button {
+    padding: 9px;
+    font-size: 10px;
+  }
+
+  .v44-theme-list {
+    grid-template-columns: 1fr;
+  }
+
+  .v44-theme-list > button {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    column-gap: 10px;
+    align-items: center;
+  }
+
+  .v44-theme-preview {
+    grid-row: span 2;
+    height: 75px;
+  }
+
+  .v44-wallpapers {
+    grid-template-columns: 1fr;
+  }
+
+  .v44-actions button {
+    padding: 8px;
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v44-saver-stars,
+  .v44-saver-logo {
+    animation: none !important;
+  }
+}
+
+/* V4.4 Desktop shortcut */
+
+.v44-desktop-shortcut {
+  position: absolute;
+  top: 475px;
+  right: 22px;
+  z-index: 4;
+  width: 108px;
+  padding: 5px;
+  border: 0;
+  background: transparent !important;
+  color: white !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.v44-desktop-shortcut span {
+  font-size: 35px;
+}
+
+.v44-desktop-shortcut small {
+  font-size: 11px;
+  padding: 4px;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
+}
+
+.v44-desktop-shortcut:hover small,
+.v44-desktop-shortcut:focus-visible small {
+  background: #000080;
+  outline: 1px dotted white;
+}
+
+@media (max-width: 600px) {
+  .v44-desktop-shortcut {
+    top: 405px;
+    right: 8px;
+    width: 82px;
+  }
+
+  .v44-desktop-shortcut small {
+    font-size: 10px;
+  }
+}
+
+/* =========================================
+   V4.6 — DESKTOP CONTROL PANEL POSITION FIX
+   Mobile layout remains unchanged
+   ========================================= */
+
+@media screen and (min-width: 701px) {
+
+  .v40-desktop .v44-desktop-shortcut {
+    position: absolute !important;
+
+    top: 445px !important;
+    right: 22px !important;
+
+    left: auto !important;
+    bottom: auto !important;
+
+    width: 108px !important;
+    height: 82px !important;
+
+    margin: 0 !important;
+
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 4px;
+
+    z-index: 4;
+  }
+
+  .v40-desktop .v44-desktop-shortcut > span {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .v40-desktop .v44-desktop-shortcut > small {
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center;
+  }
+}

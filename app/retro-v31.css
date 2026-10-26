@@ -1,0 +1,1137 @@
+
+/* NOSTALGIA OS V3.1 — BOOT & INDIAN TV */
+
+.v31-initializing {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #050505;
+  color: #55ff88;
+  font: bold 16px "Courier New", monospace;
+}
+
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #05070b;
+  color: #80ff9a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Courier New", monospace;
+  overflow: auto;
+  padding: 30px 15px;
+}
+
+.boot-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .18;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    #000 3px,
+    #000 4px
+  );
+}
+
+.boot-content {
+  width: min(750px, 100%);
+  position: relative;
+  z-index: 1;
+}
+
+.boot-logo {
+  color: #69edff;
+  font-size: clamp(25px, 5vw, 43px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  text-shadow: 3px 3px #10475a;
+}
+
+.boot-logo span {
+  color: #ffbc53;
+}
+
+.boot-subtitle {
+  font-size: 13px;
+  color: #fddd69;
+  margin: 9px 0 30px;
+  letter-spacing: 3px;
+}
+
+.boot-terminal {
+  height: 285px;
+  padding: 20px;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #65f48e;
+  background: #031009;
+  border: 2px solid #31573c;
+  box-shadow: inset 0 0 40px #000;
+}
+
+.boot-cursor {
+  animation: boot-blink .7s steps(2) infinite;
+}
+
+.boot-progress-label {
+  margin: 25px 0 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+
+.boot-progress-track {
+  height: 27px;
+  padding: 3px;
+  border: 2px solid #70e596;
+  background: #06120b;
+}
+
+.boot-progress-track > div {
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #53eb89 0px,
+    #53eb89 16px,
+    #06120b 17px,
+    #06120b 20px
+  );
+  transition: width .09s linear;
+}
+
+.boot-options {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  font-size: 12px;
+}
+
+.boot-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.boot-options input {
+  accent-color: #55ff88;
+}
+
+.boot-options button {
+  background: #112b1d;
+  color: #80ff9a;
+  border: 2px solid #62d78d;
+  padding: 12px 18px;
+  font-weight: 900;
+}
+
+.boot-footer {
+  position: absolute;
+  bottom: 20px;
+  color: #6a9776;
+  font-size: 10px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+@keyframes boot-blink {
+  50% { opacity: 0; }
+}
+
+/* DESKTOP V3.1 */
+
+.desktop-icons.v31-desktop-icons {
+  width: 310px;
+  grid-template-columns: repeat(3, 88px);
+  grid-auto-rows: 108px;
+}
+
+.retro-window.v31-wide-window {
+  width: min(760px, calc(100vw - 24px));
+}
+
+.v31-reboot-button {
+  border: 2px solid;
+  border-color: white #555 #555 white;
+  background: #c0c0c0;
+  padding: 4px 9px;
+  font-weight: bold;
+  font-size: 11px;
+  margin-left: auto;
+}
+
+.v31-reboot-button + .taskbar-clock {
+  margin-left: 0;
+}
+
+.v31-memory-tag {
+  display: inline-block;
+  font-size: 10px;
+  margin-top: 4px;
+  color: #2855aa;
+  background: #e6eafa;
+  padding: 3px 5px;
+}
+
+.v31-memory-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding-top: 6px;
+  border-top: 1px dashed #ddd;
+}
+
+.v31-memory-bottom small {
+  color: #677085;
+  font-size: 10px;
+}
+
+.v31-memory-bottom button {
+  padding: 4px 8px;
+  background: #eee;
+  border: 1px solid #bbb;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.v31-memory-bottom button.v31-saved {
+  background: #ffe1e6;
+  color: #ad2353;
+}
+
+/* INDIAN TV APPLICATION */
+
+.indian-tv-app {
+  padding: 15px;
+  background: #e9e9e9;
+  color: #141414;
+}
+
+.tv-v31-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: #000080;
+  color: white;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+}
+
+.tv-v31-heading strong {
+  font-size: 14px;
+}
+
+.tv-v31-heading span {
+  font-size: 10px;
+  color: #c7f5ff;
+}
+
+.tv-v31-year {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 17px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.tv-v31-year select {
+  padding: 7px;
+  border: 2px solid;
+  border-color: #666 white white #666;
+  background: white;
+}
+
+.tv-v31-year span {
+  color: #5e6072;
+}
+
+.tv-v31-cabinet {
+  background: linear-gradient(135deg, #c79559, #81502b);
+  border: 8px solid #683a20;
+  border-radius: 28px;
+  padding: 17px;
+  box-shadow: 7px 9px 0 #0003, inset 3px 3px 5px #ffffff30;
+}
+
+.tv-v31-brand {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #ffedca;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 13px;
+}
+
+.tv-v31-bezel {
+  padding: 15px;
+  border-radius: 35px;
+  background: #272420;
+  box-shadow: inset 0 0 15px #000;
+  border: 3px solid #614b36;
+}
+
+.tv-v31-screen {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 17% / 12%;
+  border: 5px solid #090d0e;
+  background: #0a1110;
+  isolation: isolate;
+}
+
+.tv-v31-program {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background:
+    radial-gradient(circle at 50% 32%, var(--channel-color), #1b2541 82%);
+  color: #fff;
+  padding: 19px;
+  text-align: center;
+  animation: tv-v31-tune .3s ease-out;
+}
+
+.tv-v31-station {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  color: #fff;
+  font: bold 12px "Courier New", monospace;
+  text-shadow: 2px 2px #0008;
+}
+
+.tv-v31-station strong {
+  color: #b6ffd6;
+}
+
+.tv-v31-art {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.tv-v31-art > span {
+  font-size: clamp(60px, 12vw, 115px);
+  z-index: 2;
+  filter: drop-shadow(5px 7px 2px #0004);
+  animation: tv-v31-float 2.5s ease-in-out infinite;
+}
+
+.tv-v31-sunburst {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  border: 3px solid #ffffff50;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 24px #ffffff0d,
+    0 0 0 49px #ffffff09,
+    0 0 0 75px #ffffff06;
+}
+
+.tv-v31-show {
+  background: #030e21ba;
+  border-radius: 9px;
+  padding: 10px;
+  text-shadow: 1px 1px #000;
+}
+
+.tv-v31-show small {
+  font-size: 9px;
+  color: #a8ffd3;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.tv-v31-show h3 {
+  font-size: clamp(17px, 3vw, 24px);
+  margin: 5px 0;
+}
+
+.tv-v31-show p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.tv-v31-off {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #829c90;
+  letter-spacing: 3px;
+  background: radial-gradient(circle, #1e2b28, #050808);
+}
+
+.tv-v31-scanlines,
+.tv-v31-glass {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.tv-v31-scanlines {
+  z-index: 3;
+  opacity: .42;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 3px,
+    #0008 4px,
+    #0008 5px
+  );
+}
+
+.tv-v31-glass {
+  z-index: 4;
+  box-shadow: inset 0 0 65px 20px #0009;
+  border-radius: inherit;
+  background: linear-gradient(125deg, #ffffff16, transparent 38%);
+}
+
+.tv-v31-static {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      #ffffff88 0px,
+      #ffffff88 2px,
+      #111 3px,
+      #111 6px
+    );
+  background-size: 100% 13px;
+  animation: tv-v31-noise .1s steps(3) infinite;
+}
+
+.tv-v31-controls {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 17px;
+  flex-wrap: wrap;
+}
+
+.tv-v31-power {
+  border: 5px solid #5b3521;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  flex: none;
+  background: linear-gradient(#f9e0b1, #b78a57);
+  font-size: 25px;
+  color: #6c3020;
+}
+
+.tv-v31-power.active {
+  color: #d53628;
+}
+
+.tv-v31-power small {
+  display: block;
+  font-size: 8px;
+  font-weight: bold;
+}
+
+.tv-v31-channels {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.tv-v31-channels button {
+  padding: 11px;
+  background: #f5d6ab;
+  border: 2px solid #815538;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.tv-v31-channels button:disabled {
+  opacity: .4;
+}
+
+.tv-v31-channels div {
+  color: #94ff9e;
+  background: #0c2418;
+  padding: 9px 13px;
+  border: 3px solid #6f5038;
+  font: 900 19px "Courier New", monospace;
+}
+
+.tv-v31-volume {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 8px;
+  min-width: 100px;
+  color: #fff1d2;
+  font-weight: 900;
+  font-size: 11px;
+}
+
+.tv-v31-volume input {
+  min-width: 40px;
+  flex: 1;
+  accent-color: #fce8b4;
+}
+
+/* TV GUIDE */
+
+.tv-v31-guide {
+  border: 2px solid;
+  border-color: white #888 #888 white;
+  margin-top: 17px;
+  padding: 12px;
+  background: #d0d0d0;
+}
+
+.tv-v31-guide-title {
+  background: #000080;
+  padding: 8px 11px;
+  color: white;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.tv-v31-channel-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 12px;
+}
+
+.tv-v31-channel-list button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  padding: 11px;
+  background: #f8f8f8;
+  border: 2px solid;
+  border-color: white #777 #777 white;
+}
+
+.tv-v31-channel-list button.selected {
+  color: white;
+  background: #000080;
+  border-color: #2020a0;
+}
+
+.tv-v31-channel-list button span {
+  font-size: 24px;
+}
+
+.tv-v31-channel-list button strong {
+  flex: 1;
+  font-size: 11px;
+}
+
+.tv-v31-channel-list button small {
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.tv-v31-next {
+  margin-top: 14px;
+  padding: 11px 15px;
+  background: #ededed;
+  border: 2px solid;
+  border-color: white #666 #666 white;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.tv-v31-note {
+  font-size: 10px;
+  color: #646464;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ANIMATIONS */
+
+@keyframes tv-v31-tune {
+  0% { filter: brightness(3); transform: scaleY(.03); }
+  100% { filter: brightness(1); transform: scaleY(1); }
+}
+
+@keyframes tv-v31-noise {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(7px); }
+  100% { transform: translateY(-5px); }
+}
+
+@keyframes tv-v31-float {
+  50% { transform: translateY(-8px); }
+}
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+  .desktop-icons.v31-desktop-icons {
+    width: 100%;
+    grid-template-columns: repeat(3, 88px);
+    grid-auto-rows: 102px;
+  }
+
+  .retro-window.v31-wide-window {
+    width: calc(100vw - 16px);
+    max-height: calc(100dvh - 167px);
+  }
+
+  .v31-reboot-button {
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+
+  .tv-v31-cabinet {
+    padding: 10px;
+    border-width: 5px;
+  }
+
+  .tv-v31-bezel {
+    padding: 7px;
+    border-radius: 21px;
+  }
+
+  .tv-v31-program {
+    padding: 8px;
+  }
+
+  .tv-v31-station {
+    font-size: 9px;
+  }
+
+  .tv-v31-show {
+    padding: 6px;
+  }
+
+  .tv-v31-show small {
+    font-size: 7px;
+  }
+
+  .tv-v31-show h3 {
+    font-size: 15px;
+    margin: 3px 0;
+  }
+
+  .tv-v31-show p {
+    font-size: 9px;
+  }
+
+  .tv-v31-art > span {
+    font-size: clamp(45px, 15vw, 76px);
+  }
+
+  .tv-v31-channel-list {
+    grid-template-columns: 1fr;
+  }
+
+  .boot-terminal {
+    font-size: 10px;
+    height: 250px;
+  }
+
+  .boot-subtitle {
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-cursor,
+  .tv-v31-static,
+  .tv-v31-art > span,
+  .tv-v31-program {
+    animation: none !important;
+  }
+}
+
+/* V3.2 ORIGINAL VIDEO PLAYER */
+
+.tv-real-screen {
+  position: relative;
+  background: #080c10;
+}
+
+.real-tv-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: 10;
+  background: black;
+}
+
+.tv-real-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+.tv-real-station,
+.tv-real-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font: bold 11px "Courier New", monospace;
+  text-shadow: 1px 2px 2px #0009;
+}
+
+.tv-real-center {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.tv-real-icon {
+  font-size: clamp(36px, 8vw, 72px);
+  filter: drop-shadow(2px 5px 3px #0005);
+}
+
+.tv-real-center h3 {
+  font-size: clamp(15px, 3vw, 22px);
+  margin: 10px 0 5px;
+}
+
+.tv-real-center p {
+  font-size: 11px;
+  line-height: 1.5;
+  max-width: 350px;
+  margin: 4px 0 13px;
+}
+
+.tv-real-play {
+  background: #e9f8e5;
+  color: #113b1e;
+  border: 3px solid;
+  border-color: #fff #54725a #54725a #fff;
+  padding: 12px 18px;
+  font: 900 12px "Courier New", monospace;
+  box-shadow: 3px 4px 0 #0005;
+  cursor: pointer;
+}
+
+.tv-real-play:hover {
+  background: #baffba;
+}
+
+.tv-real-unavailable {
+  padding: 10px;
+  border: 1px dashed #fff9;
+  font: bold 10px monospace;
+}
+
+.tv-real-footer {
+  color: #c0f6d0;
+  font-size: 9px;
+}
+
+.tv-real-program-guide {
+  margin: 14px 0;
+  padding: 12px;
+  border: 1px solid #888;
+  background: #fff8d3;
+}
+
+.tv-real-program-guide strong {
+  color: #000080;
+  font-size: 11px;
+}
+
+.tv-real-program-guide p {
+  margin: 8px 0 0;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.tv-real-clips {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.tv-real-clips-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+
+.tv-real-clips-heading button {
+  border: 2px solid;
+  border-color: white #666 #666 white;
+  background: #c0c0c0;
+  padding: 7px 10px;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.tv-real-clips > button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  background: white;
+  border: 2px solid #aaa;
+  padding: 11px;
+}
+
+.tv-real-clips > button.active {
+  border-color: #000080;
+  background: #e2e9ff;
+}
+
+.tv-real-clips > button > span:first-child {
+  font-size: 24px;
+}
+
+.tv-real-clips > button > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tv-real-clips > button strong {
+  font-size: 12px;
+}
+
+.tv-real-clips > button small {
+  color: #626b77;
+  font-size: 10px;
+}
+
+.tv-real-source {
+  margin: 7px 0;
+  font-size: 12px;
+}
+
+.tv-real-source a {
+  color: #000080;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .tv-real-placeholder {
+    padding: 8px;
+  }
+
+  .tv-real-icon {
+    font-size: 32px;
+  }
+
+  .tv-real-center h3 {
+    font-size: 14px;
+    margin: 5px 0 2px;
+  }
+
+  .tv-real-center p {
+    font-size: 9px;
+    margin-bottom: 7px;
+  }
+
+  .tv-real-play {
+    padding: 7px 9px;
+    font-size: 9px;
+  }
+
+  .tv-real-station,
+  .tv-real-footer {
+    font-size: 8px;
+  }
+}
+
+/* V3.4 BENGALI TV NOSTALGIA */
+
+.indian-tv-app .old-tabs {
+  margin: 0 0 15px;
+}
+
+.indian-tv-app .old-tabs button {
+  min-width: 105px;
+  font-size: 12px;
+}
+
+.tv-real-program-guide a {
+  color: #000080;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.tv-real-program-guide a:hover {
+  color: #bd2452;
+}
+
+.tv-real-placeholder {
+  font-family: Arial, "Noto Sans Bengali", sans-serif;
+}
+
+.tv-real-center h3 {
+  line-height: 1.45;
+}
+
+.tv-real-center p {
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .indian-tv-app .old-tabs {
+    gap: 6px;
+  }
+
+  .indian-tv-app .old-tabs button {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+/* V3.4 TV SIZE & LAYOUT FIX */
+
+.retro-window.v31-wide-window {
+  width: min(820px, calc(100vw - 24px));
+  max-height: calc(100dvh - 110px);
+}
+
+.indian-tv-app {
+  padding: 12px;
+}
+
+.tv-v31-cabinet {
+  width: min(100%, 570px);
+  margin: 12px auto;
+  padding: 12px;
+  border-width: 6px;
+}
+
+.tv-v31-bezel {
+  padding: 10px;
+  border-radius: 25px;
+}
+
+.tv-v31-screen {
+  aspect-ratio: 16 / 10;
+  border-radius: 12% / 15%;
+}
+
+.tv-v31-controls {
+  margin-top: 12px;
+  gap: 10px;
+}
+
+.tv-v31-power {
+  width: 52px;
+  height: 52px;
+  font-size: 20px;
+}
+
+.tv-v31-channels button {
+  padding: 8px;
+}
+
+.tv-v31-guide {
+  margin-top: 12px;
+}
+
+/* Small laptop screens */
+
+@media (max-height: 750px) and (min-width: 761px) {
+  .tv-v31-cabinet {
+    width: min(100%, 490px);
+    padding: 8px;
+  }
+
+  .tv-v31-bezel {
+    padding: 7px;
+  }
+
+  .tv-v31-screen {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 760px) {
+  .retro-window.v31-wide-window {
+    width: calc(100vw - 16px);
+    max-height: calc(100dvh - 167px);
+  }
+
+  .tv-v31-cabinet {
+    width: 100%;
+    padding: 7px;
+  }
+
+  .tv-v31-bezel {
+    padding: 6px;
+  }
+
+  .tv-v31-screen {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* =====================================
+   V3.9 — DESKTOP ICON & TASKBAR FIX
+   ===================================== */
+
+/* Desktop area must stop above taskbar */
+.vault {
+  height: 100dvh;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Top bar and taskbar retain their height */
+.vault-topbar,
+.taskbar {
+  flex-shrink: 0;
+}
+
+/* Give desktop its own scrollable area */
+.desktop {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 24px;
+}
+
+/* Desktop icons with proper spacing */
+.desktop-icons.v31-desktop-icons {
+  display: grid;
+  grid-template-columns: repeat(3, 90px);
+  grid-auto-rows: 90px;
+  align-content: start;
+  gap: 12px 13px;
+  width: max-content;
+  max-width: 100%;
+  padding: 18px 12px 35px;
+}
+
+/* Keep each icon within its grid cell */
+.v31-desktop-icons .desktop-icon {
+  width: 90px;
+  height: 90px;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+/* Icon symbol */
+.v31-desktop-icons .desktop-icon-symbol {
+  flex-shrink: 0;
+  font-size: 29px;
+  line-height: 38px;
+}
+
+/* Icon label */
+.v31-desktop-icons .desktop-icon-name {
+  max-width: 90px;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+}
+
+/* Taskbar always stays at bottom */
+.taskbar {
+  position: relative;
+  z-index: 100;
+  margin-top: auto;
+}
+
+/* Smaller screen adjustments */
+@media (max-width: 600px) {
+  .desktop-icons.v31-desktop-icons {
+    grid-template-columns: repeat(3, 78px);
+    grid-auto-rows: 82px;
+    gap: 8px;
+    padding: 12px 8px 30px;
+  }
+
+  .v31-desktop-icons .desktop-icon {
+    width: 78px;
+    height: 82px;
+  }
+
+  .v31-desktop-icons .desktop-icon-name {
+    max-width: 78px;
+    font-size: 10px;
+  }
+}
+
+/* V3.9 — Move desktop icons slightly upward */
+
+.desktop-icons.v31-desktop-icons {
+  padding-top: 8px !important;
+  grid-auto-rows: 82px !important;
+  row-gap: 5px !important;
+  padding-bottom: 20px !important;
+}
+
+.v31-desktop-icons .desktop-icon {
+  height: 82px !important;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .desktop-icons.v31-desktop-icons {
+    padding-top: 6px !important;
+    grid-auto-rows: 76px !important;
+    row-gap: 4px !important;
+  }
+
+  .v31-desktop-icons .desktop-icon {
+    height: 76px !important;
+  }
+}

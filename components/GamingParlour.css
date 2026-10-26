@@ -1,0 +1,509 @@
+
+/* INDIA GAMING PARLOUR V3.7 */
+
+.parlour {
+  background: #d3c6a6;
+  color: #1b1b1b;
+  padding: 13px;
+  min-height: 460px;
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.parlour * {
+  box-sizing: border-box;
+}
+
+.parlour button {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.parlour button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.parlour-header {
+  background: #4e2020;
+  color: #ffe6a3;
+  padding: 14px;
+  border: 4px double #ffc34d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.parlour-header strong {
+  display: block;
+  font: 900 16px "Courier New", monospace;
+}
+
+.parlour-header small {
+  display: block;
+  margin-top: 5px;
+  font: bold 10px monospace;
+  color: #fff0d1;
+}
+
+.parlour-header > span {
+  background: #fff0a6;
+  color: #992727;
+  padding: 9px 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.parlour-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 3px;
+  font: bold 11px "Courier New", monospace;
+}
+
+.parlour-topline label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.parlour-game-picker {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 7px 0 15px;
+}
+
+.parlour-game-picker button {
+  background: #e8dcc5;
+  color: #442d23;
+  border: 2px solid;
+  border-color: white #776552 #776552 white;
+  padding: 10px 5px;
+  min-width: 0;
+}
+
+.parlour-game-picker button.active {
+  background: #672d3b;
+  color: #fff;
+  border-color: #35131e #d995a2 #d995a2 #35131e;
+}
+
+.parlour-game-picker span,
+.parlour-game-picker strong {
+  display: block;
+}
+
+.parlour-game-picker span {
+  font-size: 28px;
+}
+
+.parlour-game-picker strong {
+  margin-top: 6px;
+  font-size: 11px;
+}
+
+/* ARCADE CABINET */
+
+.parlour-machine {
+  width: min(490px, 100%);
+  margin: 10px auto;
+  padding: 13px 16px 18px;
+  background: linear-gradient(130deg, #492339, #1c142c);
+  border: 8px solid #121221;
+  border-radius: 18px 18px 28px 28px;
+  box-shadow:
+    inset 2px 3px 0 #b97a9f,
+    9px 12px 0 #0003;
+}
+
+.parlour-machine-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: #b72645;
+  border: 3px solid #fbd15c;
+  padding: 10px;
+  color: #fff18a;
+  text-align: center;
+  font: 900 12px "Courier New", monospace;
+  text-shadow: 2px 2px #571d30;
+}
+
+.parlour-machine-title span:last-child {
+  font-size: 10px;
+  color: white;
+}
+
+.parlour-screen {
+  position: relative;
+  margin: 13px 0;
+  height: 340px;
+  overflow: hidden;
+  border: 10px solid #05060b;
+  border-radius: 15px;
+  background: #101b25;
+  box-shadow:
+    inset 0 0 18px #000,
+    0 0 0 2px #756377;
+  isolation: isolate;
+}
+
+.parlour-screen::after {
+  position: absolute;
+  z-index: 6;
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  opacity: .2;
+  background: repeating-linear-gradient(
+    0deg,
+    #000 0,
+    #000 1px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+.parlour-scorebar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 5;
+  background: #05090de0;
+  display: flex;
+  justify-content: space-between;
+  padding: 9px;
+  color: #ffe86a;
+  font: 900 12px monospace;
+}
+
+/* BIKE GAME */
+
+.parlour-bike-road {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      90deg,
+      #317244 0%,
+      #317244 12%,
+      #4b4d50 12%,
+      #4b4d50 88%,
+      #317244 88%,
+      #317244 100%
+    );
+}
+
+.parlour-road-lines {
+  position: absolute;
+  inset: 0 12%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 35px,
+    #e6dfbb 35px,
+    #e6dfbb 67px,
+    transparent 67px,
+    transparent 100px
+  );
+  background-size: 100% 100px;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0 31%,
+    black 31% 32%,
+    transparent 32% 65%,
+    black 65% 66%,
+    transparent 66%
+  );
+  animation: parlour-road-move .75s linear infinite;
+}
+
+.parlour-player-bike,
+.parlour-road-object {
+  position: absolute;
+  transform: translateX(-50%);
+  z-index: 3;
+  line-height: 1;
+  text-align: center;
+  filter: drop-shadow(2px 4px 1px #0007);
+}
+
+.parlour-player-bike {
+  top: 78%;
+  font-size: 40px;
+  transition: left .07s linear;
+}
+
+.parlour-road-object {
+  font-size: 34px;
+}
+
+.parlour-road-object.coin {
+  font-size: 26px;
+}
+
+.parlour-bike-hud {
+  position: absolute;
+  bottom: 4px;
+  left: 6px;
+  z-index: 4;
+  background: #04070bbd;
+  padding: 6px;
+  color: white;
+  font: bold 12px monospace;
+}
+
+/* SNAKE GAME */
+
+.parlour-snake-grid {
+  width: min(290px, calc(100% - 25px));
+  aspect-ratio: 1;
+  margin: 37px auto 0;
+  padding: 5px;
+  background: #a8ba81;
+  border: 5px solid #647052;
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(15, 1fr);
+  gap: 1px;
+}
+
+.snake-cell {
+  background: #b5c492;
+}
+
+.snake-cell.body {
+  background: #354b2e;
+}
+
+.snake-cell.head {
+  background: #172d20;
+  outline: 1px solid #101910;
+}
+
+.snake-cell.food {
+  background: #3f6332;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px #c4d5a9;
+}
+
+/* BRICK GAME */
+
+.parlour-brick-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding-top: 45px;
+  height: 100%;
+  background: #a6b98c;
+}
+
+.parlour-brick-time {
+  font: 900 18px monospace;
+  color: #253820;
+}
+
+.parlour-brick-grid {
+  width: min(240px, 85%);
+  aspect-ratio: 1;
+  border: 5px solid #637157;
+  padding: 6px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  background: #b7c59b;
+}
+
+.parlour-brick-cell {
+  background: #a6b58e;
+  border: 1px solid #738466;
+  padding: 0;
+}
+
+.parlour-brick-cell.active {
+  background: #21351e;
+  box-shadow: inset 0 0 0 3px #52674b;
+}
+
+/* GAME OVER / READY */
+
+.parlour-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  background: #050811df;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px;
+}
+
+.parlour-overlay strong {
+  color: #ffe36b;
+  font: 900 clamp(21px, 5vw, 33px) monospace;
+  text-shadow: 3px 3px #9d3f40;
+}
+
+.parlour-overlay p {
+  color: #d2d9ed;
+  font-size: 12px;
+  line-height: 1.6;
+  max-width: 260px;
+}
+
+.parlour-overlay button {
+  margin-top: 8px;
+  background: #ffe171;
+  color: #2a1925;
+  padding: 11px 18px;
+  border: 3px solid #fff2bb;
+  font: 900 13px monospace;
+}
+
+/* BUTTON PANEL */
+
+.parlour-control-panel {
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #ffe8af;
+  font: 900 11px monospace;
+}
+
+.parlour-control-panel > button,
+.parlour-dpad button {
+  border: 4px solid #1f1019;
+  border-radius: 12px;
+  background: linear-gradient(#f8d477, #b48835);
+  color: #2f1c13;
+  padding: 11px 15px;
+  font: 900 12px monospace;
+  box-shadow: 2px 3px 0 #0006;
+}
+
+.parlour-control-panel > button.parlour-pause {
+  background: linear-gradient(#ff8989, #b83e4b);
+  color: white;
+}
+
+.parlour-dpad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.parlour-dpad > div {
+  display: flex;
+  gap: 4px;
+}
+
+.parlour-dpad button {
+  padding: 7px 12px;
+}
+
+.parlour-instructions {
+  margin-top: 15px;
+  background: #f8ebc9;
+  border: 2px dashed #ac8f59;
+  padding: 14px;
+}
+
+.parlour-instructions strong {
+  color: #692c2b;
+  font: 900 13px monospace;
+}
+
+.parlour-instructions p {
+  line-height: 1.6;
+  font-size: 12px;
+}
+
+.parlour-instructions small {
+  color: #6c6254;
+  line-height: 1.5;
+  display: block;
+}
+
+@keyframes parlour-road-move {
+  to {
+    background-position: 0 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .parlour {
+    padding: 7px;
+  }
+
+  .parlour-header strong {
+    font-size: 12px;
+  }
+
+  .parlour-header small {
+    font-size: 8px;
+  }
+
+  .parlour-header > span {
+    font-size: 10px;
+    padding: 7px;
+  }
+
+  .parlour-game-picker {
+    gap: 4px;
+  }
+
+  .parlour-game-picker button {
+    padding: 7px 3px;
+  }
+
+  .parlour-game-picker span {
+    font-size: 23px;
+  }
+
+  .parlour-game-picker strong {
+    font-size: 9px;
+  }
+
+  .parlour-machine {
+    padding: 8px;
+    border-width: 5px;
+  }
+
+  .parlour-screen {
+    height: 300px;
+    border-width: 7px;
+  }
+
+  .parlour-snake-grid {
+    width: min(235px, calc(100% - 10px));
+  }
+
+  .parlour-control-panel {
+    gap: 6px;
+  }
+
+  .parlour-control-panel > button {
+    padding: 9px;
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parlour-road-lines {
+    animation: none;
+  }
+}

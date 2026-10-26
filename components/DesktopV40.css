@@ -1,0 +1,627 @@
+
+/* ===========================================
+   NOSTALGIA OS V4.0
+   WINDOWS 98 DESKTOP UPGRADE
+   =========================================== */
+
+.vault.v40-desktop {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.v40-desktop .vault-topbar {
+  flex-shrink: 0;
+}
+
+.v40-desktop .desktop {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 24px;
+}
+
+/* WALLPAPERS */
+
+.v40-desktop.wallpaper-teal .desktop,
+.v40-wallpaper-preview.wallpaper-teal,
+.v40-wallpaper-swatch.wallpaper-teal {
+  background: #008080 !important;
+}
+
+.v40-desktop.wallpaper-bliss .desktop,
+.v40-wallpaper-preview.wallpaper-bliss,
+.v40-wallpaper-swatch.wallpaper-bliss {
+  background:
+    radial-gradient(
+      ellipse at 62% 100%,
+      #79cf37 0%,
+      #60ae35 36%,
+      transparent 37%
+    ),
+    radial-gradient(
+      ellipse at 20% 100%,
+      #4bb329 0%,
+      #398f35 48%,
+      transparent 49%
+    ),
+    linear-gradient(
+      to bottom,
+      #368be8 0%,
+      #83c1f5 55%,
+      #e9f7ff 72%,
+      #56a940 73%,
+      #217633 100%
+    ) !important;
+}
+
+.v40-desktop.wallpaper-midnight .desktop,
+.v40-wallpaper-preview.wallpaper-midnight,
+.v40-wallpaper-swatch.wallpaper-midnight {
+  background:
+    radial-gradient(
+      circle at 75% 24%,
+      #617bd0a0,
+      transparent 30%
+    ),
+    linear-gradient(
+      130deg,
+      #07132b,
+      #142759 55%,
+      #080e2f
+    ) !important;
+}
+
+.v40-desktop.wallpaper-purple .desktop,
+.v40-wallpaper-preview.wallpaper-purple,
+.v40-wallpaper-swatch.wallpaper-purple {
+  background:
+    radial-gradient(
+      circle at 70% 25%,
+      #b957d180,
+      transparent 34%
+    ),
+    linear-gradient(
+      135deg,
+      #351645,
+      #693674 50%,
+      #2b2149
+    ) !important;
+}
+
+/* PRESERVE DESKTOP ICON ALIGNMENT */
+
+.v40-desktop .desktop-icons.v31-desktop-icons {
+  display: grid;
+  grid-template-columns: repeat(3, 90px);
+  grid-auto-rows: 82px;
+  align-content: start;
+  gap: 5px 13px;
+  width: max-content;
+  max-width: 100%;
+  padding: 8px 12px 35px;
+}
+
+.v40-desktop .v31-desktop-icons .desktop-icon {
+  width: 90px;
+  height: 82px;
+  min-height: 0;
+  min-width: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.v40-desktop .v31-desktop-icons .desktop-icon-symbol {
+  font-size: 29px;
+  line-height: 38px;
+  flex-shrink: 0;
+}
+
+.v40-desktop .v31-desktop-icons .desktop-icon-name {
+  font-size: 11px;
+  line-height: 13px;
+  max-width: 90px;
+  text-align: center;
+}
+
+/* WINDOW MAXIMIZE / RESTORE */
+
+.v40-desktop .retro-window.v40-maximized {
+  position: fixed !important;
+  top: 36px !important;
+  left: 3px !important;
+  right: 3px !important;
+  bottom: 38px !important;
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: column;
+  z-index: 120;
+  overflow: hidden;
+}
+
+.v40-desktop .v40-maximized .window-titlebar,
+.v40-desktop .v40-maximized .window-menu,
+.v40-desktop .v40-maximized .window-status {
+  flex-shrink: 0;
+}
+
+.v40-desktop .v40-maximized .window-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none !important;
+  height: auto !important;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+}
+
+.v40-desktop .window-buttons {
+  display: flex;
+  gap: 2px;
+}
+
+.v40-desktop .window-buttons button {
+  min-width: 20px;
+  min-height: 19px;
+  line-height: 1;
+  font-weight: bold;
+}
+
+/* TASKBAR */
+
+.v40-desktop .taskbar.v40-taskbar {
+  position: relative;
+  margin-top: auto;
+  z-index: 180;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.v40-taskbar-spacer {
+  flex: 1;
+  min-width: 5px;
+}
+
+.v40-start-active {
+  background: #a8a8a8 !important;
+  border-style: inset !important;
+}
+
+.v40-quick-settings {
+  padding: 4px 7px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #fff #666 #666 #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.v40-clock {
+  padding: 5px 9px;
+  background: #c0c0c0;
+  border: 2px inset #e1e1e1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 11px;
+}
+
+.v40-clock strong {
+  font-weight: normal;
+}
+
+/* START MENU */
+
+.v40-menu-dismiss {
+  position: fixed;
+  inset: 0;
+  z-index: 185;
+  background: transparent;
+  border: 0;
+  cursor: default;
+}
+
+.v40-start-menu {
+  position: fixed;
+  z-index: 190;
+  bottom: 35px;
+  left: 3px;
+  width: min(300px, calc(100vw - 8px));
+  max-height: min(520px, calc(100dvh - 80px));
+  overflow-y: auto;
+  display: flex;
+  border: 3px solid;
+  border-color: #fff #5a5a5a #5a5a5a #fff;
+  background: #c0c0c0;
+  box-shadow: 4px 4px 0 #0005;
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.v40-start-side {
+  width: 34px;
+  flex-shrink: 0;
+  background: linear-gradient(#00005d, #2951a0);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 3px;
+  padding: 12px 4px;
+}
+
+.v40-start-side span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-weight: 900;
+  font-size: 19px;
+  letter-spacing: 2px;
+}
+
+.v40-start-side strong {
+  font-size: 17px;
+  color: #dcdcdc;
+}
+
+.v40-menu-items {
+  flex: 1;
+  min-width: 0;
+  padding: 5px;
+}
+
+.v40-menu-heading {
+  background: #000080;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 9px 8px;
+  margin-bottom: 7px;
+}
+
+.v40-menu-group-label {
+  font: bold 10px Tahoma, Arial, sans-serif;
+  color: #666;
+  padding: 5px 8px;
+}
+
+.v40-menu-items > button {
+  display: block;
+  width: 100%;
+  padding: 10px 9px;
+  background: transparent;
+  color: #111;
+  border: 0;
+  text-align: left;
+  font: 12px Tahoma, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.v40-menu-items > button:hover,
+.v40-menu-items > button:focus-visible {
+  background: #000080;
+  color: white;
+  outline: none;
+}
+
+.v40-menu-separator {
+  border-top: 1px solid #777;
+  border-bottom: 1px solid white;
+  margin: 5px 2px;
+}
+
+/* DIALOGS */
+
+.v40-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0007;
+}
+
+.v40-settings-window,
+.v40-run-window {
+  width: min(460px, 100%);
+  max-height: 90dvh;
+  overflow-y: auto;
+  background: #c0c0c0;
+  border: 3px solid;
+  border-color: #fff #555 #555 #fff;
+  box-shadow: 7px 8px 0 #0005;
+  font: 12px Tahoma, Arial, sans-serif;
+  color: #111;
+}
+
+.v40-run-window {
+  width: min(410px, 100%);
+}
+
+.v40-dialog-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #000080, #2878c0);
+  color: white;
+  padding: 4px 6px 4px 9px;
+}
+
+.v40-dialog-titlebar button {
+  width: 23px;
+  height: 22px;
+  border: 2px solid;
+  border-color: #fff #555 #555 #fff;
+  background: #c0c0c0;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.v40-dialog-content {
+  padding: 18px;
+}
+
+.v40-dialog-content h3 {
+  margin: 0 0 7px;
+  font-size: 16px;
+}
+
+.v40-dialog-content p {
+  line-height: 1.5;
+}
+
+.v40-wallpaper-preview {
+  width: min(260px, 100%);
+  height: 155px;
+  margin: 16px auto;
+  border: 9px solid #292929;
+  border-radius: 7px;
+  position: relative;
+  box-shadow: 0 5px 0 #888;
+}
+
+.v40-preview-icon {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.v40-preview-icon small {
+  background: #000080;
+  color: white;
+  padding: 3px;
+  font-size: 9px;
+}
+
+.v40-wallpaper-choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.v40-wallpaper-choices button {
+  background: #d6d6d6;
+  border: 2px solid;
+  border-color: #fff #777 #777 #fff;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.v40-wallpaper-choices button.selected {
+  background: #b4c6e7;
+  border-color: #777 #fff #fff #777;
+}
+
+.v40-wallpaper-swatch {
+  width: 45px;
+  height: 34px;
+  flex-shrink: 0;
+  border: 1px solid #444;
+}
+
+.v40-wallpaper-choices strong,
+.v40-wallpaper-choices small {
+  display: block;
+}
+
+.v40-wallpaper-choices strong {
+  font-size: 11px;
+}
+
+.v40-wallpaper-choices small {
+  font-size: 9px;
+  color: #555;
+  margin-top: 3px;
+}
+
+.v40-settings-options {
+  margin: 15px 0;
+  border: 1px inset #aaa;
+  padding: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.v40-settings-options label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.v40-run-window label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.v40-run-window input {
+  width: 100%;
+  padding: 8px;
+  border: 2px inset #aaa;
+}
+
+.v40-run-window small {
+  display: block;
+  margin-top: 8px;
+  color: #555;
+}
+
+.v40-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 17px;
+  padding-top: 10px;
+  border-top: 1px solid #888;
+}
+
+.v40-dialog-actions button {
+  min-width: 80px;
+  padding: 7px 14px;
+  border: 2px solid;
+  border-color: #fff #666 #666 #fff;
+  background: #c0c0c0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+  .v40-desktop .desktop-icons.v31-desktop-icons {
+    grid-template-columns: repeat(3, 78px);
+    grid-auto-rows: 76px;
+    gap: 4px 8px;
+    padding: 6px 8px 28px;
+  }
+
+  .v40-desktop .v31-desktop-icons .desktop-icon {
+    width: 78px;
+    height: 76px;
+  }
+
+  .v40-desktop .v31-desktop-icons .desktop-icon-name {
+    max-width: 78px;
+    font-size: 10px;
+  }
+
+  .v40-desktop .retro-window.v40-maximized {
+    top: 32px !important;
+    bottom: 36px !important;
+    left: 2px !important;
+    right: 2px !important;
+  }
+
+  .v40-desktop .taskbar.v40-taskbar {
+    gap: 2px;
+  }
+
+  .v40-taskbar .task-button {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 110px;
+  }
+
+  .v40-clock {
+    font-size: 10px;
+    padding: 5px;
+  }
+
+  .v40-clock > span {
+    display: none;
+  }
+
+  .v40-wallpaper-choices {
+    grid-template-columns: 1fr;
+  }
+
+  .v40-menu-items > button {
+    padding: 9px 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v40-desktop *,
+  .v40-desktop *::before,
+  .v40-desktop *::after {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================
+   V4.0 — WINDOWS 98 DESKTOP ICON FIX
+   Normal icons transparent, selected blue
+   ========================================= */
+
+/* Default icon — no blue background */
+.v40-desktop .v31-desktop-icons .desktop-icon,
+.v40-desktop .v31-desktop-icons .desktop-icon:not(.desktop-selected) {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none;
+}
+
+/* Normal icon text */
+.v40-desktop .v31-desktop-icons .desktop-icon-name {
+  background: transparent !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 3px 4px;
+  border-radius: 0;
+  text-shadow: 1px 1px 2px #000000;
+}
+
+/* Normal icon hover */
+.v40-desktop .v31-desktop-icons
+.desktop-icon:not(.desktop-selected):hover
+.desktop-icon-name {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Only the opened / selected icon gets blue highlight */
+.v40-desktop .v31-desktop-icons
+.desktop-icon.desktop-selected
+.desktop-icon-name {
+  background: #000080 !important;
+  color: #ffffff !important;
+  outline: 1px dotted #ffffff;
+  text-shadow: none;
+}
+
+/* Selected icon symbol */
+.v40-desktop .v31-desktop-icons
+.desktop-icon.desktop-selected
+.desktop-icon-symbol {
+  filter: brightness(0.85);
+}

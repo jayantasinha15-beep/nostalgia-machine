@@ -1,0 +1,425 @@
+
+/* NOSTALGIA OS V4.1 — DESKTOP ACCESSORIES */
+
+.v41-accessories {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  z-index: 3;
+}
+
+.v41-accessory-icon {
+  width: 108px;
+  padding: 5px 4px;
+  border: none;
+  background: transparent;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-family: Tahoma, Arial, sans-serif;
+  text-shadow: 1px 1px #111;
+}
+
+.v41-accessory-icon > span {
+  font-size: 11px;
+  line-height: 1.3;
+  padding: 3px 5px;
+  text-align: center;
+  background: transparent;
+}
+
+.v41-accessory-icon svg {
+  filter: drop-shadow(2px 3px 1px #0006);
+}
+
+.v41-accessory-icon:hover > span {
+  background: #ffffff25;
+}
+
+.v41-accessory-icon.selected > span {
+  background: #000080;
+  outline: 1px dotted white;
+}
+
+.v41-context {
+  position: fixed;
+  z-index: 400;
+  width: 205px;
+  max-width: calc(100vw - 8px);
+  background: #c0c0c0;
+  border: 3px solid;
+  border-color: white #555 #555 white;
+  box-shadow: 4px 5px 0 #0005;
+  padding: 4px;
+  font: 12px Tahoma, Arial, sans-serif;
+}
+
+.v41-context button {
+  width: 100%;
+  display: block;
+  border: none;
+  color: #111;
+  background: transparent;
+  padding: 9px 8px;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.v41-context button:hover {
+  background: #000080;
+  color: white;
+}
+
+.v41-menu-line {
+  height: 2px;
+  margin: 5px 3px;
+  border-top: 1px solid #777;
+  border-bottom: 1px solid white;
+}
+
+/* EXPLORER WINDOW */
+
+.v41-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 320;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background: #0007;
+}
+
+.v41-window {
+  width: min(650px, 100%);
+  max-height: 85dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #c0c0c0;
+  border: 3px solid;
+  border-color: #fff #4d4d4d #4d4d4d #fff;
+  box-shadow: 8px 9px 0 #0005;
+  font: 12px Tahoma, Arial, sans-serif;
+  color: #111;
+}
+
+.v41-window-title {
+  background: linear-gradient(90deg, #000080, #3475c1);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 7px;
+}
+
+.v41-window-title button {
+  width: 24px;
+  height: 23px;
+  cursor: pointer;
+  color: #111;
+  font-weight: bold;
+  border: 2px solid;
+  border-color: white #555 #555 white;
+  background: #c0c0c0;
+}
+
+.v41-window-menu {
+  display: flex;
+  gap: 16px;
+  padding: 8px 11px;
+  text-decoration: underline;
+}
+
+.v41-window-toolbar {
+  padding: 8px;
+  border-top: 1px solid white;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.v41-window-toolbar button,
+.v41-bin-heading button,
+.v41-bin-list button {
+  padding: 7px 10px;
+  border: 2px solid;
+  border-color: white #777 #777 white;
+  background: #d0d0d0;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.v41-window-toolbar button:disabled,
+.v41-bin-heading button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.v41-window-toolbar span {
+  margin-left: auto;
+  font-size: 11px;
+  color: #444;
+}
+
+.v41-window-content {
+  background: white;
+  border: 2px inset #aaa;
+  min-height: 300px;
+  max-height: 480px;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.v41-explorer-heading {
+  margin: 0 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+}
+
+.v41-drives {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.v41-drives button {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 12px 8px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.v41-drives button:hover {
+  background: #dceaff;
+  border-color: #91b3e1;
+}
+
+.v41-drives button span {
+  font-size: 33px;
+}
+
+.v41-drives button strong {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.v41-drive-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 10px;
+}
+
+.v41-drive-detail > span {
+  font-size: 50px;
+}
+
+.v41-drive-detail h3 {
+  margin: 8px 0;
+  font-size: 17px;
+}
+
+.v41-drive-detail small {
+  color: #777;
+}
+
+.v41-bin-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.v41-bin-list {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.v41-bin-list > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid #ddd;
+  padding: 9px;
+}
+
+.v41-bin-list > div > span {
+  font-size: 26px;
+}
+
+.v41-bin-list > div > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.v41-bin-list strong {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.v41-bin-list small {
+  display: block;
+  margin-top: 4px;
+  color: #777;
+}
+
+.v41-empty {
+  text-align: center;
+  padding: 40px 12px;
+}
+
+.v41-empty > span {
+  font-size: 48px;
+}
+
+.v41-empty h3 {
+  font-size: 16px;
+}
+
+.v41-empty p {
+  color: #777;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.v41-window-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  border-top: 1px solid white;
+  padding: 8px;
+  color: #444;
+  font-size: 10px;
+}
+
+@media (max-width: 650px) {
+  .v41-accessories {
+    right: 8px;
+    top: 12px;
+    gap: 9px;
+  }
+
+  .v41-accessory-icon {
+    width: 82px;
+  }
+
+  .v41-accessory-icon svg {
+    width: 33px;
+    height: 33px;
+  }
+
+  .v41-accessory-icon > span {
+    font-size: 10px;
+  }
+
+  .v41-window-content {
+    padding: 9px;
+  }
+
+  .v41-drives {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+}
+
+/* ==========================================
+   V4.2 FIX — WINDOWS 98 START MENU LAYOUT
+   ========================================== */
+
+/* Start Menu container */
+.v40-start-menu {
+  width: 300px !important;
+  max-width: calc(100vw - 8px);
+}
+
+/* Programs container */
+.v40-menu-items {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 0 !important;
+  min-width: 0;
+}
+
+/* Every menu button on a separate row */
+.v40-menu-items > button {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  width: 100% !important;
+  min-height: 37px;
+  margin: 0 !important;
+  padding: 9px 10px !important;
+
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  color: #111 !important;
+  font-family: Tahoma, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: normal !important;
+  text-align: left !important;
+  white-space: normal;
+  cursor: pointer;
+}
+
+/* Hover highlight */
+.v40-menu-items > button:hover,
+.v40-menu-items > button:focus-visible {
+  background: #000080 !important;
+  color: #fff !important;
+  outline: none !important;
+}
+
+/* Programs heading */
+.v40-menu-group-label {
+  display: block !important;
+  width: 100%;
+  padding: 8px 10px !important;
+  color: #555 !important;
+  font-size: 10px !important;
+  font-weight: bold !important;
+}
+
+/* Section dividers */
+.v40-menu-separator {
+  display: block;
+  width: calc(100% - 8px);
+  flex-shrink: 0;
+  margin: 5px 4px !important;
+}
+
+/* Menu title */
+.v40-menu-heading {
+  display: block;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Windows 98 vertical branding */
+.v40-start-side {
+  flex-shrink: 0;
+  align-self: stretch;
+}

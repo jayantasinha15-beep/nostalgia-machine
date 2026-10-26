@@ -1,0 +1,915 @@
+/* INDIAN MEMORIES V3.9 */
+
+.india-archive {
+  --ink: #332619;
+  --paper: #f7ecd4;
+  --gold: #c68a3c;
+  --brown: #7c482f;
+  --accent: #b9533c;
+  background:
+    radial-gradient(circle at 12% 24%, #9b795421 0 2px, transparent 3px),
+    linear-gradient(120deg, #d6c099, #eee0be 50%, #d5bf99);
+  background-size: 19px 19px, auto;
+  min-height: 100%;
+  padding: 16px;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.india-archive.era-2000s {
+  --accent: #4e759c;
+  --brown: #52617d;
+}
+
+.india-archive.era-2010s {
+  --accent: #80609b;
+  --brown: #605075;
+}
+
+.india-archive * {
+  box-sizing: border-box;
+}
+
+.india-archive button {
+  cursor: pointer;
+}
+
+.india-archive button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+/* HERO */
+
+.india-archive-hero {
+  position: relative;
+  min-height: 175px;
+  padding: 26px 20px 14px;
+  background:
+    radial-gradient(circle at 93% 10%, #fff8b52b, transparent 38%),
+    repeating-linear-gradient(
+      0deg,
+      #00000008 0,
+      #00000008 1px,
+      transparent 1px,
+      transparent 8px
+    ),
+    linear-gradient(125deg, #512c20, #965634);
+  border: 5px double #efcc84;
+  color: #fff2d2;
+  box-shadow: 5px 6px 0 #0003;
+  overflow: hidden;
+}
+
+.india-archive-sticker {
+  position: absolute;
+  top: 8px;
+  right: -35px;
+  background: #f1ca68;
+  color: #6b3428;
+  padding: 6px 37px;
+  font: 800 9px "Courier New", monospace;
+  transform: rotate(30deg);
+}
+
+.india-archive-hero-content {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.india-archive-emblem {
+  width: 88px;
+  height: 88px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  background: #f0cd8c;
+  border: 4px solid #ffffff7b;
+  border-radius: 50%;
+  font-size: 46px;
+  box-shadow: 4px 5px 0 #0004;
+}
+
+.india-archive-eyebrow {
+  font: 800 10px "Courier New", monospace;
+  letter-spacing: 1px;
+  margin: 0 0 7px;
+}
+
+.india-archive-hero h1 {
+  font-size: clamp(22px, 4vw, 32px);
+  line-height: 1.1;
+  margin: 0 0 8px;
+  text-shadow: 2px 3px #0005;
+}
+
+.india-archive-hero-content strong {
+  color: #f5c767;
+  font: bold 13px "Courier New", monospace;
+}
+
+.india-archive-hero-content p:last-child {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 9px 0;
+}
+
+.india-archive-hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 7px;
+  border-top: 1px solid #ffffff53;
+  padding-top: 10px;
+  margin-top: 18px;
+  font: bold 9px "Courier New", monospace;
+  letter-spacing: .5px;
+}
+
+/* TIME MACHINE */
+
+.india-time-machine {
+  margin: 20px 0;
+  background: #e5dbc3;
+  padding: 14px;
+  border: 3px solid;
+  border-color: #fff4dc #81684e #81684e #fff4dc;
+  box-shadow: 4px 5px #0002;
+}
+
+.india-time-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.india-time-header > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.india-time-header strong {
+  color: #673825;
+  font: 900 15px "Courier New", monospace;
+}
+
+.india-time-header small {
+  font-size: 11px;
+}
+
+.india-year-display {
+  background: #171e17;
+  color: #6aff85;
+  padding: 9px 12px;
+  border: 4px inset #a7a7a7;
+  font: bold 25px "Courier New", monospace;
+  text-shadow: 0 0 7px #69ff78;
+}
+
+.india-time-controls {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 17px;
+}
+
+.india-time-controls > button {
+  background: #d4b77d;
+  border: 2px solid;
+  border-color: #fff1d6 #77654b #77654b #fff1d6;
+  padding: 9px;
+  font-weight: bold;
+}
+
+.india-time-controls input[type="range"] {
+  flex: 1;
+  min-width: 40px;
+  accent-color: #935034;
+}
+
+.india-time-labels {
+  display: flex;
+  justify-content: space-between;
+  margin: 4px 39px 12px;
+  font: bold 10px monospace;
+}
+
+.india-era-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.india-era-buttons button {
+  flex: 1;
+  padding: 7px;
+  border: 1px solid #9f8661;
+  background: #fbf2de;
+  font: bold 11px monospace;
+}
+
+.india-era-buttons button.active {
+  background: #795137;
+  color: white;
+}
+
+/* SEARCH BAR */
+
+.india-archive-toolbar {
+  background: #f4e8cd;
+  border: 1px solid #b99b69;
+  padding: 13px;
+  margin-top: 18px;
+}
+
+.india-section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding-bottom: 11px;
+  border-bottom: 1px dashed #b59b72;
+}
+
+.india-section-title div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.india-section-title div span {
+  font-size: 26px;
+}
+
+.india-section-title strong {
+  font: 900 13px "Courier New", monospace;
+}
+
+.india-section-title small {
+  color: #877251;
+  font-size: 11px;
+}
+
+.india-search-row {
+  display: flex;
+  gap: 9px;
+  margin-top: 12px;
+}
+
+.india-search-row label {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 2px inset #b5a78f;
+  padding-left: 8px;
+}
+
+.india-search-row input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 10px;
+  font: 12px Arial, sans-serif;
+}
+
+.india-search-row > button {
+  background: #7e5037;
+  color: #fff0d6;
+  border: 2px outset #b28c6b;
+  padding: 9px;
+  font: bold 11px monospace;
+  white-space: nowrap;
+}
+
+.india-regions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.india-regions button {
+  background: #e7d9bc;
+  border: 1px solid #af9a72;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.india-regions button.active {
+  background: #783e29;
+  border-color: #783e29;
+  color: white;
+}
+
+/* CATEGORY SHELF */
+
+.india-category-shelf {
+  margin: 17px 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.india-category-shelf button {
+  min-height: 81px;
+  padding: 9px 5px;
+  border: 2px solid;
+  border-color: #fff3d9 #9d815a #9d815a #fff3d9;
+  background: #efe1c5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.india-category-shelf button.active {
+  background: #845238;
+  color: #fff2db;
+  border-color: #4c2c1e #d5b587 #d5b587 #4c2c1e;
+}
+
+.india-category-shelf button > span {
+  font-size: 25px;
+}
+
+.india-category-shelf button strong {
+  font: bold 10px Arial, sans-serif;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.india-category-shelf button small {
+  font-size: 10px;
+  opacity: .75;
+}
+
+/* RESULT LABEL */
+
+.india-results-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 18px 0 11px;
+  border-bottom: 2px dashed #9c805c;
+  padding-bottom: 9px;
+}
+
+.india-results-heading div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.india-results-heading strong {
+  font-size: 17px;
+}
+
+.india-results-heading span {
+  font-size: 11px;
+  color: #78674f;
+}
+
+.india-results-heading > button {
+  background: none;
+  border: 0;
+  color: #75432f;
+  font: bold 11px Arial, sans-serif;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+/* MEMORY CARDS */
+
+.india-memory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.india-memory-card {
+  min-width: 0;
+  padding: 9px;
+  background: #fff9ec;
+  border: 1px solid #c8ae83;
+  box-shadow: 4px 5px 0 #0002;
+  transform: rotate(-.4deg);
+}
+
+.india-memory-card:nth-child(even) {
+  transform: rotate(.5deg);
+}
+
+.india-memory-card.highlighted {
+  outline: 4px solid #e5a82b;
+}
+
+.india-card-cover {
+  position: relative;
+  width: 100%;
+  height: 165px;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0,
+      transparent 20px,
+      #fff5d710 20px,
+      #fff5d710 40px
+    ),
+    linear-gradient(125deg, #765238, #b37b4e);
+  border: 3px solid #e7d2a6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff7d9;
+}
+
+.india-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.02) contrast(1.03);
+}
+
+.india-memory-card:nth-child(4n + 2) .india-card-cover {
+  background: linear-gradient(125deg, #555c6d, #93a2a1);
+}
+
+.india-memory-card:nth-child(4n + 3) .india-card-cover {
+  background: linear-gradient(125deg, #71565f, #b48f93);
+}
+
+.india-memory-card:nth-child(4n + 4) .india-card-cover {
+  background: linear-gradient(125deg, #556442, #9aab76);
+}
+
+.india-card-corner {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font: bold 9px "Courier New", monospace;
+  background: #fff1c9;
+  color: #6b4a32;
+  padding: 5px 6px;
+  z-index: 2;
+}
+
+.india-card-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+
+.india-card-art-ring {
+  position: absolute;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  border: 2px dashed #ffffff8c;
+  box-shadow: 0 0 0 14px #ffffff10, 0 0 0 26px #ffffff0a;
+}
+
+.india-card-art-icon {
+  position: relative;
+  z-index: 1;
+  font-size: 60px;
+  filter: drop-shadow(3px 5px 2px #0005);
+}
+
+.india-card-number {
+  position: absolute;
+  right: 7px;
+  bottom: 6px;
+  font: bold 9px monospace;
+  z-index: 2;
+  background: #00000055;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.india-card-paper {
+  padding: 11px 4px 3px;
+}
+
+.india-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  color: #956a3d;
+  font: bold 9px monospace;
+}
+
+.india-card-head span:first-child {
+  overflow-wrap: anywhere;
+}
+
+.india-card-paper h3 {
+  font-size: 17px;
+  line-height: 1.25;
+  margin: 9px 0;
+}
+
+.india-card-paper p {
+  font-size: 12px;
+  line-height: 1.55;
+  min-height: 55px;
+  color: #695a45;
+  margin: 0 0 12px;
+}
+
+.india-card-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  padding-top: 9px;
+  border-top: 1px dashed #c8b696;
+}
+
+.india-card-actions button {
+  border: 1px solid #bd9e6b;
+  background: #eee0c0;
+  padding: 7px 9px;
+  font: bold 10px "Courier New", monospace;
+  color: #67422a;
+}
+
+.india-card-actions button:last-child {
+  font: bold 20px Arial, sans-serif;
+  line-height: 1;
+  padding: 3px 9px;
+}
+
+.india-card-actions button.saved {
+  background: #fad7da;
+  color: #c02c43;
+}
+
+/* EMPTY STATE */
+
+.india-empty {
+  text-align: center;
+  padding: 35px 20px;
+  border: 2px dashed #ab8b5e;
+  background: #f5e7ca;
+}
+
+.india-empty > span {
+  font-size: 48px;
+}
+
+.india-empty h3 {
+  margin-bottom: 6px;
+}
+
+.india-empty p {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.india-empty button {
+  padding: 9px 14px;
+  background: #7b4d31;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+/* POSTCARD FOOTER */
+
+.india-archive-footer {
+  margin-top: 22px;
+  padding: 18px;
+  background: #f7e9c8;
+  border: 2px dashed #c2a275;
+  text-align: center;
+}
+
+.india-archive-footer span {
+  font: bold 11px monospace;
+  color: #924e31;
+}
+
+.india-archive-footer p {
+  font-size: 13px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.india-archive-footer small {
+  font-size: 10px;
+  color: #836f57;
+}
+
+/* MODAL */
+
+.india-modal-backdrop {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  padding: 15px;
+  background: #060606ba;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.india-memory-modal {
+  width: min(660px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #f4e6ca;
+  border: 4px solid #c4a57e;
+  box-shadow: 12px 15px 0 #0005;
+}
+
+.india-modal-topbar {
+  background: #633c2c;
+  color: white;
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: bold 12px monospace;
+}
+
+.india-modal-topbar button {
+  background: #d8c4a0;
+  color: #311b17;
+  border: 2px outset #fff0d0;
+  width: 25px;
+  height: 24px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.india-modal-content {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px;
+}
+
+.india-modal-picture {
+  min-height: 225px;
+  background: linear-gradient(145deg, #65412f, #c48a51);
+  border: 10px solid #fff8e8;
+  box-shadow: 4px 5px 0 #0002;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  transform: rotate(-2deg);
+  overflow: hidden;
+}
+
+.india-modal-image {
+  width: 100%;
+  height: 100%;
+  min-height: 190px;
+  object-fit: cover;
+  display: block;
+}
+
+.india-modal-picture span {
+  font-size: 95px;
+}
+
+.india-modal-picture small {
+  color: #fff0ca;
+  font: bold 10px monospace;
+  padding-bottom: 10px;
+}
+
+.india-modal-info > small {
+  font-size: 11px;
+  color: #915e39;
+}
+
+.india-modal-info h2 {
+  font-size: 26px;
+  margin: 10px 0;
+  line-height: 1.2;
+}
+
+.india-modal-info p {
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.india-modal-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin: 15px 0;
+}
+
+.india-modal-facts > div {
+  border: 1px solid #c8ac84;
+  padding: 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.india-modal-facts strong {
+  font: bold 10px monospace;
+  color: #906340;
+}
+
+.india-modal-facts span {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.india-modal-favorite {
+  width: 100%;
+  background: #7c4930;
+  color: #fff0d2;
+  border: 3px outset #b7885b;
+  padding: 12px;
+  font: bold 12px monospace;
+}
+
+.india-modal-bottom {
+  border-top: 1px solid #c2ab8d;
+  padding: 9px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: bold 10px monospace;
+}
+
+.india-modal-bottom button {
+  border: 2px outset #fff1da;
+  background: #d2bc95;
+  padding: 7px 12px;
+  font-weight: bold;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 640px) {
+  .india-archive {
+    padding: 9px;
+  }
+
+  .india-archive-hero {
+    padding: 23px 12px 12px;
+  }
+
+  .india-archive-emblem {
+    width: 59px;
+    height: 59px;
+    font-size: 32px;
+  }
+
+  .india-archive-hero-content {
+    gap: 10px;
+  }
+
+  .india-archive-hero h1 {
+    font-size: 21px;
+  }
+
+  .india-archive-hero-content strong {
+    font-size: 10px;
+  }
+
+  .india-category-shelf {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .india-category-shelf button {
+    min-height: 76px;
+  }
+
+  .india-memory-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .india-card-cover {
+    height: 180px;
+  }
+
+  .india-card-paper p {
+    min-height: 0;
+  }
+
+  .india-modal-content {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .india-modal-picture {
+    min-height: 150px;
+  }
+
+  .india-modal-image {
+    min-height: 140px;
+  }
+
+  .india-modal-picture span {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 380px) {
+  .india-search-row {
+    flex-wrap: wrap;
+  }
+
+  .india-search-row > button {
+    width: 100%;
+  }
+
+  .india-archive-hero-bottom {
+    font-size: 8px;
+  }
+}
+
+/* V3.9 — Show complete memory images without cropping */
+
+.india-card-cover {
+  height: 190px;
+  background: #f3e6ce !important;
+}
+
+.india-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  object-position: center;
+  display: block;
+}
+
+/* V3.9 FIX — Full images in Memory Viewer */
+
+.india-modal-picture {
+  width: 100%;
+  min-height: 240px;
+  height: auto;
+  padding: 10px;
+  background: #f7ead2;
+  border: 8px solid #fff8e8;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transform: none;
+}
+
+.india-modal-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: 340px;
+  object-fit: contain !important;
+  object-position: center;
+}
+
+.india-modal-picture small {
+  color: #775137;
+  padding: 5px 0;
+}
+
+/* Give the popup picture a little more space */
+
+.india-modal-content {
+  grid-template-columns: minmax(240px, 45%) minmax(0, 1fr);
+  align-items: start;
+}
+
+/* Smaller screens */
+
+@media (max-width: 640px) {
+  .india-modal-content {
+    grid-template-columns: 1fr;
+  }
+
+  .india-modal-picture {
+    min-height: 0;
+  }
+
+  .india-modal-image {
+    max-height: 300px;
+  }
+}

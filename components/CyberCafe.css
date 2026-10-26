@@ -1,0 +1,1067 @@
+
+/* NOSTALGIA VAULT — COMPLETE CYBER CAFE */
+
+.cafe-complete,
+.xp-login {
+  font-family: Tahoma, Arial, sans-serif;
+  color: #101010;
+  font-size: 12px;
+}
+
+.cafe-complete * ,
+.xp-login * {
+  box-sizing: border-box;
+}
+
+.cafe-complete button,
+.xp-login button {
+  cursor: pointer;
+}
+
+.cafe-complete button:disabled,
+.xp-login button:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
+.cafe-complete input,
+.cafe-complete textarea,
+.xp-login input {
+  font-family: inherit;
+}
+
+/* WINDOWS XP-INSPIRED LOGIN */
+
+.xp-login {
+  min-height: 485px;
+  display: flex;
+  flex-direction: column;
+  background: #3766cb;
+  color: white;
+}
+
+.xp-login-top {
+  padding: 12px 18px;
+  background: #16398a;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.xp-login-middle {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 35px 25px;
+  background:
+    radial-gradient(circle at 30% 50%, #719eec, transparent 50%),
+    linear-gradient(110deg, #3766cb, #244ca5);
+}
+
+.xp-login-brand {
+  text-align: center;
+  padding: 20px;
+}
+
+.xp-windows-logo {
+  font-size: 65px;
+}
+
+.xp-login-brand h1 {
+  font-size: clamp(22px, 3vw, 31px);
+  margin: 9px 0;
+  font-weight: 900;
+  font-style: italic;
+  text-shadow: 2px 3px #12347f;
+}
+
+.xp-login-brand p {
+  font-size: 11px;
+  color: #e4eeff;
+  line-height: 1.6;
+}
+
+.xp-login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 22px;
+  border-left: 1px solid #a7c3ff;
+}
+
+.xp-user-icon {
+  font-size: 48px;
+  background: #d6ecff;
+  border: 3px solid white;
+  border-radius: 7px;
+  padding: 6px;
+}
+
+.xp-login-form label {
+  font-weight: bold;
+}
+
+.xp-login-form input {
+  width: 100%;
+  max-width: 260px;
+  padding: 9px;
+  border: 2px solid #b5cbf7;
+  border-radius: 3px;
+}
+
+.xp-login-form button {
+  background: linear-gradient(#7eb95c, #347d30);
+  border: 2px solid #d4f1b8;
+  border-radius: 5px;
+  padding: 10px 16px;
+  font-weight: 900;
+  color: white;
+}
+
+.xp-login-form button span {
+  font-size: 18px;
+}
+
+.xp-login-form small {
+  color: #dce6fc;
+}
+
+.xp-login-bottom {
+  padding: 12px 18px;
+  background: #16398a;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* CAFE COUNTER */
+
+.cafe-complete {
+  background: #d8d8d8;
+  padding: 11px;
+}
+
+.cafe3-header {
+  background: linear-gradient(90deg, #192e71, #3557ae);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  color: white;
+}
+
+.cafe3-header strong {
+  font: 900 16px "Courier New", monospace;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.cafe3-header span {
+  font-size: 9px;
+}
+
+.cafe3-header button {
+  padding: 8px 10px;
+  border: 2px solid;
+  border-color: #fff #666 #666 #fff;
+  background: #cecece;
+  color: black;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.cafe3-session {
+  background: #1d1d1d;
+  color: #e1f4e5;
+  margin: 8px 0;
+  padding: 9px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  font: bold 11px monospace;
+}
+
+.cafe3-session .online {
+  color: #78ff8e;
+}
+
+.cafe3-session .offline {
+  color: #ff9e9e;
+}
+
+/* DIAL-UP */
+
+.cafe3-modem {
+  background: #ececec;
+  border: 2px solid;
+  border-color: #fff #777 #777 #fff;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.cafe3-modem strong {
+  color: #00177b;
+}
+
+.cafe3-modem p {
+  font-size: 11px;
+  line-height: 1.5;
+  margin: 8px 0;
+}
+
+.cafe3-progress {
+  height: 19px;
+  padding: 2px;
+  background: white;
+  border: 2px inset #777;
+  margin-bottom: 9px;
+}
+
+.cafe3-progress > div {
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #082aaf 0,
+    #082aaf 13px,
+    transparent 13px,
+    transparent 16px
+  );
+  transition: width .1s linear;
+}
+
+.cafe3-modem-buttons {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.cafe3-modem-buttons button,
+.cafe3-toolbar button,
+.cafe3-address button,
+.cafe3-documents button,
+.cafe3-player-controls button,
+.cafe3-primary,
+.cafe3-offline button {
+  background: #c8c8c8;
+  border: 2px solid;
+  border-color: white #666 #666 white;
+  padding: 7px 10px;
+  color: black;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.cafe3-modem-buttons label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+}
+
+/* OLD INTERNET EXPLORER */
+
+.cafe3-ie {
+  background: #c0c0c0;
+  border: 3px solid;
+  border-color: white #555 #555 white;
+}
+
+.cafe3-ie-title {
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  background: linear-gradient(90deg, #000080, #2877bd);
+  color: white;
+  font-weight: bold;
+}
+
+.cafe3-ie-menu {
+  padding: 7px 9px;
+  text-decoration: underline;
+  font-size: 11px;
+}
+
+.cafe3-toolbar {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  padding: 6px 9px;
+  border-top: 1px solid white;
+}
+
+.cafe3-address {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 9px;
+}
+
+.cafe3-address input {
+  flex: 1;
+  min-width: 0;
+  border: 2px inset #888;
+  background: white;
+  padding: 7px;
+  font-size: 12px;
+}
+
+.cafe3-bookmarks {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  padding: 7px 9px;
+  border-top: 1px solid white;
+}
+
+.cafe3-bookmarks button {
+  background: #d7d7d7;
+  border: 1px solid #8a8a8a;
+  padding: 6px 8px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.cafe3-bookmarks button:hover {
+  background: #e7eeff;
+}
+
+.cafe3-webpage {
+  background: #fff;
+  border: 2px inset #888;
+  min-height: 350px;
+  max-height: 480px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.cafe3-status {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 9px;
+  border-top: 1px solid white;
+  font-size: 10px;
+}
+
+/* OFFLINE PAGE */
+
+.cafe3-offline {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.cafe3-offline > span {
+  font-size: 55px;
+}
+
+.cafe3-offline h2 {
+  font-size: 17px;
+  color: #183675;
+}
+
+.cafe3-offline p {
+  color: #555;
+}
+
+.cafe3-offline small {
+  display: block;
+  margin-top: 19px;
+  color: #777;
+}
+
+/* GOOGLE-INSPIRED DIRECTORY */
+
+.cafe3-home {
+  padding: 27px 15px;
+  text-align: center;
+}
+
+.cafe3-google {
+  font: 900 clamp(34px, 6vw, 55px) Georgia, serif;
+  letter-spacing: -4px;
+}
+
+.cafe3-google span:nth-child(1),
+.cafe3-google span:nth-child(4) {
+  color: #2e65bd;
+}
+
+.cafe3-google span:nth-child(2),
+.cafe3-google span:nth-child(6) {
+  color: #d64232;
+}
+
+.cafe3-google span:nth-child(3) {
+  color: #e5b72c;
+}
+
+.cafe3-google span:nth-child(5) {
+  color: #32904b;
+}
+
+.cafe3-google small {
+  font: 700 12px Arial, sans-serif;
+  color: #777;
+  letter-spacing: 0;
+}
+
+.cafe3-home > p {
+  color: #666;
+  font-size: 11px;
+}
+
+.cafe3-home form {
+  margin: 18px auto 26px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.cafe3-home form input {
+  width: min(360px, 100%);
+  padding: 8px;
+  border: 2px inset #aaa;
+}
+
+.cafe3-home form button {
+  background: #dedede;
+  border: 2px outset #eee;
+  padding: 8px 12px;
+  font-weight: bold;
+}
+
+.cafe3-directory {
+  text-align: left;
+  max-width: 570px;
+  margin: auto;
+  border-top: 1px solid #ddd;
+  padding-top: 12px;
+}
+
+.cafe3-directory > div {
+  margin: 12px 0 17px;
+}
+
+.cafe3-directory button {
+  display: block;
+  border: none;
+  background: transparent;
+  color: #0000b3;
+  text-decoration: underline;
+  font-size: 14px;
+  padding: 0;
+}
+
+.cafe3-directory small {
+  display: block;
+  color: #2e842f;
+  margin: 3px 0;
+}
+
+.cafe3-directory p {
+  margin: 3px 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* ORKUT-INSPIRED */
+
+.cafe3-orkut {
+  background: #e7effa;
+  min-height: 350px;
+}
+
+.cafe3-orkut > header {
+  background: white;
+  border-bottom: 3px solid #b4d4ef;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+}
+
+.cafe3-orkut header strong {
+  font-size: 28px;
+  color: #d44c98;
+  letter-spacing: -2px;
+}
+
+.cafe3-orkut header span {
+  color: #59769b;
+  font-size: 10px;
+}
+
+.cafe3-orkut > nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #d5e7f7;
+  padding: 9px 12px;
+}
+
+.cafe3-orkut nav button {
+  background: transparent;
+  color: #225994;
+  border: none;
+  text-decoration: underline;
+  padding: 0;
+  font-weight: bold;
+}
+
+.cafe3-orkut-layout {
+  display: grid;
+  grid-template-columns: 145px minmax(0, 1fr);
+  gap: 12px;
+  padding: 12px;
+}
+
+.cafe3-orkut-layout aside,
+.cafe3-orkut-layout section {
+  background: white;
+  padding: 13px;
+  border-radius: 8px;
+  min-width: 0;
+}
+
+.cafe3-avatar {
+  height: 115px;
+  display: grid;
+  place-items: center;
+  background: #d9edff;
+  border: 4px solid #bdd9ee;
+  font-size: 50px;
+}
+
+.cafe3-orkut-layout aside h3 {
+  font-size: 14px;
+  color: #2362a5;
+  overflow-wrap: anywhere;
+}
+
+.cafe3-orkut-layout aside p {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.cafe3-orkut-layout aside small {
+  display: block;
+  margin-top: 8px;
+  color: #d15b98;
+}
+
+.cafe3-orkut-layout section h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  color: #2461a1;
+  overflow-wrap: anywhere;
+}
+
+.cafe3-orkut-note {
+  background: #d9edf9;
+  padding: 9px;
+  margin-bottom: 9px;
+}
+
+.cafe3-orkut-layout section textarea {
+  width: 100%;
+  min-width: 0;
+  display: block;
+  padding: 9px;
+  resize: vertical;
+  border: 1px solid #abc4d5;
+  margin-bottom: 8px;
+}
+
+.cafe3-scraps {
+  margin-top: 14px;
+  display: grid;
+  gap: 9px;
+}
+
+.cafe3-scraps article {
+  background: #f4f8ff;
+  padding: 11px;
+  border-bottom: 1px solid #cedced;
+}
+
+.cafe3-scraps strong {
+  color: #285cb7;
+}
+
+.cafe3-scraps small {
+  color: #777;
+  margin-left: 9px;
+}
+
+.cafe3-scraps p {
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin-bottom: 0;
+}
+
+.cafe3-friend {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px;
+  margin-bottom: 8px;
+  background: #f4f9ff;
+  border-bottom: 1px solid #d7e6f4;
+}
+
+.cafe3-friend strong {
+  flex: 1;
+}
+
+.cafe3-friend small {
+  color: #777;
+}
+
+.cafe3-community {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px;
+  border-bottom: 1px solid #d8e6f3;
+}
+
+.cafe3-community > span {
+  font-size: 27px;
+}
+
+.cafe3-community > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.cafe3-community strong,
+.cafe3-community small {
+  display: block;
+}
+
+.cafe3-community strong {
+  color: #285aa0;
+}
+
+.cafe3-community small {
+  color: #777;
+  margin-top: 4px;
+}
+
+.cafe3-community button {
+  padding: 6px;
+  background: #e8e8e8;
+  border: 1px solid #999;
+}
+
+.cafe3-muted {
+  color: #777;
+  font-size: 10px;
+}
+
+/* MESSENGER */
+
+.cafe3-messenger {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  min-height: 350px;
+  background: #f7f5ff;
+}
+
+.cafe3-messenger > aside {
+  background: #e8dbfa;
+  border-right: 1px solid #ba99d5;
+  padding: 12px;
+}
+
+.cafe3-messenger aside h3 {
+  color: #602390;
+  font-size: 16px;
+}
+
+.cafe3-messenger aside > p {
+  padding: 9px;
+  background: white;
+}
+
+.cafe3-messenger aside > strong {
+  display: block;
+  margin-bottom: 9px;
+}
+
+.cafe3-messenger aside button {
+  text-align: left;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  font-size: 11px;
+}
+
+.cafe3-messenger aside button.active {
+  background: #d0b4ed;
+  font-weight: bold;
+}
+
+.cafe3-messenger > section {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.cafe3-chat-title {
+  background: #682c9d;
+  color: white;
+  padding: 9px;
+  font-weight: bold;
+}
+
+.cafe3-chat-messages {
+  height: 225px;
+  flex: 1;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #bbb;
+  padding: 11px;
+}
+
+.cafe3-chat-messages p {
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.cafe3-chat-messages .from-me strong {
+  color: #1955b3;
+}
+
+.cafe3-chat-messages .from-buddy strong {
+  color: #993dad;
+}
+
+.cafe3-chat-messages .from-system {
+  color: #777;
+  font-style: italic;
+}
+
+.cafe3-messenger form {
+  display: flex;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.cafe3-messenger form input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid #bbb;
+}
+
+.cafe3-messenger form button {
+  background: #d7d0df;
+  border: 2px outset #eee;
+  font-weight: bold;
+}
+
+.cafe3-buzz {
+  background: #ffeb7a;
+  border: 1px solid #c5a235;
+  align-self: flex-start;
+  margin: 8px 0;
+  padding: 6px 10px;
+  font-weight: bold;
+}
+
+.cafe3-messenger section > small {
+  color: #777;
+}
+
+/* MY DOCUMENTS */
+
+.cafe3-documents {
+  min-height: 350px;
+  padding: 16px;
+}
+
+.cafe3-documents > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 9px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ccc;
+  color: #183b8a;
+}
+
+.cafe3-file-list {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.cafe3-file-list button {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  text-align: left;
+  align-items: center;
+  column-gap: 10px;
+  background: #f7f9fc;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.cafe3-file-list button:hover {
+  background: #e2edff;
+}
+
+.cafe3-file-list span {
+  grid-row: span 2;
+  font-size: 25px;
+}
+
+.cafe3-file-list small {
+  color: #777;
+  font-size: 10px;
+}
+
+.cafe3-notepad {
+  margin-top: 12px;
+  padding: 8px;
+  border: 2px solid #aaa;
+  background: #eee;
+}
+
+.cafe3-notepad > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.cafe3-notepad textarea {
+  width: 100%;
+  resize: vertical;
+  background: white;
+  padding: 11px;
+  font: 13px "Courier New", monospace;
+}
+
+.cafe3-notepad > small {
+  display: block;
+  color: #666;
+  margin-top: 7px;
+}
+
+/* MUSIC PLAYER */
+
+.cafe3-music {
+  padding: 23px 12px;
+  background: #eee;
+  text-align: center;
+  min-height: 350px;
+}
+
+.cafe3-winamp {
+  max-width: 370px;
+  margin: auto;
+  background: #42434d;
+  border: 5px ridge #888;
+  color: #a8f47e;
+  box-shadow: 6px 7px 0 #0002;
+  text-align: left;
+}
+
+.cafe3-winamp-title {
+  background: #101271;
+  color: white;
+  padding: 9px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.cafe3-music-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 13px;
+  margin: 10px;
+  border: 3px inset #777;
+  background: #101b16;
+  font-family: monospace;
+}
+
+.cafe3-music-screen > span {
+  font-size: 10px;
+}
+
+.cafe3-music-screen > strong {
+  font-size: 15px;
+}
+
+.cafe3-music-screen > small {
+  color: #5dc28a;
+}
+
+.cafe3-equalizer {
+  height: 48px;
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  padding-top: 6px;
+}
+
+.cafe3-equalizer i {
+  width: 100%;
+  background: linear-gradient(#ffbd3a, #6ce869);
+}
+
+.cafe3-player-controls {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin: 15px 10px;
+}
+
+.cafe3-player-controls button {
+  min-width: 45px;
+}
+
+.cafe3-tracklist {
+  display: grid;
+  padding: 10px;
+  gap: 4px;
+}
+
+.cafe3-tracklist button {
+  text-align: left;
+  border: 1px solid #5a6259;
+  background: #17221a;
+  color: #9be39b;
+  font: 11px monospace;
+  padding: 8px;
+}
+
+.cafe3-tracklist button.active {
+  background: #456249;
+  color: white;
+}
+
+.cafe3-music > p {
+  margin-top: 16px;
+  color: #666;
+  font-size: 11px;
+}
+
+/* FOOTER */
+
+.cafe3-bottom {
+  margin-top: 10px;
+  padding: 9px;
+  color: #5f5f5f;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 10px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 650px) {
+  .xp-login-middle {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 12px;
+  }
+
+  .xp-login-brand {
+    padding: 5px;
+  }
+
+  .xp-windows-logo {
+    font-size: 35px;
+  }
+
+  .xp-login-brand h1 {
+    margin: 0;
+  }
+
+  .xp-login-form {
+    border-left: none;
+    border-top: 1px solid #a7c3ff;
+    padding: 15px;
+  }
+
+  .cafe-complete {
+    padding: 6px;
+  }
+
+  .cafe3-header strong {
+    font-size: 13px;
+  }
+
+  .cafe3-header span {
+    font-size: 8px;
+  }
+
+  .cafe3-session {
+    font-size: 10px;
+  }
+
+  .cafe3-toolbar button,
+  .cafe3-bookmarks button {
+    font-size: 10px;
+    padding: 6px;
+  }
+
+  .cafe3-orkut-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cafe3-orkut-layout aside {
+    display: none;
+  }
+
+  .cafe3-messenger {
+    grid-template-columns: 1fr;
+  }
+
+  .cafe3-messenger > aside {
+    border-right: 0;
+    border-bottom: 1px solid #ba99d5;
+  }
+
+  .cafe3-messenger aside button {
+    display: inline-block;
+    width: auto;
+  }
+
+  .cafe3-chat-messages {
+    height: 180px;
+  }
+
+  .cafe3-webpage {
+    max-height: 410px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cafe3-progress > div {
+    transition: none;
+  }
+}

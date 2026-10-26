@@ -1,0 +1,397 @@
+
+/* NOSTALGIA OS V4.2 - CLASSIC ACCESSORIES */
+
+.v42-desktop-shortcuts {
+  position: absolute;
+  right: 22px;
+  top: 205px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.v42-shortcut {
+  width: 108px;
+  padding: 5px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  cursor: pointer;
+  font-family: Tahoma, Arial, sans-serif;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.v42-shortcut > span {
+  font-size: 37px;
+  line-height: 43px;
+}
+
+.v42-shortcut small {
+  font-size: 11px;
+  text-align: center;
+  padding: 3px;
+}
+
+.v42-shortcut:hover small,
+.v42-shortcut:focus-visible small {
+  background: #000080;
+  outline: 1px dotted white;
+}
+
+.v42-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  background: #0007;
+  font: 12px Tahoma, Arial, sans-serif;
+  color: #111;
+}
+
+.v42-window {
+  width: min(780px, 100%);
+  max-height: 90dvh;
+  min-height: 410px;
+  display: flex;
+  flex-direction: column;
+  background: #c0c0c0;
+  border: 3px solid;
+  border-color: #fff #555 #555 #fff;
+  box-shadow: 7px 8px 0 #0005;
+  overflow: hidden;
+}
+
+.v42-window.maximized {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+}
+
+.v42-titlebar {
+  flex: 0 0 auto;
+  min-height: 30px;
+  padding: 4px 5px 4px 9px;
+  color: white;
+  background: linear-gradient(90deg, #000080, #3483be);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.v42-titlebar strong {
+  font-size: 12px;
+}
+
+.v42-titlebar > div {
+  display: flex;
+  gap: 2px;
+}
+
+.v42-titlebar button {
+  width: 23px;
+  height: 21px;
+  border: 2px solid;
+  border-color: white #555 #555 white;
+  background: #c0c0c0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.v42-window-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.v42-notepad,
+.v42-paint,
+.v42-explorer {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.v42-notepad-menu {
+  padding: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  border-bottom: 1px solid #888;
+}
+
+.v42-notepad-menu button,
+.v42-paint-toolbar button,
+.v42-explorer-toolbar button {
+  background: #d1d1d1;
+  border: 2px solid;
+  border-color: #fff #777 #777 #fff;
+  padding: 7px 10px;
+  font: 11px Tahoma, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.v42-notepad > textarea {
+  width: 100%;
+  min-height: 350px;
+  flex: 1 1 auto;
+  padding: 12px;
+  background: white;
+  border: 2px inset #999;
+  resize: vertical;
+  outline: none;
+  color: #111;
+  font: 14px/1.5 "Courier New", monospace;
+}
+
+.v42-notepad-status,
+.v42-paint-status,
+.v42-explorer-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 7px 10px;
+  border-top: 1px solid #fff;
+  font-size: 10px;
+  background: #c0c0c0;
+}
+
+/* PAINT */
+
+.v42-paint-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 9px;
+}
+
+.v42-paint-toolbar button.active {
+  background: #9aaed4;
+  border-color: #555 #fff #fff #555;
+}
+
+.v42-paint-toolbar label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+}
+
+.v42-paint-toolbar input[type="range"] {
+  width: 90px;
+}
+
+.v42-colorbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  padding: 9px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid #888;
+}
+
+.v42-colorbar button {
+  width: 23px;
+  height: 23px;
+  border: 2px solid #888;
+  padding: 0;
+  cursor: pointer;
+}
+
+.v42-colorbar button.selected {
+  outline: 2px solid #000080;
+  outline-offset: 1px;
+}
+
+.v42-colorbar input[type="color"] {
+  width: 30px;
+  height: 28px;
+  padding: 1px;
+  cursor: pointer;
+}
+
+.v42-canvas-scroll {
+  padding: 14px;
+  background: #999;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.v42-canvas-scroll canvas {
+  display: block;
+  width: min(800px, 100%);
+  max-width: 100%;
+  height: auto;
+  background: white;
+  border: 1px solid #555;
+  box-shadow: 2px 3px 0 #0003;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+/* EXPLORER */
+
+.v42-explorer-toolbar {
+  padding: 8px;
+  border-bottom: 1px solid #888;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.v42-explorer-toolbar button:disabled {
+  opacity: .45;
+}
+
+.v42-explorer-toolbar span {
+  flex: 1;
+  min-width: 150px;
+  background: white;
+  padding: 8px;
+  border: 2px inset #aaa;
+  font: 11px monospace;
+  overflow-wrap: anywhere;
+}
+
+.v42-explorer-layout {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  flex: 1;
+  min-height: 325px;
+  background: white;
+}
+
+.v42-explorer-layout aside {
+  padding: 12px;
+  background: #e3e8f5;
+  border-right: 1px solid #aaa;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.v42-explorer-layout aside strong {
+  color: #15418b;
+  margin-bottom: 9px;
+}
+
+.v42-explorer-layout aside button {
+  background: transparent;
+  border: 0;
+  text-align: left;
+  padding: 8px 4px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.v42-explorer-layout aside button:hover {
+  background: #d4e0fb;
+}
+
+.v42-explorer-items {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-content: start;
+  gap: 12px;
+  padding: 16px;
+  min-width: 0;
+}
+
+.v42-explorer-items button {
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  min-height: 95px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  text-align: center;
+  overflow-wrap: anywhere;
+  font: 11px Tahoma, Arial, sans-serif;
+}
+
+.v42-explorer-items button:hover {
+  background: #deebff;
+  border-color: #b2cbec;
+}
+
+.v42-explorer-items button span {
+  font-size: 34px;
+}
+
+@media (max-width: 600px) {
+  .v42-desktop-shortcuts {
+    top: 155px;
+    right: 8px;
+    gap: 8px;
+  }
+
+  .v42-shortcut {
+    width: 82px;
+  }
+
+  .v42-shortcut > span {
+    font-size: 29px;
+    line-height: 34px;
+  }
+
+  .v42-shortcut small {
+    font-size: 10px;
+  }
+
+  .v42-overlay {
+    padding: 4px;
+  }
+
+  .v42-window {
+    max-height: 95dvh;
+    min-height: 360px;
+  }
+
+  .v42-canvas-scroll {
+    padding: 6px;
+  }
+
+  .v42-explorer-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .v42-explorer-layout aside {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3px;
+    border-right: 0;
+    border-bottom: 1px solid #aaa;
+  }
+
+  .v42-explorer-layout aside strong {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .v42-explorer-items {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
