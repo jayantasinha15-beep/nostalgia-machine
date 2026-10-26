@@ -1178,6 +1178,23 @@ function openRetroTool(tool: RetroTool) {
   ✉️ Contact Us
 </button>
 
+<button
+  onClick={() => {
+    window.location.href = "/privacy-policy";
+  }}
+>
+  🔒 Privacy Policy
+</button>
+
+<button
+  onClick={() => {
+    window.location.href = "/disclaimer";
+  }}
+>
+  ⚠️ Disclaimer
+</button>
+
+
               
 
               <div className="v40-menu-separator" />

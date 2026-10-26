@@ -49,6 +49,10 @@ export default function RetroInfoShell({
             <Link href="/">🏠 Desktop</Link>
             <Link href="/about">📖 About</Link>
             <Link href="/contact">✉️ Contact</Link>
+            
+            <Link href="/privacy-policy">🔒 Privacy Policy</Link>
+            <Link href="/disclaimer">⚠️ Disclaimer</Link>
+
           </nav>
 
           <div className="retro-info-content">{children}</div>
