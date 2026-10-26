@@ -3,26 +3,24 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+
 import {
   memoryArticles,
   type MemoryArticle,
 } from "@/lib/memory-articles";
 
-const ALL_CATEGORY = "All Memories";
+import {
+  MEMORY_CATEGORIES,
+  getMemoryCategory,
+  type MemoryCategory,
+} from "@/lib/memory-categories";
+
+const ALL_CATEGORY: MemoryCategory = "All Memories";
 
 export default function MemoryExplorerV50() {
   const [search, setSearch] = useState("");
-  const [category, setCategory] = useState(ALL_CATEGORY);
-
-  const categories = useMemo(
-    () => [
-      ALL_CATEGORY,
-      ...Array.from(
-        new Set(memoryArticles.map((article) => article.category))
-      ),
-    ],
-    []
-  );
+  const [category, setCategory] =
+    useState<MemoryCategory>(ALL_CATEGORY);
 
   const filteredArticles = useMemo(() => {
     const normalized = search.trim().toLowerCase();
@@ -30,14 +28,19 @@ export default function MemoryExplorerV50() {
     return memoryArticles.filter((article: MemoryArticle) => {
       const matchesCategory =
         category === ALL_CATEGORY ||
-        article.category === category;
+        getMemoryCategory(article) === category;
 
       const searchableText = [
         article.title,
         article.category,
+        getMemoryCategory(article),
         article.description,
         article.intro,
         ...article.keywords,
+        ...article.sections.flatMap((section) => [
+          section.heading,
+          ...section.paragraphs,
+        ]),
       ]
         .join(" ")
         .toLowerCase();
@@ -62,7 +65,7 @@ export default function MemoryExplorerV50() {
       >
         <div className="memory-v50-search-heading">
           <span>🔍 Find a Childhood Memory</span>
-          <span>MEMORY.EXE</span>
+          <span>MEMORY.EXE V5.1</span>
         </div>
 
         <label
@@ -80,14 +83,14 @@ export default function MemoryExplorerV50() {
             onChange={(event) =>
               setSearch(event.target.value)
             }
-            placeholder="Try Shaktimaan, Orkut, Pujo, TV..."
+            placeholder="Try Shaktimaan, Orkut, Pujo..."
             autoComplete="off"
           />
 
           <button
             type="button"
-            onClick={clearFilters}
             className="memory-v50-reset"
+            onClick={clearFilters}
           >
             ↻ Reset
           </button>
@@ -98,7 +101,7 @@ export default function MemoryExplorerV50() {
           role="group"
           aria-label="Filter by category"
         >
-          {categories.map((item) => (
+          {MEMORY_CATEGORIES.map((item) => (
             <button
               key={item}
               type="button"
@@ -147,7 +150,7 @@ export default function MemoryExplorerV50() {
 
               <div className="memory-card-body">
                 <p className="memory-card-category">
-                  {article.category}
+                  {getMemoryCategory(article)}
                 </p>
 
                 <h2>{article.title}</h2>
@@ -174,8 +177,8 @@ export default function MemoryExplorerV50() {
 
           <button
             type="button"
-            onClick={clearFilters}
             className="memory-v50-reset"
+            onClick={clearFilters}
           >
             Show All Memories
           </button>

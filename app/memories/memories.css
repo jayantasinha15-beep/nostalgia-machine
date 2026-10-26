@@ -478,3 +478,212 @@
     padding: 28px 12px;
   }
 }
+
+/* =========================================
+   NOSTALGIA OS V5.1
+   SOCIAL SHARE + RELATED MEMORIES
+   ========================================= */
+
+.memory-v51-share {
+  margin: 28px 0;
+  padding: 16px;
+  background: #e8e8e8;
+  border: 3px solid;
+  border-color: #fff #777 #777 #fff;
+}
+
+.memory-v51-share-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: -16px -16px 15px;
+  padding: 9px 12px;
+  background: linear-gradient(90deg, #000080, #3979bf);
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.memory-v51-share-heading span:last-child {
+  font: bold 10px "Courier New", monospace;
+}
+
+.memory-v51-share > p {
+  margin: 0 0 15px;
+  color: #333;
+  font-size: 13px;
+}
+
+.memory-v51-share-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.memory-v51-share-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 41px;
+  padding: 9px 15px;
+  font: bold 12px Tahoma, Arial, sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid;
+  border-color: #fff #777 #777 #fff;
+}
+
+.memory-v51-share-button.whatsapp {
+  background: #176e3c;
+  color: white;
+}
+
+.memory-v51-share-button.facebook {
+  background: #224b91;
+  color: white;
+}
+
+.memory-v51-share-button.copy {
+  background: #c0c0c0;
+  color: #111;
+}
+
+.memory-v51-share-button:hover {
+  filter: brightness(1.12);
+}
+
+.memory-v51-share-button:focus-visible {
+  outline: 3px solid #000080;
+  outline-offset: 3px;
+}
+
+.memory-v51-share-button:disabled,
+.memory-v51-share-button[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.memory-v51-share .memory-v51-share-note {
+  margin: 12px 0 0;
+  font-size: 11px;
+  color: #555;
+}
+
+/* Related memories */
+
+.memory-v51-related {
+  margin: 34px 0 25px;
+}
+
+.memory-v51-related-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #c5cce8;
+}
+
+.memory-v51-related-heading h2 {
+  margin: 0;
+  color: #10105c;
+  font-size: 22px;
+}
+
+.memory-v51-related-heading a {
+  color: #000080;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.memory-v51-related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.memory-v51-related-card {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+  padding: 18px 13px;
+  background: #f1f1ed;
+  color: #111;
+  text-decoration: none;
+  border: 2px solid;
+  border-color: #fff #888 #888 #fff;
+  transition: transform 0.15s ease;
+}
+
+.memory-v51-related-card:hover {
+  transform: translateY(-3px);
+  background: #e7ecff;
+}
+
+.memory-v51-related-card:focus-visible {
+  outline: 3px solid #000080;
+  outline-offset: 3px;
+}
+
+.memory-v51-related-icon {
+  font-size: 38px;
+}
+
+.memory-v51-related-category {
+  color: #29539a;
+  font: bold 10px "Courier New", monospace;
+  text-transform: uppercase;
+}
+
+.memory-v51-related-card strong {
+  color: #10105c;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.memory-v51-related-open {
+  margin-top: auto;
+  padding-top: 8px;
+  color: #000080;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+@media (max-width: 700px) {
+  .memory-v51-share-buttons {
+    flex-direction: column;
+  }
+
+  .memory-v51-share-button {
+    width: 100%;
+  }
+
+  .memory-v51-related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .memory-v51-related-heading h2 {
+    font-size: 19px;
+  }
+
+  .memory-v51-related-card {
+    padding: 13px;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 900px) {
+  .memory-v51-related-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-v51-related-card {
+    transition: none;
+  }
+}

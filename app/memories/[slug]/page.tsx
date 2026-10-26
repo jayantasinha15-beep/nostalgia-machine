@@ -2,13 +2,24 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
 import RetroInfoShell from "@/components/RetroInfoShell";
+import MemoryShareV51 from "@/components/MemoryShareV51";
+
 import {
   memoryArticles,
   getMemoryArticle,
 } from "@/lib/memory-articles";
+
+import {
+  getMemoryCategory,
+  getRelatedMemories,
+} from "@/lib/memory-categories";
+
 import "../../retro-info.css";
 import "../memories.css";
+
+export const instant = false;
 
 type PageProps = {
   params: Promise<{
@@ -26,6 +37,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+
   const article = getMemoryArticle(slug);
 
   if (!article) {
@@ -58,11 +70,18 @@ export default async function MemoryArticlePage({
   params,
 }: PageProps) {
   const { slug } = await params;
+
   const article = getMemoryArticle(slug);
 
   if (!article) {
     notFound();
   }
+
+  const related = getRelatedMemories(
+    article,
+    memoryArticles,
+    3
+  );
 
   const index = memoryArticles.findIndex(
     (item) => item.slug === article.slug
@@ -89,10 +108,13 @@ export default async function MemoryArticlePage({
       >
         <Link href="/">Desktop</Link>
         <span>/</span>
+
         <Link href="/memories">
           Memory Explorer
         </Link>
+
         <span>/</span>
+
         <span aria-current="page">
           {article.title}
         </span>
@@ -100,12 +122,15 @@ export default async function MemoryArticlePage({
 
       <article className="memory-article">
         <header className="memory-article-header">
-          <span className="memory-article-emoji">
+          <span
+            className="memory-article-emoji"
+            aria-hidden="true"
+          >
             {article.emoji}
           </span>
 
           <p className="memory-article-category">
-            {article.category}
+            {getMemoryCategory(article)}
           </p>
 
           <h1>{article.title}</h1>
@@ -143,13 +168,18 @@ export default async function MemoryArticlePage({
           </section>
         ))}
 
+        <MemoryShareV51
+          title={article.title}
+          path={`/memories/${article.slug}`}
+        />
+
         <div className="memory-article-end">
           <strong>❤️ Keep the Memories Alive</strong>
 
           <p>
-            Does this remind you of your own childhood?
-            Share another memory or suggest a topic
-            for our nostalgia archive.
+            Does this article remind you of your
+            childhood? Suggest another memory for
+            our growing archive.
           </p>
 
           <Link
@@ -160,6 +190,51 @@ export default async function MemoryArticlePage({
           </Link>
         </div>
       </article>
+
+      {related.length > 0 && (
+        <section className="memory-v51-related">
+          <div className="memory-v51-related-heading">
+            <div>
+              <p className="retro-info-eyebrow">
+                YOU MAY ALSO REMEMBER
+              </p>
+
+              <h2>📂 Related Memories</h2>
+            </div>
+
+            <Link href="/memories">
+              View All →
+            </Link>
+          </div>
+
+          <div className="memory-v51-related-grid">
+            {related.map((item) => (
+              <Link
+                key={item.slug}
+                href={`/memories/${item.slug}`}
+                className="memory-v51-related-card"
+              >
+                <span
+                  className="memory-v51-related-icon"
+                  aria-hidden="true"
+                >
+                  {item.emoji}
+                </span>
+
+                <span className="memory-v51-related-category">
+                  {getMemoryCategory(item)}
+                </span>
+
+                <strong>{item.title}</strong>
+
+                <span className="memory-v51-related-open">
+                  📖 Read Memory →
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       <nav
         className="memory-article-navigation"
