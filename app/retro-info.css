@@ -426,3 +426,53 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ==================================
+   V4.8.1 — CLICKABLE FEEDBACK CARDS
+   ================================== */
+
+.feedback-clickable-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.feedback-clickable-card:hover {
+  background: #e5edff;
+  transform: translateY(-3px);
+  box-shadow: 3px 4px 0 #0003;
+}
+
+.feedback-clickable-card:focus-visible {
+  outline: 3px solid #000080;
+  outline-offset: 3px;
+}
+
+.feedback-clickable-card h3 {
+  color: #101080;
+}
+
+.feedback-card-button {
+  display: block;
+  margin-top: auto;
+  padding: 10px 0 0;
+  color: #000080;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.feedback-clickable-card:hover .feedback-card-button {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feedback-clickable-card {
+    transition: none;
+  }
+}

@@ -7,11 +7,38 @@ import "../retro-info.css";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Contact NOSTALGIA-90S.VAULT to suggest childhood memories, report website issues or share feedback about our Indian nostalgia experience.",
+    "Contact NOSTALGIA-90S.VAULT to suggest childhood memories, report website issues, or share new ideas.",
   alternates: {
     canonical: "/contact",
   },
 };
+
+const GOOGLE_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSd7KrQ84UcIwUs7Itnze6nKBc8KKHsxNoISx5MAKukMiXZ-Mw/viewform";
+
+const feedbackOptions = [
+  {
+    icon: "📺",
+    title: "Suggest a Memory",
+    description:
+      "Suggest a forgotten cartoon, TV show, childhood snack, toy, school memory or Bengali tradition.",
+    button: "Suggest a Memory →",
+  },
+  {
+    icon: "🛠️",
+    title: "Report an Issue",
+    description:
+      "Report a broken video, mini-game, desktop icon, mobile problem or any website error.",
+    button: "Report an Issue →",
+  },
+  {
+    icon: "💡",
+    title: "Share an Idea",
+    description:
+      "Suggest a new feature, nostalgic experience, mini-game or improvement for the website.",
+    button: "Share an Idea →",
+  },
+];
 
 export default function ContactPage() {
   return (
@@ -27,95 +54,108 @@ export default function ContactPage() {
           <h1>Contact NOSTALGIA-90S.VAULT</h1>
 
           <p>
-            Have an old childhood memory to share?
-            We would love to hear your suggestions.
+            Your childhood memories, feedback and ideas
+            help us keep the nostalgia alive.
           </p>
         </div>
       </div>
 
       <section className="retro-info-section">
-        <h2>💌 Get in Touch</h2>
+        <h2>💌 How Can We Help?</h2>
 
         <p>
-          NOSTALGIA-90S.VAULT is an independent project
-          celebrating Indian childhood memories.
-          Your ideas and feedback can help improve
-          the experience.
+          Select one of the options below to open
+          our feedback form.
         </p>
 
         <p>
-          You can share a memory suggestion, report
-          a broken feature, or recommend a nostalgic
-          topic for the archive.
+          You can suggest nostalgic memories, report
+          technical issues or share ideas for new
+          experiences.
         </p>
       </section>
 
-      <div className="retro-info-feature-grid">
-        <article className="retro-info-feature">
-          <span>📺</span>
-          <h3>Suggest a Memory</h3>
-          <p>
-            Recommend a forgotten cartoon, TV show,
-            childhood snack, toy or school tradition.
-          </p>
-        </article>
+      <section
+        className="retro-info-feature-grid"
+        aria-label="Feedback options"
+      >
+        {feedbackOptions.map((option) => (
+          <a
+            key={option.title}
+            href={GOOGLE_FORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="retro-info-feature feedback-clickable-card"
+            aria-label={`${option.title} — opens Google Form`}
+          >
+            <span aria-hidden="true">{option.icon}</span>
 
-        <article className="retro-info-feature">
-          <span>🛠️</span>
-          <h3>Report an Issue</h3>
-          <p>
-            Let us know if a video, mini-game,
-            window or mobile feature is not working.
-          </p>
-        </article>
+            <h3>{option.title}</h3>
 
-        <article className="retro-info-feature">
-          <span>💡</span>
-          <h3>Share an Idea</h3>
-          <p>
-            Suggest features that would make the
-            nostalgia experience more enjoyable.
-          </p>
-        </article>
-      </div>
+            <p>{option.description}</p>
+
+            <span className="feedback-card-button">
+              {option.button}
+            </span>
+          </a>
+        ))}
+      </section>
 
       <section className="retro-info-section">
         <h2>📝 Send Your Feedback</h2>
 
         <p>
-          For now, feedback is collected through the
-          project’s GitHub Issues page. A GitHub account
-          is required to submit an issue.
+          Clicking a card opens our official Google Form
+          in a new tab.
+        </p>
+
+        <p>
+          In the form, select the matching category
+          under "What would you like to share?",
+          write your message and press Submit.
         </p>
 
         <a
-          href="https://github.com/jayantasinha15-beep/nostalgia-machine/issues/new"
-          className="retro-info-primary-button"
+          href={GOOGLE_FORM_URL}
           target="_blank"
           rel="noopener noreferrer"
+          className="retro-info-primary-button"
         >
-          ✉️ Open Feedback Form on GitHub
+          📨 Open Feedback Form
         </a>
 
         <p className="retro-info-small-note">
-          This opens GitHub in a new tab. Your message
-          is submitted to GitHub, not directly through
-          this website. Issues in this public repository
-          may be visible to other visitors; do not
-          include private information.
+          Feedback is collected using Google Forms.
+          Name and email are optional. Please avoid
+          sharing passwords or sensitive personal
+          information.
+        </p>
+      </section>
+
+      <section className="retro-info-section">
+        <h2>🌟 Help Us Improve</h2>
+
+        <p>
+          Did we miss a favourite childhood memory?
+          Is there an old cartoon, toy, game or school
+          tradition you want to see?
+        </p>
+
+        <p>
+          Your suggestions can help make
+          NOSTALGIA-90S.VAULT a richer collection
+          of Indian childhood experiences.
         </p>
       </section>
 
       <div className="retro-info-notice">
-        <strong>📢 Content and Copyright Concerns</strong>
+        <strong>🔒 Privacy Note</strong>
 
         <p>
-          If you believe that any material displayed
-          on this website infringes your rights,
-          please include the relevant page URL,
-          a description of the material and an
-          explanation of your concern when contacting
-          the project.
+          This website uses Google Forms to collect
+          feedback. Submitted information is handled
+          through Google's services. Please provide
+          only the information needed for your feedback.
         </p>
       </div>
 
