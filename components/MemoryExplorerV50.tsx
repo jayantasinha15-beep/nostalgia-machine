@@ -3,6 +3,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import MemoryCoverV52 from "./MemoryCoverV52";
 
 import {
   memoryArticles,
@@ -65,7 +66,7 @@ export default function MemoryExplorerV50() {
       >
         <div className="memory-v50-search-heading">
           <span>🔍 Find a Childhood Memory</span>
-          <span>MEMORY.EXE V5.1</span>
+          <span>MEMORY.EXE V5.2</span>
         </div>
 
         <label
@@ -80,9 +81,7 @@ export default function MemoryExplorerV50() {
             id="memory-search"
             type="search"
             value={search}
-            onChange={(event) =>
-              setSearch(event.target.value)
-            }
+            onChange={(event) => setSearch(event.target.value)}
             placeholder="Try Shaktimaan, Orkut, Pujo..."
             autoComplete="off"
           />
@@ -124,7 +123,6 @@ export default function MemoryExplorerV50() {
         aria-live="polite"
       >
         <span>🗃️ Memory Archive</span>
-
         <span>
           {filteredArticles.length} of{" "}
           {memoryArticles.length} memories found
@@ -142,11 +140,12 @@ export default function MemoryExplorerV50() {
               href={`/memories/${article.slug}`}
               className="memory-explorer-card"
             >
-              <div className="memory-card-art">
-                <span aria-hidden="true">
-                  {article.emoji}
-                </span>
-              </div>
+              <MemoryCoverV52
+                slug={article.slug}
+                title={article.title}
+                emoji={article.emoji}
+                variant="card"
+              />
 
               <div className="memory-card-body">
                 <p className="memory-card-category">

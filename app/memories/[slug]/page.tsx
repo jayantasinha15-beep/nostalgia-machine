@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 import RetroInfoShell from "@/components/RetroInfoShell";
 import MemoryShareV51 from "@/components/MemoryShareV51";
+import MemoryCoverV52 from "@/components/MemoryCoverV52";
 
 import {
   memoryArticles,
@@ -70,7 +71,6 @@ export default async function MemoryArticlePage({
   params,
 }: PageProps) {
   const { slug } = await params;
-
   const article = getMemoryArticle(slug);
 
   if (!article) {
@@ -88,9 +88,7 @@ export default async function MemoryArticlePage({
   );
 
   const previous =
-    index > 0
-      ? memoryArticles[index - 1]
-      : null;
+    index > 0 ? memoryArticles[index - 1] : null;
 
   const next =
     index < memoryArticles.length - 1
@@ -108,26 +106,19 @@ export default async function MemoryArticlePage({
       >
         <Link href="/">Desktop</Link>
         <span>/</span>
-
-        <Link href="/memories">
-          Memory Explorer
-        </Link>
-
+        <Link href="/memories">Memory Explorer</Link>
         <span>/</span>
-
-        <span aria-current="page">
-          {article.title}
-        </span>
+        <span aria-current="page">{article.title}</span>
       </nav>
 
       <article className="memory-article">
         <header className="memory-article-header">
-          <span
-            className="memory-article-emoji"
-            aria-hidden="true"
-          >
-            {article.emoji}
-          </span>
+          <MemoryCoverV52
+            slug={article.slug}
+            title={article.title}
+            emoji={article.emoji}
+            variant="hero"
+          />
 
           <p className="memory-article-category">
             {getMemoryCategory(article)}
@@ -198,7 +189,6 @@ export default async function MemoryArticlePage({
               <p className="retro-info-eyebrow">
                 YOU MAY ALSO REMEMBER
               </p>
-
               <h2>📂 Related Memories</h2>
             </div>
 
@@ -214,12 +204,12 @@ export default async function MemoryArticlePage({
                 href={`/memories/${item.slug}`}
                 className="memory-v51-related-card"
               >
-                <span
-                  className="memory-v51-related-icon"
-                  aria-hidden="true"
-                >
-                  {item.emoji}
-                </span>
+                <MemoryCoverV52
+                  slug={item.slug}
+                  title={item.title}
+                  emoji={item.emoji}
+                  variant="related"
+                />
 
                 <span className="memory-v51-related-category">
                   {getMemoryCategory(item)}
