@@ -8,12 +8,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return [];
   }
 
+  const baseUrl = siteUrl.replace(/\/+$/, "");
+
   return [
     {
-      url: new URL("/", siteUrl).toString(),
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: `${baseUrl}/`,
+      changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: `${baseUrl}/about`,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      changeFrequency: "yearly",
+      priority: 0.4,
     },
   ];
 }

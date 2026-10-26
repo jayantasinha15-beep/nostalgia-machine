@@ -1161,8 +1161,27 @@ function openRetroTool(tool: RetroTool) {
               >
                 🏃 Run...
               </button>
+              
+<button
+  onClick={() => {
+    window.location.href = "/about";
+  }}
+>
+  📖 About Nostalgia Vault
+</button>
+
+<button
+  onClick={() => {
+    window.location.href = "/contact";
+  }}
+>
+  ✉️ Contact Us
+</button>
+
+              
 
               <div className="v40-menu-separator" />
+              
 
               <button
                 onClick={() => {
