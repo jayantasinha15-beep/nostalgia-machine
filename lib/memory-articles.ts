@@ -1,4 +1,4 @@
-
+import { memoryArticlesV53 } from "./memory-articles-v53";
 export type MemorySection = {
   heading: string;
   paragraphs: string[];
@@ -224,6 +224,7 @@ export const memoryArticles: MemoryArticle[] = [
       },
     ],
   },
+    ...memoryArticlesV53,
 ];
 
 export function getMemoryArticle(slug: string) {

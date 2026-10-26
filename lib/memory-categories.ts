@@ -6,6 +6,10 @@ export const MEMORY_CATEGORIES = [
   "TV & Cartoons",
   "Retro Technology",
   "Bengali Nostalgia",
+  "Snacks & Toys",
+  "School Memories",
+  "Retro Gaming",
+  "Internet Nostalgia",
 ] as const;
 
 export type MemoryCategory =
@@ -20,10 +24,24 @@ export function getMemoryCategory(
       return "TV & Cartoons";
 
     case "cyber-cafe-2005":
+    case "nokia-sms-era":
       return "Retro Technology";
 
     case "bengali-childhood":
+    case "durga-puja-childhood":
       return "Bengali Nostalgia";
+
+    case "90s-indian-snacks":
+      return "Snacks & Toys";
+
+    case "school-life-2000s":
+      return "School Memories";
+
+    case "retro-video-games":
+      return "Retro Gaming";
+
+    case "orkut-yahoo-messenger":
+      return "Internet Nostalgia";
 
     default:
       return "All Memories";
@@ -35,21 +53,18 @@ export function getRelatedMemories(
   articles: MemoryArticle[],
   limit = 3
 ): MemoryArticle[] {
-  const otherArticles = articles.filter(
-    (article) => article.slug !== current.slug
-  );
-
   const currentCategory = getMemoryCategory(current);
 
-  return otherArticles
+  return articles
+    .filter((article) => article.slug !== current.slug)
     .sort((a, b) => {
-      const aSame =
+      const aMatches =
         getMemoryCategory(a) === currentCategory ? 1 : 0;
 
-      const bSame =
+      const bMatches =
         getMemoryCategory(b) === currentCategory ? 1 : 0;
 
-      return bSame - aSame;
+      return bMatches - aMatches;
     })
     .slice(0, limit);
 }
