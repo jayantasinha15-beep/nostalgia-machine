@@ -840,3 +840,175 @@
     aspect-ratio: 16 / 9;
   }
 }
+
+/* ==========================================
+   V5.5 — MEMORY TIMELINE & SURPRISE ME
+   ========================================== */
+
+.memory-v55-timeline {
+  margin: 22px 0;
+  padding: 15px;
+  background: #d6d6d6;
+  border: 3px solid;
+  border-color: #fff #777 #777 #fff;
+}
+
+.memory-v55-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: -15px -15px 15px;
+  padding: 9px 12px;
+  color: #fff;
+  background: linear-gradient(90deg, #000080, #4778ba);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.memory-v55-titlebar span:last-child {
+  font: bold 10px "Courier New", monospace;
+}
+
+.memory-v55-subtitle {
+  margin: 0 0 16px;
+  color: #333;
+  font-size: 13px;
+}
+
+.memory-v55-eras {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.memory-v55-era {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 113px;
+  padding: 14px 8px;
+  background: #e7e7e7;
+  color: #202020;
+  border: 2px solid;
+  border-color: #fff #777 #777 #fff;
+  font-family: Tahoma, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.memory-v55-era:hover {
+  background: #e5eaff;
+}
+
+.memory-v55-era.selected {
+  background: #000080;
+  color: white;
+  border-color: #9b9bdf #080849 #080849 #9b9bdf;
+}
+
+.memory-v55-era:focus-visible {
+  outline: 3px solid #000080;
+  outline-offset: 3px;
+}
+
+.memory-v55-era-icon {
+  font-size: 30px;
+}
+
+.memory-v55-era strong {
+  font-size: 12px;
+  text-align: center;
+}
+
+.memory-v55-era small {
+  font-size: 10px;
+  opacity: 0.85;
+}
+
+.memory-v55-note {
+  margin: 13px 0 0;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.memory-v55-surprise {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+  padding: 19px;
+  background: #fff2c8;
+  border: 2px solid #d3a951;
+}
+
+.memory-v55-surprise strong {
+  color: #603c00;
+  font-size: 17px;
+}
+
+.memory-v55-surprise p {
+  margin: 7px 0 0;
+  color: #5d4c31;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.memory-v55-surprise-button {
+  flex-shrink: 0;
+  min-height: 45px;
+  padding: 10px 18px;
+  color: #fff;
+  background: #000080;
+  border: 2px solid;
+  border-color: #9797de #09094e #09094e #9797de;
+  font: bold 13px Tahoma, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.memory-v55-surprise-button:hover {
+  background: #2222b2;
+}
+
+.memory-v55-surprise-button:focus-visible {
+  outline: 3px solid #000080;
+  outline-offset: 3px;
+}
+
+.memory-v55-surprise-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 700px) {
+  .memory-v55-timeline {
+    padding: 11px;
+  }
+
+  .memory-v55-titlebar {
+    margin: -11px -11px 12px;
+  }
+
+  .memory-v55-eras {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .memory-v55-era {
+    min-height: 100px;
+  }
+
+  .memory-v55-surprise {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px;
+  }
+
+  .memory-v55-surprise-button {
+    width: 100%;
+  }
+}

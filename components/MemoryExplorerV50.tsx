@@ -1,8 +1,10 @@
 
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+
 import MemoryCoverV52 from "./MemoryCoverV52";
 
 import {
@@ -16,57 +18,155 @@ import {
   type MemoryCategory,
 } from "@/lib/memory-categories";
 
+type MemoryEra =
+  | "all"
+  | "1990s"
+  | "early-2000s"
+  | "late-2000s";
+
 const ALL_CATEGORY: MemoryCategory = "All Memories";
 
+const MEMORY_ERAS: {
+  id: MemoryEra;
+  title: string;
+  years: string;
+  emoji: string;
+}[] = [
+  {
+    id: "all",
+    title: "All Years",
+    years: "1990–2010",
+    emoji: "🗂️",
+  },
+  {
+    id: "1990s",
+    title: "The 90s",
+    years: "1990–1999",
+    emoji: "📺",
+  },
+  {
+    id: "early-2000s",
+    title: "Early 2000s",
+    years: "2000–2004",
+    emoji: "💿",
+  },
+  {
+    id: "late-2000s",
+    title: "Late 2000s",
+    years: "2005–2010",
+    emoji: "💻",
+  },
+];
+
+// Editorial nostalgia-era groupings.
+// These are not official release dates.
+const ARTICLE_ERAS: Record<
+  string,
+  Exclude<MemoryEra, "all">
+> = {
+  shaktimaan: "1990s",
+  "son-pari": "early-2000s",
+  "cyber-cafe-2005": "late-2000s",
+  "bengali-childhood": "early-2000s",
+  "90s-indian-snacks": "1990s",
+  "nokia-sms-era": "early-2000s",
+  "school-life-2000s": "early-2000s",
+  "retro-video-games": "1990s",
+  "orkut-yahoo-messenger": "late-2000s",
+  "durga-puja-childhood": "late-2000s",
+};
+
 export default function MemoryExplorerV50() {
+  const router = useRouter();
+
   const [search, setSearch] = useState("");
   const [category, setCategory] =
     useState<MemoryCategory>(ALL_CATEGORY);
 
+  const [era, setEra] = useState<MemoryEra>("all");
+
+  const previousRandomSlug = useRef<string | null>(null);
+
   const filteredArticles = useMemo(() => {
     const normalized = search.trim().toLowerCase();
 
-    return memoryArticles.filter((article: MemoryArticle) => {
-      const matchesCategory =
-        category === ALL_CATEGORY ||
-        getMemoryCategory(article) === category;
+    return memoryArticles.filter(
+      (article: MemoryArticle) => {
+        const matchesCategory =
+          category === ALL_CATEGORY ||
+          getMemoryCategory(article) === category;
 
-      const searchableText = [
-        article.title,
-        article.category,
-        getMemoryCategory(article),
-        article.description,
-        article.intro,
-        ...article.keywords,
-        ...article.sections.flatMap((section) => [
-          section.heading,
-          ...section.paragraphs,
-        ]),
-      ]
-        .join(" ")
-        .toLowerCase();
+        const matchesEra =
+          era === "all" ||
+          ARTICLE_ERAS[article.slug] === era;
 
-      const matchesSearch =
-        !normalized || searchableText.includes(normalized);
+        const searchableText = [
+          article.title,
+          article.category,
+          getMemoryCategory(article),
+          article.description,
+          article.intro,
+          ...article.keywords,
+          ...article.sections.flatMap((section) => [
+            section.heading,
+            ...section.paragraphs,
+          ]),
+        ]
+          .join(" ")
+          .toLowerCase();
 
-      return matchesCategory && matchesSearch;
-    });
-  }, [search, category]);
+        const matchesSearch =
+          !normalized ||
+          searchableText.includes(normalized);
+
+        return (
+          matchesCategory &&
+          matchesEra &&
+          matchesSearch
+        );
+      }
+    );
+  }, [search, category, era]);
 
   function clearFilters() {
     setSearch("");
     setCategory(ALL_CATEGORY);
+    setEra("all");
+  }
+
+  function openRandomMemory() {
+    if (!filteredArticles.length) return;
+
+    let candidates = filteredArticles;
+
+    if (filteredArticles.length > 1) {
+      candidates = filteredArticles.filter(
+        (article) =>
+          article.slug !== previousRandomSlug.current
+      );
+    }
+
+    const randomIndex = Math.floor(
+      Math.random() * candidates.length
+    );
+
+    const selected = candidates[randomIndex];
+
+    previousRandomSlug.current = selected.slug;
+
+    router.push(`/memories/${selected.slug}`);
   }
 
   return (
     <div className="memory-v50-explorer">
+      {/* SEARCH */}
       <section
         className="memory-v50-search-panel"
         aria-label="Search and filter memories"
       >
         <div className="memory-v50-search-heading">
           <span>🔍 Find a Childhood Memory</span>
-          <span>MEMORY.EXE V5.2</span>
+          <span>MEMORY.EXE V5.5</span>
         </div>
 
         <label
@@ -81,7 +181,9 @@ export default function MemoryExplorerV50() {
             id="memory-search"
             type="search"
             value={search}
-            onChange={(event) => setSearch(event.target.value)}
+            onChange={(event) =>
+              setSearch(event.target.value)
+            }
             placeholder="Try Shaktimaan, Orkut, Pujo..."
             autoComplete="off"
           />
@@ -118,11 +220,82 @@ export default function MemoryExplorerV50() {
         </div>
       </section>
 
+      {/* NOSTALGIA TIMELINE */}
+      <section
+        className="memory-v55-timeline"
+        aria-label="Memory Timeline"
+      >
+        <div className="memory-v55-titlebar">
+          <span>🕰️ Memory Timeline</span>
+          <span>TIMELINE.EXE</span>
+        </div>
+
+        <p className="memory-v55-subtitle">
+          Travel through the memories of 1990–2010.
+        </p>
+
+        <div
+          className="memory-v55-eras"
+          role="group"
+          aria-label="Choose nostalgia era"
+        >
+          {MEMORY_ERAS.map((item) => (
+            <button
+              type="button"
+              key={item.id}
+              className={
+                era === item.id
+                  ? "memory-v55-era selected"
+                  : "memory-v55-era"
+              }
+              onClick={() => setEra(item.id)}
+              aria-pressed={era === item.id}
+            >
+              <span className="memory-v55-era-icon">
+                {item.emoji}
+              </span>
+
+              <strong>{item.title}</strong>
+
+              <small>{item.years}</small>
+            </button>
+          ))}
+        </div>
+
+        <p className="memory-v55-note">
+          Memories are grouped by their nostalgic era,
+          not necessarily their original release dates.
+        </p>
+      </section>
+
+      {/* SURPRISE ME */}
+      <section className="memory-v55-surprise">
+        <div>
+          <strong>🎲 Feeling Nostalgic?</strong>
+
+          <p>
+            Discover a random memory from your
+            current search and filters.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          className="memory-v55-surprise-button"
+          onClick={openRandomMemory}
+          disabled={!filteredArticles.length}
+        >
+          🎲 Surprise Me!
+        </button>
+      </section>
+
+      {/* RESULTS */}
       <div
         className="memory-explorer-toolbar"
         aria-live="polite"
       >
         <span>🗃️ Memory Archive</span>
+
         <span>
           {filteredArticles.length} of{" "}
           {memoryArticles.length} memories found
@@ -170,8 +343,8 @@ export default function MemoryExplorerV50() {
           <h2>No Memories Found</h2>
 
           <p>
-            Try another search term or choose
-            a different category.
+            Try another search term, category
+            or timeline period.
           </p>
 
           <button
