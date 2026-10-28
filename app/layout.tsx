@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next";
 
 import "./globals.css";
 import "./retro-v31.css";
-
+import "./home-v56.css";
 /* ==========================================
    NOSTALGIA-90S.VAULT
    V4.7 — SEO OPTIMIZED ROOT LAYOUT

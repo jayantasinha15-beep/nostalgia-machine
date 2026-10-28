@@ -1,7 +1,6 @@
 
 "use client";
-
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -84,6 +83,13 @@ export default function MemoryExplorerV50() {
     useState<MemoryCategory>(ALL_CATEGORY);
 
   const [era, setEra] = useState<MemoryEra>("all");
+  useEffect(() => {
+  const query = new URLSearchParams(window.location.search).get("q");
+
+  if (query) {
+    setSearch(query);
+  }
+}, []);
 
   const previousRandomSlug = useRef<string | null>(null);
 
@@ -198,10 +204,11 @@ export default function MemoryExplorerV50() {
         </div>
 
         <div
-          className="memory-v50-categories"
-          role="group"
-          aria-label="Filter by category"
-        >
+  id="categories"
+  className="memory-v50-categories"
+  role="group"
+  aria-label="Filter by category"
+>
           {MEMORY_CATEGORIES.map((item) => (
             <button
               key={item}
@@ -222,9 +229,10 @@ export default function MemoryExplorerV50() {
 
       {/* NOSTALGIA TIMELINE */}
       <section
-        className="memory-v55-timeline"
-        aria-label="Memory Timeline"
-      >
+  id="memory-timeline"
+  className="memory-v55-timeline"
+  aria-label="Memory Timeline"
+>
         <div className="memory-v55-titlebar">
           <span>🕰️ Memory Timeline</span>
           <span>TIMELINE.EXE</span>

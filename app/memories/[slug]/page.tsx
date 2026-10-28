@@ -19,7 +19,7 @@ import {
 
 import "../../retro-info.css";
 import "../memories.css";
-
+import MemoryVisitTracker from "@/components/MemoryVisitTracker";
 export const instant = false;
 
 type PageProps = {
@@ -100,11 +100,12 @@ export default async function MemoryArticlePage({
       title={`${article.slug}.txt`}
       icon={article.emoji}
     >
+      <MemoryVisitTracker slug={article.slug} />
       <nav
         className="memory-breadcrumb"
         aria-label="Breadcrumb"
       >
-        <Link href="/">Desktop</Link>
+        <Link href="/">Home</Link>
         <span>/</span>
         <Link href="/memories">Memory Explorer</Link>
         <span>/</span>

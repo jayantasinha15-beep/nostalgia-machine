@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -14,67 +13,80 @@ export default function RetroInfoShell({
   children,
 }: Props) {
   return (
-    <main className="retro-info-desktop">
-      <header className="retro-info-topbar">
-        <Link href="/" className="retro-info-logo">
-          ★ NOSTALGIA-90S.VAULT
+    <main
+      className="site-shell"
+      data-page-title={title}
+      data-page-icon={icon}
+    >
+      <header className="home56-header">
+        <Link href="/" className="home56-brand">
+          <span className="home56-brand-icon">🖥️</span>
+
+          <span className="home56-brand-copy">
+            <strong>
+              NOSTALGIA<span>-90S</span>.VAULT
+            </strong>
+            <small>Memories Never Fade...</small>
+          </span>
         </Link>
 
-        <span className="retro-info-topbar-text">
-          INDIAN CHILDHOOD FLASHBACK ✦ 1990–2020
-        </span>
+        <nav
+          className="home56-nav"
+          aria-label="Main navigation"
+        >
+          <Link href="/">🏠 Home</Link>
+          <Link href="/memories">Memories</Link>
+          <Link href="/memories#memory-timeline">Timeline</Link>
+          <Link href="/memories#categories">Categories</Link>
+          <Link href="/about">About</Link>
+          <Link href="/contact">Contact</Link>
+        </nav>
+
+        <form
+          action="/memories"
+          method="get"
+          className="home56-header-search"
+          role="search"
+        >
+          <label className="sr-only" htmlFor="site-memory-search">
+            Search memories
+          </label>
+
+          <input
+            id="site-memory-search"
+            type="search"
+            name="q"
+            placeholder="Search memories..."
+          />
+
+          <button type="submit" aria-label="Search">
+            ⌕
+          </button>
+        </form>
       </header>
 
-      <div className="retro-info-area">
-        <section className="retro-info-window">
-          <div className="retro-info-titlebar">
-            <div className="retro-info-window-title">
-              <span>{icon}</span>
-              <strong>{title}</strong>
-            </div>
-
-            <div className="retro-info-controls">
-              <span aria-hidden="true">_</span>
-              <span aria-hidden="true">□</span>
-              <Link href="/" aria-label="Return to Desktop">
-                ×
-              </Link>
-            </div>
-          </div>
-
-          <nav
-            className="retro-info-navigation"
-            aria-label="Information pages"
-          >
-            <Link href="/">🏠 Desktop</Link>
-            <Link href="/about">📖 About</Link>
-            <Link href="/contact">✉️ Contact</Link>
-            
-            <Link href="/privacy-policy">🔒 Privacy Policy</Link>
-            <Link href="/disclaimer">⚠️ Disclaimer</Link>
-            
-            <Link href="/memories">🗂️ Memories</Link>
-
-
-          </nav>
-
-          <div className="retro-info-content">{children}</div>
-
-          <footer className="retro-info-status">
-            <span>🌐 NOSTALGIA OS — INDIA EDITION</span>
-            <span>READY ✓</span>
-          </footer>
-        </section>
+      <div className="site-shell-main">
+        <div className="site-shell-content">
+          {children}
+        </div>
       </div>
 
-      <footer className="retro-info-taskbar">
-        <Link href="/" className="retro-info-start">
-          🪟 Start
+      <footer className="home56-footer">
+        <Link href="/" className="home56-footer-brand">
+          🖥️ NOSTALGIA<span>-90S</span>.VAULT
         </Link>
 
-        <span className="retro-info-task-label">{title}</span>
+        <p>Relive · Remember · Smile</p>
 
-        <span className="retro-info-task-clock">🇮🇳 INDIA</span>
+        <nav aria-label="Footer navigation">
+          <Link href="/about">About</Link>
+          <Link href="/contact">Contact</Link>
+          <Link href="/privacy-policy">Privacy Policy</Link>
+          <Link href="/disclaimer">Disclaimer</Link>
+          <Link href="/desktop">Classic Desktop</Link>
+        </nav>
+
+        <small>Because some memories are forever. ☺</small>
       </footer>
     </main>
   );
