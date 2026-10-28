@@ -335,8 +335,8 @@ export default function PrivacyPolicyPage() {
       </div>
 
       <div className="retro-info-actions">
-        <Link href="/" className="retro-info-button">
-          🖥️ Back to Desktop
+        <Link href="/">
+          🖥️ Back to Home
         </Link>
 
         <Link

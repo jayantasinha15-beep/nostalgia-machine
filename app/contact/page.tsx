@@ -160,9 +160,9 @@ export default function ContactPage() {
       </div>
 
       <div className="retro-info-actions">
-        <Link href="/" className="retro-info-button">
-          🖥️ Back to Desktop
-        </Link>
+        <Link href="/">
+  Back to Home
+</Link>
 
         <Link href="/about" className="retro-info-button">
           📖 About the Project

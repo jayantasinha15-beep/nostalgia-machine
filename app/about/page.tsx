@@ -158,9 +158,9 @@ export default function AboutPage() {
       </div>
 
       <div className="retro-info-actions">
-        <Link href="/" className="retro-info-primary-button">
-          🖥️ Explore the Desktop
-        </Link>
+        <Link href="/desktop">
+  Explore the Desktop
+</Link>
 
         <Link href="/contact" className="retro-info-button">
           ✉️ Contact Us

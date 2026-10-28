@@ -273,8 +273,8 @@ export default function DisclaimerPage() {
           🔒 Privacy Policy
         </Link>
 
-        <Link href="/" className="retro-info-button">
-          🖥️ Back to Desktop
+        <Link href="/">
+          🖥️ Back to Home
         </Link>
       </div>
     </RetroInfoShell>
