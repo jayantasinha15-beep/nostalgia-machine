@@ -2099,3 +2099,35 @@
     transition: none !important;
   }
 }
+/* =========================================
+   STICKY SIDEBAR — FIX EMPTY RIGHT SPACE
+========================================= */
+
+@media (min-width: 761px) {
+  .home56-sidebar {
+    position: sticky;
+    top: 14px;
+    align-self: start;
+
+    max-height: calc(100vh - 28px);
+    overflow-y: auto;
+
+    padding-right: 4px;
+
+    scrollbar-width: thin;
+    scrollbar-color: #b7c5e7 transparent;
+  }
+
+  .home56-sidebar::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .home56-sidebar::-webkit-scrollbar-thumb {
+    background: #b7c5e7;
+    border-radius: 10px;
+  }
+
+  .home56-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}

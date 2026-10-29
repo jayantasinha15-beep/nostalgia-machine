@@ -1,565 +1,295 @@
-"use client";
-
-import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
-import MemoryCoverV52 from "@/components/MemoryCoverV52";
-import {
-  memoryArticles,
-  type MemoryArticle,
-} from "@/lib/memory-articles";
-import { getMemoryCategory } from "@/lib/memory-categories";
+const hotspots = [
+  {
+    className: "hs-logo",
+    href: "/",
+    label: "90s Nostalgia Home",
+  },
 
-const featuredOrder = [
-  "90s-indian-snacks",
-  "nokia-sms-era",
-  "school-life-2000s",
-  "retro-video-games",
-  "orkut-yahoo-messenger",
-  "durga-puja-childhood",
-  "shaktimaan",
-  "son-pari",
-  "cyber-cafe-2005",
-  "bengali-childhood",
+  {
+    className: "hs-home",
+    href: "/",
+    label: "Home",
+  },
+  {
+    className: "hs-about",
+    href: "/about",
+    label: "About Me",
+  },
+  {
+    className: "hs-memories",
+    href: "/memories",
+    label: "90s Memories",
+  },
+  {
+    className: "hs-games",
+    href: "/memories/retro-video-games",
+    label: "Games",
+  },
+  {
+    className: "hs-cartoons",
+    href: "/memories/son-pari",
+    label: "Cartoons",
+  },
+  {
+    className: "hs-music",
+    href: "/memories",
+    label: "Music Memories",
+  },
+  {
+    className: "hs-movies",
+    href: "/memories/shaktimaan",
+    label: "Movies and TV",
+  },
+  {
+    className: "hs-gallery",
+    href: "/memories/bengali-childhood",
+    label: "Photo Gallery",
+  },
+  {
+    className: "hs-guestbook",
+    href: "/contact",
+    label: "Guestbook",
+  },
+  {
+    className: "hs-links",
+    href: "/memories",
+    label: "Explore Links",
+  },
+
+  {
+    className: "hs-welcome",
+    href: "/memories",
+    label: "Explore childhood memories",
+  },
+
+  {
+    className: "hs-category-games",
+    href: "/memories/retro-video-games",
+    label: "Explore retro games",
+  },
+  {
+    className: "hs-category-cartoons",
+    href: "/memories/son-pari",
+    label: "Explore childhood cartoons and shows",
+  },
+  {
+    className: "hs-category-music",
+    href: "/memories",
+    label: "Explore music memories",
+  },
+  {
+    className: "hs-category-movies",
+    href: "/memories/shaktimaan",
+    label: "Explore Indian television memories",
+  },
+  {
+    className: "hs-category-gallery",
+    href: "/memories/bengali-childhood",
+    label: "Explore Bengali childhood memories",
+  },
+
+  {
+    className: "hs-featured",
+    href: "/memories/school-life-2000s",
+    label: "Read School Days memories",
+  },
+  {
+    className: "hs-now-playing",
+    href: "/memories",
+    label: "Explore the memory archive",
+  },
+  {
+    className: "hs-classic-desktop",
+    href: "/desktop",
+    label: "Open the classic Windows desktop",
+  },
+  {
+    className: "hs-footer",
+    href: "/",
+    label: "Back to Home",
+  },
 ];
 
-const featuredMemories: MemoryArticle[] = featuredOrder
-  .map((slug) =>
-    memoryArticles.find((article) => article.slug === slug)
-  )
-  .filter(
-    (article): article is MemoryArticle => Boolean(article)
-  );
-
-const categories = [
-  { name: "Indian TV", icon: "📺" },
-  { name: "Desi Cable TV", icon: "📡" },
-  { name: "Cartoons", icon: "🧸" },
-  { name: "Snacks", icon: "🍿" },
-  { name: "School Days", icon: "🎒" },
-  { name: "Festivals", icon: "🪔" },
-  { name: "Bengali Nostalgia", icon: "🎭" },
-  { name: "Retro Gaming", icon: "🎮" },
-];
-
-const eraBySlug: Record<string, string> = {
-  "90s-indian-snacks": "1990s",
-  "nokia-sms-era": "2000s",
-  "school-life-2000s": "2000s",
-  "retro-video-games": "1990s",
-  "orkut-yahoo-messenger": "2000s",
-  "durga-puja-childhood": "2000s",
-  shaktimaan: "1990s",
-  "son-pari": "2000s",
-  "cyber-cafe-2005": "2000s",
-  "bengali-childhood": "1990s–2000s",
-};
-
-const previewRecent = [
-  "nokia-sms-era",
-  "school-life-2000s",
-  "retro-video-games",
+const mobileLinks = [
+  {
+    title: "90s Memories",
+    icon: "📷",
+    href: "/memories",
+  },
+  {
+    title: "Games",
+    icon: "🎮",
+    href: "/memories/retro-video-games",
+  },
+  {
+    title: "Cartoons",
+    icon: "📺",
+    href: "/memories/son-pari",
+  },
+  {
+    title: "Music",
+    icon: "🎵",
+    href: "/memories",
+  },
+  {
+    title: "Movies & TV",
+    icon: "🎬",
+    href: "/memories/shaktimaan",
+  },
+  {
+    title: "Bengali Memories",
+    icon: "🪔",
+    href: "/memories/bengali-childhood",
+  },
 ];
 
 export default function HomePage() {
-  const [search, setSearch] = useState("");
-  const [favorites, setFavorites] = useState<string[]>([]);
-  const [recentlyViewed, setRecentlyViewed] = useState<string[]>([]);
-
-  useEffect(() => {
-    try {
-      const savedFavorites: unknown = JSON.parse(
-        localStorage.getItem("nostalgia-home-favorites") || "[]"
-      );
-
-      const savedRecent: unknown = JSON.parse(
-        localStorage.getItem("nostalgia-recently-viewed") || "[]"
-      );
-
-      if (
-        Array.isArray(savedFavorites) &&
-        savedFavorites.every((item) => typeof item === "string")
-      ) {
-        setFavorites(savedFavorites);
-      }
-
-      if (
-        Array.isArray(savedRecent) &&
-        savedRecent.every((item) => typeof item === "string")
-      ) {
-        setRecentlyViewed(savedRecent);
-      }
-    } catch {
-      setFavorites([]);
-      setRecentlyViewed([]);
-    }
-  }, []);
-
-  const filteredMemories = useMemo(() => {
-    const query = search.trim().toLowerCase();
-
-    if (!query) return featuredMemories;
-
-    return featuredMemories.filter((article) => {
-      const text = [
-        article.title,
-        article.category,
-        getMemoryCategory(article),
-        article.description,
-        article.intro,
-        ...article.keywords,
-      ]
-        .join(" ")
-        .toLowerCase();
-
-      return text.includes(query);
-    });
-  }, [search]);
-
-  const recentSlugs = recentlyViewed.length
-    ? recentlyViewed
-    : previewRecent;
-
-  const recentItems = recentSlugs
-    .map((slug) =>
-      featuredMemories.find((article) => article.slug === slug)
-    )
-    .filter(
-      (article): article is MemoryArticle => Boolean(article)
-    )
-    .slice(0, 3);
-
-  function toggleFavorite(slug: string) {
-    const nextFavorites = favorites.includes(slug)
-      ? favorites.filter((item) => item !== slug)
-      : [...favorites, slug];
-
-    setFavorites(nextFavorites);
-
-    try {
-      localStorage.setItem(
-        "nostalgia-home-favorites",
-        JSON.stringify(nextFavorites)
-      );
-    } catch {
-      // The page remains usable if browser storage is unavailable.
-    }
-  }
-
-  function surpriseMe() {
-    const pool = filteredMemories.length
-      ? filteredMemories
-      : featuredMemories;
-
-    if (!pool.length) return;
-
-    const candidates =
-      pool.length > 1
-        ? pool.filter(
-            (article) =>
-              article.slug !== recentlyViewed[0]
-          )
-        : pool;
-
-    const selected =
-      candidates[Math.floor(Math.random() * candidates.length)] ??
-      pool[0];
-
-    window.location.href = `/memories/${selected.slug}`;
-  }
-
-  function scrollToFeatured() {
-    document
-      .getElementById("featured-memories")
-      ?.scrollIntoView({ behavior: "smooth" });
-  }
-
   return (
-    <main className="home56">
-      {/* TOP NAVIGATION */}
-      <header className="home56-header">
-        <Link href="/" className="home56-brand">
-          <span className="home56-brand-icon">🖥️</span>
-
-          <span className="home56-brand-copy">
-            <strong>
-              NOSTALGIA<span>-90S</span>.VAULT
-            </strong>
-            <small>Memories Never Fade...</small>
-          </span>
-        </Link>
-
-        <nav className="home56-nav" aria-label="Main navigation">
-          <Link href="/" className="active">
-            🏠 Home
-          </Link>
-
-          <Link href="/memories">Memories</Link>
-
-          <Link href="#memory-timeline">Timeline</Link>
-
-          <Link href="#categories">Categories</Link>
-
-          <Link href="/about">About</Link>
-
-          <Link href="/contact">Contact</Link>
-        </nav>
-
-        <div className="home56-header-search">
-          <label className="sr-only" htmlFor="home-memory-search">
-            Search memories
-          </label>
-
-          <input
-            id="home-memory-search"
-            type="search"
-            placeholder="Search memories..."
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-            onKeyDown={(event) => {
-              if (event.key === "Enter") {
-                scrollToFeatured();
-              }
-            }}
+    <main className="home57">
+      {/* DESKTOP HOMEPAGE */}
+      <section
+        className="home57-desktop"
+        aria-label="90s Nostalgia homepage"
+      >
+        <div className="home57-artboard">
+          <Image
+            src="/images/nostalgia-home-reference.webp"
+            alt="90s Nostalgia: relive the golden days of childhood"
+            fill
+            priority
+            sizes="100vw"
+            className="home57-artwork"
           />
 
-          <button
-            type="button"
-            aria-label="Find memories"
-            onClick={scrollToFeatured}
-          >
-            ⌕
-          </button>
-        </div>
-      </header>
-
-      {/* HERO SECTION */}
-      <section className="home56-hero">
-        <div className="home56-hero-scene" aria-hidden="true">
-          <div className="home56-hero-photo home56-hero-photo-left" />
-          <div className="home56-hero-photo home56-hero-photo-right" />
-
-          <div className="home56-hero-prop home56-hero-prop-left">
-            📼
-          </div>
-
-          <div className="home56-hero-prop home56-hero-prop-right">
-            🎮
-          </div>
-        </div>
-
-        <div className="home56-hero-content">
-          <span className="home56-paper-label">
-            ✦ A LITTLE TIME MACHINE TO YOUR CHILDHOOD ✦
-          </span>
-
-          <h1>
-            NOSTALGIA<span>-90S</span>.VAULT
+          <h1 className="home57-sr-only">
+            90s Nostalgia — Same Vibes, Different Time, Forever in Heart
           </h1>
 
-          <h2>Relive the Golden Memories of 90s &amp; 2000s</h2>
-
-          <div className="home56-hero-keywords">
-            TV shows <b>•</b> Cartoons <b>•</b> School Life
-            <b>•</b> Snacks <b>•</b> Festivals
-            <br />
-            And much more...
-          </div>
-
-          <Link href="/memories" className="home56-primary-button">
-            ▶ &nbsp; Explore Memories <span>→</span>
-          </Link>
-        </div>
-
-        <div className="home56-hero-note">
-          <span>✦ CHILDHOOD NOTES ✦</span>
-          <strong>
-            Same People
-            <br />
-            Same Dreams
-            <br />
-            Better Days... ☺
-          </strong>
-        </div>
-
-        <div className="home56-hero-school-note">
-          <span>📚</span>
-          <strong>
-            School Friends
-            <br />
-            Games
-            <br />
-            Life...
-          </strong>
-        </div>
-      </section>
-
-      {/* CATEGORY STRIP */}
-      <section
-        className="home56-categories"
-        id="categories"
-      >
-        <div className="home56-categories-title">
-          <h2>
-            Explore
-            <br />
-            by Category
-          </h2>
-          <span aria-hidden="true">➜</span>
-        </div>
-
-        <div className="home56-category-grid">
-          {categories.map((category, index) => (
+          {hotspots.map((spot) => (
             <Link
-              href="/memories"
-              key={category.name}
-              className={`home56-category-card color-${index + 1}`}
-            >
-              <span className="home56-category-icon">
-                {category.icon}
-              </span>
-
-              <strong>{category.name}</strong>
-            </Link>
+              key={spot.className}
+              href={spot.href}
+              className={`home57-hotspot ${spot.className}`}
+              aria-label={spot.label}
+              title={spot.label}
+            />
           ))}
         </div>
       </section>
 
-      {/* MAIN CONTENT */}
-      <div className="home56-content-layout">
-        <section
-          className="home56-featured"
-          id="featured-memories"
-        >
-          <div className="home56-section-heading">
-            <h2>⭐ Featured Memories</h2>
+      {/* MOBILE HOMEPAGE */}
+      <section
+        className="home57-mobile"
+        aria-label="90s Nostalgia mobile homepage"
+      >
+        <div className="home57-mobile-banner">
+          <Image
+            src="/images/nostalgia-home-reference.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="home57-mobile-artwork"
+          />
+        </div>
 
-            <span>
-              {filteredMemories.length} Articles&nbsp; · &nbsp;
-              1990–2010&nbsp; 📅
-            </span>
-          </div>
+        <div className="home57-mobile-inner">
+          <p className="home57-mobile-kicker">
+            SAME VIBES · DIFFERENT TIME · FOREVER IN HEART
+          </p>
 
-          {filteredMemories.length > 0 ? (
-            <div className="home56-memory-grid">
-              {filteredMemories.map((article) => (
-                <article
-                  key={article.slug}
-                  className="home56-memory-card"
+          <h1>90s Nostalgia</h1>
+
+          <p className="home57-mobile-intro">
+            A little corner of the internet dedicated to the
+            golden days of childhood, when life was simpler
+            and happiness was in the little things.
+          </p>
+
+          <Link
+            href="/memories"
+            className="home57-mobile-primary"
+          >
+            ✨ Relive the Magic
+            <span>→</span>
+          </Link>
+
+          <section className="home57-mobile-section">
+            <div className="home57-mobile-section-title">
+              <h2>Explore the 90s</h2>
+              <span>✦</span>
+            </div>
+
+            <div className="home57-mobile-grid">
+              {mobileLinks.map((item) => (
+                <Link
+                  href={item.href}
+                  key={item.title}
+                  className="home57-mobile-card"
                 >
-                  <Link
-                    href={`/memories/${article.slug}`}
-                    className="home56-memory-image"
-                    aria-label={`Read ${article.title}`}
-                  >
-                    <MemoryCoverV52
-                      slug={article.slug}
-                      title={article.title}
-                      emoji={article.emoji}
-                      variant="card"
-                    />
+                  <span className="home57-mobile-card-icon">
+                    {item.icon}
+                  </span>
 
-                    <span className="home56-memory-badge">
-                      {getMemoryCategory(article)}
-                    </span>
-                  </Link>
+                  <strong>{item.title}</strong>
 
-                  <div className="home56-memory-body">
-                    <Link href={`/memories/${article.slug}`}>
-                      <h3>{article.title}</h3>
-                    </Link>
-
-                    <p>{article.description}</p>
-
-                    <div className="home56-card-footer">
-                      <span>
-                        {eraBySlug[article.slug] ?? "1990–2010"}
-                      </span>
-
-                      <button
-                        type="button"
-                        onClick={() => toggleFavorite(article.slug)}
-                        aria-label={
-                          favorites.includes(article.slug)
-                            ? `Remove ${article.title} from favourites`
-                            : `Save ${article.title} to favourites`
-                        }
-                        aria-pressed={favorites.includes(article.slug)}
-                        title="Save to favourites"
-                      >
-                        {favorites.includes(article.slug)
-                          ? "❤️"
-                          : "♡"}
-                      </button>
-                    </div>
-                  </div>
-                </article>
+                  <span className="home57-mobile-arrow">
+                    →
+                  </span>
+                </Link>
               ))}
             </div>
-          ) : (
-            <div className="home56-empty">
-              <span>🔎</span>
-              <h3>No memories found</h3>
-              <p>Try another search term.</p>
-
-              <button onClick={() => setSearch("")}>
-                Clear Search
-              </button>
-            </div>
-          )}
-
-          <Link href="/memories" className="home56-all-memories">
-            🗂️ Explore the Full Memory Archive →
-          </Link>
-        </section>
-
-        {/* SIDEBAR */}
-        <aside className="home56-sidebar">
-          <section className="home56-side-panel">
-            <h2>◉ Recently Viewed</h2>
-
-            {recentItems.map((article) => (
-              <Link
-                href={`/memories/${article.slug}`}
-                key={article.slug}
-                className="home56-recent-item"
-              >
-                <div className="home56-recent-thumb">
-                  <MemoryCoverV52
-                    slug={article.slug}
-                    title={article.title}
-                    emoji={article.emoji}
-                    variant="related"
-                  />
-                </div>
-
-                <div>
-                  <strong>{article.title}</strong>
-                  <small>
-                    {eraBySlug[article.slug] ?? "1990–2010"}
-                  </small>
-                </div>
-              </Link>
-            ))}
           </section>
 
-          <section className="home56-side-panel home56-quick-panel">
-            <h2>⚡ Quick Access</h2>
+          <section className="home57-mobile-feature">
+            <span className="home57-mobile-feature-label">
+              FEATURED MEMORY
+            </span>
 
-            <button type="button" onClick={surpriseMe}>
-              <span>🎲</span>
-              <strong>Random Memory</strong>
-            </button>
+            <h2>School Days (1998)</h2>
 
-            <a href="#favourites">
-              <span>❤️</span>
-              <strong>Your Favourites ({favorites.length})</strong>
-            </a>
+            <p>
+              The same bag, the same road, the same dreams.
+              Those were the days!
+            </p>
 
-            <a href="#memory-timeline">
-              <span>▦</span>
-              <strong>Memory Timeline</strong>
-            </a>
-
-            <Link href="/desktop">
-              <span>🖥️</span>
-              <strong>Classic Windows Desktop</strong>
+            <Link href="/memories/school-life-2000s">
+              Read the Memory →
             </Link>
           </section>
 
-          <section className="home56-note-window">
-            <div className="home56-note-title">
-              <span>Nostalgia-90s.Vault</span>
-              <span>×</span>
-            </div>
-
-            <div className="home56-note-body">
-              <span>☺</span>
-
-              <p>
-                Life was simpler
-                <br />
-                back then...
-              </p>
-            </div>
-
-            <div className="home56-note-actions">
-              <Link href="/memories">Explore →</Link>
-            </div>
+          <section className="home57-mobile-quote">
+            <span>☺</span>
+            <p>
+              Life was better in the 90s...
+            </p>
+            <small>Some moments never get old.</small>
           </section>
 
-          <section
-            className="home56-side-panel"
-            id="favourites"
+          <Link
+            href="/desktop"
+            className="home57-mobile-desktop-link"
           >
-            <h2>❤️ Your Favourites</h2>
+            🖥️ Open Classic Windows Desktop
+          </Link>
 
-            {favorites.length ? (
-              featuredMemories
-                .filter((article) =>
-                  favorites.includes(article.slug)
-                )
-                .map((article) => (
-                  <div
-                    key={article.slug}
-                    className="home56-favourite-item"
-                  >
-                    <Link href={`/memories/${article.slug}`}>
-                      {article.emoji} {article.title}
-                    </Link>
+          <footer className="home57-mobile-footer">
+            <p>❤️ Made with love for 90s lovers</p>
 
-                    <button
-                      type="button"
-                      onClick={() => toggleFavorite(article.slug)}
-                      aria-label={`Remove ${article.title} from favourites`}
-                    >
-                      ×
-                    </button>
-                  </div>
-                ))
-            ) : (
-              <p className="home56-muted">
-                Tap the heart on a memory card to save it here.
-              </p>
-            )}
-          </section>
-        </aside>
-      </div>
+            <nav aria-label="Footer navigation">
+              <Link href="/">Home</Link>
+              <Link href="/about">About</Link>
+              <Link href="/contact">Contact</Link>
+              <Link href="/privacy-policy">Privacy</Link>
+            </nav>
 
-      {/* BOTTOM BANNER */}
-      <section className="home56-bottom-banner">
-        <div className="home56-bottom-cassette" aria-hidden="true">
-          📼
+            <small>Because some memories are forever. ☺</small>
+          </footer>
         </div>
-
-        <div className="home56-bottom-copy">
-          <h2>Some moments never get old...</h2>
-
-          <p>
-            Relive <span>•</span> Remember <span>•</span> Smile ☺
-          </p>
-        </div>
-
-        <Link href="/memories">Take me back →</Link>
       </section>
-
-      {/* FOOTER */}
-      <footer className="home56-footer">
-        <Link href="/" className="home56-footer-brand">
-          🖥️ NOSTALGIA<span>-90S</span>.VAULT
-        </Link>
-
-        <p>Relive&nbsp; · &nbsp;Remember&nbsp; · &nbsp;Smile</p>
-
-        <nav aria-label="Footer navigation">
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
-          <Link href="/privacy-policy">Privacy Policy</Link>
-          <Link href="/disclaimer">Disclaimer</Link>
-        </nav>
-
-        <small>Because some memories are forever. ☺</small>
-      </footer>
     </main>
   );
 }

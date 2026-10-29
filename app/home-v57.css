@@ -1,0 +1,610 @@
+/* =========================================
+   NOSTALGIA-90S.VAULT
+   V5.7 — IMAGE-MATCH HOMEPAGE
+========================================= */
+
+.home57,
+.home57 * {
+  box-sizing: border-box;
+}
+
+.home57 {
+  min-height: 100vh;
+  margin: 0;
+  color: #17294a;
+  background:
+    radial-gradient(
+      ellipse at center,
+      #5b3821 0%,
+      #2c1b11 65%,
+      #140d09 100%
+    );
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.home57 a {
+  text-decoration: none;
+}
+
+.home57 img {
+  max-width: none;
+}
+
+/* =========================================
+   DESKTOP ARTBOARD
+========================================= */
+
+.home57-desktop {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  background: #24160e;
+}
+
+.home57-artboard {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  margin: 0 auto;
+  isolation: isolate;
+  background: #2c1b11;
+}
+
+.home57-artwork {
+  z-index: 0;
+  object-fit: fill;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* =========================================
+   INVISIBLE CLICKABLE AREAS
+
+   The original artwork remains unchanged.
+   Only the transparent links sit above it.
+========================================= */
+
+.home57-hotspot {
+  position: absolute;
+  z-index: 5;
+  display: block;
+  overflow: hidden;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: transparent;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.home57-hotspot:hover {
+  background: rgb(255 222 125 / 7%);
+}
+
+.home57-hotspot:focus-visible {
+  outline: 3px dashed #ffe26a;
+  outline-offset: -4px;
+  background: rgb(255 222 125 / 12%);
+}
+
+/* Header logo */
+
+.hs-logo {
+  left: 22.5%;
+  top: 3%;
+  width: 35%;
+  height: 21%;
+}
+
+/* Left notebook navigation */
+
+.hs-home {
+  left: 4.4%;
+  top: 21.5%;
+  width: 14.5%;
+  height: 4.6%;
+}
+
+.hs-about {
+  left: 4.4%;
+  top: 26.3%;
+  width: 14.5%;
+  height: 4.6%;
+}
+
+.hs-memories {
+  left: 4.4%;
+  top: 31.1%;
+  width: 14.5%;
+  height: 4.7%;
+}
+
+.hs-games {
+  left: 4.4%;
+  top: 35.9%;
+  width: 14.5%;
+  height: 4.7%;
+}
+
+.hs-cartoons {
+  left: 4.4%;
+  top: 40.7%;
+  width: 14.5%;
+  height: 4.7%;
+}
+
+.hs-music {
+  left: 4.4%;
+  top: 45.5%;
+  width: 14.5%;
+  height: 4.7%;
+}
+
+.hs-movies {
+  left: 4.4%;
+  top: 50.3%;
+  width: 14.5%;
+  height: 4.7%;
+}
+
+.hs-gallery {
+  left: 4.4%;
+  top: 55.1%;
+  width: 14.5%;
+  height: 4.7%;
+}
+
+.hs-guestbook {
+  left: 4.4%;
+  top: 59.9%;
+  width: 14.5%;
+  height: 4.7%;
+}
+
+.hs-links {
+  left: 4.4%;
+  top: 64.7%;
+  width: 14.5%;
+  height: 4.7%;
+}
+
+/* Main welcome paper */
+
+.hs-welcome {
+  left: 20.3%;
+  top: 27.5%;
+  width: 54.5%;
+  height: 25.2%;
+}
+
+/* Explore the 90s — five cards */
+
+.hs-category-games {
+  left: 21.7%;
+  top: 57.3%;
+  width: 10.1%;
+  height: 19.2%;
+}
+
+.hs-category-cartoons {
+  left: 32.5%;
+  top: 57.3%;
+  width: 9.9%;
+  height: 19.2%;
+}
+
+.hs-category-music {
+  left: 42.9%;
+  top: 57.3%;
+  width: 9.9%;
+  height: 19.2%;
+}
+
+.hs-category-movies {
+  left: 53.2%;
+  top: 57.3%;
+  width: 9.9%;
+  height: 19.2%;
+}
+
+.hs-category-gallery {
+  left: 63.7%;
+  top: 57.3%;
+  width: 10.2%;
+  height: 19.2%;
+}
+
+/* Featured School Days panel */
+
+.hs-featured {
+  left: 21.7%;
+  top: 77.5%;
+  width: 29.4%;
+  height: 16.5%;
+}
+
+/* Right-side music and memories panel */
+
+.hs-now-playing {
+  left: 75.5%;
+  top: 27.7%;
+  width: 18.8%;
+  height: 23.2%;
+}
+
+/* Windows 95 badge */
+
+.hs-classic-desktop {
+  left: 76.5%;
+  top: 80.1%;
+  width: 13.8%;
+  height: 9.7%;
+}
+
+/* Bottom paper footer */
+
+.hs-footer {
+  left: 34.2%;
+  top: 94.8%;
+  width: 30%;
+  height: 4.6%;
+}
+
+/* Screen-reader-only heading */
+
+.home57-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+}
+
+/* =========================================
+   MOBILE VERSION
+========================================= */
+
+.home57-mobile {
+  display: none;
+}
+
+/* =========================================
+   TABLET AND SMALLER SCREENS
+========================================= */
+
+@media (max-width: 760px) {
+  .home57 {
+    min-height: 100vh;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        #f7e9c9 0,
+        #f7e9c9 4px,
+        #f2dfb7 5px
+      );
+  }
+
+  .home57-desktop {
+    display: none;
+  }
+
+  .home57-mobile {
+    display: block;
+    min-height: 100vh;
+    overflow: hidden;
+    color: #17294a;
+  }
+
+  .home57-mobile-banner {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+    background: #2c1b11;
+    border-bottom: 5px solid #9a6336;
+    box-shadow: 0 5px 12px rgb(49 27 12 / 20%);
+  }
+
+  .home57-mobile-artwork {
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .home57-mobile-inner {
+    width: min(100% - 24px, 620px);
+    margin: 0 auto;
+    padding: 20px 0 16px;
+  }
+
+  .home57-mobile-kicker {
+    margin: 0 0 8px;
+    color: #77532c;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-align: center;
+  }
+
+  .home57-mobile-inner > h1 {
+    margin: 0;
+    color: #142f70;
+    font-size: clamp(32px, 9vw, 48px);
+    font-style: italic;
+    line-height: 1.15;
+    text-align: center;
+    text-shadow: 1px 2px #e7d4a9;
+  }
+
+  .home57-mobile-intro {
+    max-width: 470px;
+    margin: 13px auto 18px;
+    color: #3f3b31;
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  .home57-mobile-primary {
+    display: flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 12px 18px;
+    color: #fff6dc;
+    background: linear-gradient(135deg, #193b79, #3158a0);
+    border: 2px solid #e0bc62;
+    border-radius: 5px;
+    box-shadow: 0 4px 0 #102653;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .home57-mobile-primary span {
+    font-size: 21px;
+  }
+
+  .home57-mobile-section {
+    margin-top: 29px;
+  }
+
+  .home57-mobile-section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 13px;
+    padding: 8px 13px;
+    background: #e8c47c;
+    border: 1px solid #c69b50;
+    box-shadow: 2px 3px 0 rgb(76 46 18 / 15%);
+    transform: rotate(-0.5deg);
+  }
+
+  .home57-mobile-section-title h2 {
+    margin: 0;
+    color: #19366f;
+    font-size: 22px;
+    font-style: italic;
+  }
+
+  .home57-mobile-section-title > span {
+    color: #a45e2c;
+    font-size: 23px;
+  }
+
+  .home57-mobile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+  }
+
+  .home57-mobile-card {
+    position: relative;
+    display: flex;
+    min-height: 112px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 7px;
+    padding: 14px;
+    color: #18356e;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        #fff5df 0,
+        #fff5df 22px,
+        #eee0bf 23px,
+        #fff5df 24px
+      );
+    border: 1px solid #d3b989;
+    box-shadow: 2px 4px 0 rgb(72 43 19 / 12%);
+    transition:
+      transform 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  .home57-mobile-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 2px 6px 0 rgb(72 43 19 / 15%);
+  }
+
+  .home57-mobile-card-icon {
+    font-size: 27px;
+  }
+
+  .home57-mobile-card strong {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .home57-mobile-arrow {
+    position: absolute;
+    right: 12px;
+    bottom: 9px;
+    color: #a05a28;
+    font-size: 19px;
+  }
+
+  .home57-mobile-feature {
+    margin-top: 24px;
+    padding: 18px;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        #fff5df 0,
+        #fff5df 25px,
+        #eee0bf 26px,
+        #fff5df 27px
+      );
+    border: 2px solid #d3b989;
+    box-shadow: 3px 5px 0 rgb(72 43 19 / 14%);
+  }
+
+  .home57-mobile-feature-label {
+    display: inline-block;
+    margin-bottom: 9px;
+    padding: 5px 8px;
+    color: #fff8e5;
+    background: #1c3e7f;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+  }
+
+  .home57-mobile-feature h2 {
+    margin: 0 0 8px;
+    color: #18356e;
+    font-size: 22px;
+  }
+
+  .home57-mobile-feature p {
+    color: #454033;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .home57-mobile-feature a {
+    display: inline-block;
+    margin-top: 5px;
+    color: #164c9a;
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: underline;
+  }
+
+  .home57-mobile-quote {
+    margin-top: 18px;
+    padding: 22px 15px;
+    color: #f8e7bd;
+    background:
+      radial-gradient(
+        circle at 15% 15%,
+        #30425a,
+        #111b2b 75%
+      );
+    border: 4px solid #8c633b;
+    box-shadow: 3px 5px 0 rgb(72 43 19 / 20%);
+    text-align: center;
+  }
+
+  .home57-mobile-quote > span {
+    color: #ffe37a;
+    font-size: 28px;
+  }
+
+  .home57-mobile-quote p {
+    margin: 8px 0;
+    font-size: 23px;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .home57-mobile-quote small {
+    color: #e2cba0;
+    font-size: 12px;
+  }
+
+  .home57-mobile-desktop-link {
+    display: block;
+    margin-top: 20px;
+    padding: 14px 12px;
+    color: #fff7e4;
+    background: #183b7c;
+    border: 2px solid #c7a257;
+    box-shadow: 0 4px 0 #102653;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .home57-mobile-footer {
+    margin-top: 28px;
+    padding: 18px 5px 8px;
+    border-top: 2px dashed #c5a36c;
+    text-align: center;
+  }
+
+  .home57-mobile-footer > p {
+    color: #704c2d;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .home57-mobile-footer nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 17px;
+    margin: 13px 0;
+  }
+
+  .home57-mobile-footer nav a {
+    color: #17366f;
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: underline;
+  }
+
+  .home57-mobile-footer small {
+    color: #775c3d;
+    font-size: 11px;
+  }
+}
+
+/* Extra-small phones */
+
+@media (max-width: 360px) {
+  .home57-mobile-inner {
+    width: calc(100% - 18px);
+  }
+
+  .home57-mobile-grid {
+    gap: 8px;
+  }
+
+  .home57-mobile-card {
+    min-height: 105px;
+    padding: 10px;
+  }
+
+  .home57-mobile-card strong {
+    font-size: 12px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .home57-mobile-card {
+    transition: none;
+  }
+}
